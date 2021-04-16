@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7b957db3149f0847acb4ce129a1da12, type: 3}
   m_Name: Rock
   m_EditorClassIdentifier: 
-  description: "\uAC70\uB300\uD55C \uBC14\uC704"
+  description: "\uB098\uB294\uAC70\uB300\uD55C \uBC14\uC704"
   combinationNodes:
   - Name: MiniStone
     Count: 5
