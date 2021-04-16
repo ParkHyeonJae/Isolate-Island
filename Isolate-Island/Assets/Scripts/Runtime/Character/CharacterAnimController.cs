@@ -27,7 +27,7 @@ namespace IsolateIsland.Runtime.Character
         public override void Move()
         {
             base.Move();
-            if (xAxis == 0 && zAxis == 0)
+            if (xAxis == 0 && yAxis == 0)
             {
                 Animator.SetBool("isRun", false);
                 return;

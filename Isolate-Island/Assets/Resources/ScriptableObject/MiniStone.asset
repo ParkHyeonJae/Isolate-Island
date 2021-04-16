@@ -13,4 +13,10 @@ MonoBehaviour:
   m_Name: MiniStone
   m_EditorClassIdentifier: 
   description: "\uB098\uB294 \uC791\uC740\uB3CC"
-  combinationNodes: []
+  combinationNodes:
+  - Name: "\u3141\u3134\u3147\u3141"
+    Count: 2
+    combinationNode: {fileID: 11400000, guid: 6fe3fa7f888748b46abec6bd0ec818bb, type: 2}
+  - Name: asdafca
+    Count: 4
+    combinationNode: {fileID: 11400000, guid: 7bb1b4714ec3f34499caaebc792298cf, type: 2}
