@@ -9,7 +9,7 @@ namespace IsolateIsland.Runtime.Combination
         , order = int.MaxValue)]
     public class CombinationNode : ScriptableObject
     {
-        public Sprite sprite { get; set; }
+        public Sprite sprite;
 
         [TextArea]
         public string description = "";
@@ -21,6 +21,7 @@ namespace IsolateIsland.Runtime.Combination
             public CombinationNode combinationNode;
         }
         public Node[] combinationNodes;
+
     }
 
 }

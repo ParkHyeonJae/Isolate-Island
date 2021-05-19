@@ -10,5 +10,18 @@ namespace IsolateIsland.Runtime.Inventory
         {
             Managers.Managers.Instance.inventoryManager.AddItem(item);
         }
+
+        [ContextMenu("TryInqury")]
+        public void Inquiry()
+        {
+            Managers.Managers.Instance.inventoryManager.InquiryProductiveItem();
+        }
+
+
+        [ContextMenu("PrintItemList")]
+        public void PrintItemList()
+        {
+            Debug.Log(Managers.Managers.Instance.inventoryManager.ToString());
+        }
     }
 }
