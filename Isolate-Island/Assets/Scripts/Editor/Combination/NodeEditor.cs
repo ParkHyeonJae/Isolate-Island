@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using IsolateIsland.Runtime.Combination;
 using UnityEditor;
-using IsolateIsland.Runtime.Combination;
+using UnityEngine;
 
 namespace IsolateIsland.Editor.Combination
 {
