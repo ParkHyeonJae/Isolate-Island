@@ -77,6 +77,22 @@ namespace IsolateIsland.Runtime.Managers
             }
         }
 
+        private StatManager _statManager;
+        public StatManager statManager
+        {
+            get
+            {
+                if (_statManager == null)
+                {
+                    _statManager = new StatManager();
+                    InitManager(_statManager);
+                }
+                return _statManager;
+            }
+        }
+
+
+
         private void InitManager(IManagerInit manager) => manager.OnInit();
         private void UpdateManager(IManagerUpdate manager) => manager.OnUpdate();
 

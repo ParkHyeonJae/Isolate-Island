@@ -55,23 +55,5 @@ namespace IsolateIsland.Runtime.Stat
         }
     }
 
-    public class Stats : MonoBehaviour
-    {
-        private void Start()
-        {
-            StatBuilder stat = new StatBuilder();
-            var statBuilder = stat
-                .SetHP(200)
-                .SetHungry(300)
-                .SetMoveSpeed(20)
-                .SetAttackSpeed(1)
-                .Build();
-
-            
-        }
-
-    }
-
-
 
 }

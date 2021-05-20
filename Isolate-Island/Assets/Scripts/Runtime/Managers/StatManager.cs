@@ -1,0 +1,30 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using IsolateIsland.Runtime.Stat;
+
+namespace IsolateIsland.Runtime.Managers
+{
+    using Stat = Stat.Stat;
+
+    public class StatManager : IManagerInit
+    {
+        public Stat UserStat { get; set; }
+
+        public void OnInit()
+        {
+            StatBuilder stat = new StatBuilder();
+            UserStat = stat
+                .SetHP(200)
+                .SetHungry(300)
+                .SetMoveSpeed(20)
+                .SetAttackSpeed(10)
+                .Build();
+
+        }
+
+
+
+
+    }
+}
