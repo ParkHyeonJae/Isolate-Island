@@ -1,26 +1,34 @@
 ﻿using IsolateIsland.Runtime.Combination;
+using System.Collections;
+using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace IsolateIsland.Runtime.Inventory
 {
     [DisallowMultipleComponent]
     [RequireComponent(
           typeof(BoxCollider2D)
-        , typeof(ItemInvoker))]
+        , typeof(ItemInvoker)
+        , typeof(SpriteRenderer))]
     public class ItemBase : MonoBehaviour
     {
         [SerializeField] protected CombinationNode _combinationNode;
 
         public CombinationNode GetCombinationNode => _combinationNode;
 
-        class ItemBuilder
-        {
-
-        }
-
         public static explicit operator int(ItemBase @base) => @base.GetCombinationNode.name.GetHashCode();
         public static explicit operator string(ItemBase @base) => @base.GetCombinationNode.name;
+
+        private SpriteRenderer _spriteRenderer;
+        public SpriteRenderer SpriteRenderer => _spriteRenderer = _spriteRenderer ?? GetComponent<SpriteRenderer>();
+
+
+        private void Awake()
+        {
+            SpriteRenderer.sprite = GetCombinationNode.sprite;
+        }
 
         public override string ToString()
         {

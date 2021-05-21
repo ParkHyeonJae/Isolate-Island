@@ -1,6 +1,8 @@
 ﻿using IsolateIsland.Runtime.Inventory;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using UnityEngine;
 
 namespace IsolateIsland.Runtime.Managers
@@ -35,38 +37,39 @@ namespace IsolateIsland.Runtime.Managers
         [ContextMenu("InquiryProductiveItem")]
         public void InquiryProductiveItem()
         {
-            foreach (var _item in Items)
+            var craftingTable = Managers.Instance.combinationManager.CraftingTable;
+            foreach (var _item in craftingTable)
             {
-                var _combinationNode = _item.Key.GetCombinationNode;
-                if (!IsProductiveItem(_combinationNode))
+                var _combinationNode = _item.Value;
+                if (!IsProductiveItem(_combinationNode))        // 만들 수 있는 아이템인지
                     continue;
 
                 //Todo : 생산 가능한 아이템들
-
+                Debug.Log($"제작가능한 아이템 목록 : {_combinationNode.name}");
             }
         }
 
         private bool IsProductiveItem(Combination.CombinationNode @node)
         {
-            foreach (var _node in @node.combinationNodes)
+            if (Items.Count == 0 || @node.combinationNodes.Length == 0)
+                return false;
+
+            return @node.combinationNodes.All((_node) =>
             {
-                // Find Out Productive
-                if (Items.Keys.Any(_item =>
-                _item.GetCombinationNode == _node.combinationNode
-                && _node.Count < Items[_item]))
+                foreach (var _item in Items.Keys)
                 {
-                    return true;
+                    var nodeCompare = _item.GetCombinationNode == _node.combinationNode;
+                    var countCompare = _node.Count <= Items[_item];
+                    if (nodeCompare && countCompare)
+                        return true;
                 }
                 return false;
-            }
-
-
-            return false;
+            });
         }
 
         public void OnInit()
         {
-
+            
         }
 
         public void AddItem(ItemBase @base)
@@ -82,6 +85,16 @@ namespace IsolateIsland.Runtime.Managers
 
             Debug.Log($"{@base.GetCombinationNode.name} : {Items[@base]} + 1");
             Items[@base] = value + 1;
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("현재 아이템 목록 : \n");
+
+            Items.ToList().ForEach(e => sb.Append($"{e.Key.name} : {e.Value}개\n"));
+
+            return sb.ToString();
         }
     }
 }

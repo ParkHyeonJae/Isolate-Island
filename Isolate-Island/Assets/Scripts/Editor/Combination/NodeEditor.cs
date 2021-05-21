@@ -19,7 +19,7 @@ namespace IsolateIsland.Editor.Combination
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
-            _combinationNode.sprite = EditorGUILayout.ObjectField("Sprite", _combinationNode.sprite, typeof(Sprite), true) as Sprite;
+            _combinationNode.sprite = EditorGUILayout.ObjectField("Sprite View(Show Only)", _combinationNode.sprite, typeof(Sprite), true) as Sprite;
         }
 
     }
