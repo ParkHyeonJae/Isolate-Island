@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace IsolateIsland.Runtime.Combination
 {
@@ -18,7 +16,7 @@ namespace IsolateIsland.Runtime.Combination
 
         public void Consume()
         {
-            
+
         }
     }
 }
