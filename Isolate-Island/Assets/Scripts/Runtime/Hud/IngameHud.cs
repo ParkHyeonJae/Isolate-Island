@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using IsolateIsland.Runtime.Stat;
+using PlayerPrefs = IsolateIsland.Runtime.Managers.PlayerPrefs;
 
 namespace IsolateIsland.Runtime.Hud
 {
@@ -58,19 +59,35 @@ namespace IsolateIsland.Runtime.Hud
         [Header("Popup")]
         [SerializeField] private GameObject _pausePopup;
         [SerializeField] private GameObject _optionPopup;
+        [SerializeField] private GameObject _gameoverPopup;
 
         [Header("Slider")]
         [SerializeField] private Slider _bgmSlider;
         [SerializeField] private Slider _sfxSlider;
 
+        [Header("Toggle")]
+        [SerializeField] private Toggle _vibrationToggle;
+        [SerializeField] private Toggle _autoaimToggle;
+        [SerializeField] private Toggle _googleToggle;
+
         private void Start()
+        {
+            Init();
+            StartCoroutine(SetGaugeValue());
+        }
+
+        private void Init()
         {
             _playerStat = Managers.Managers.Instance.statManager.UserStat;
 
             _hpGauge = new Gauge(_hpGaugeImage, _playerStat.HP, 0, _playerStat.HP);
             _hungerGauge = new Gauge(_hungerGaugeImage, _playerStat.Hungry, 0, _playerStat.Hungry);
 
-            StartCoroutine(SetGaugeValue());
+            _bgmSlider.value = PlayerPrefs.GetFloat("Bgm", 1);
+            _sfxSlider.value = PlayerPrefs.GetFloat("Sfx", 1);
+
+            _vibrationToggle.isOn = PlayerPrefs.GetBool("Vibration", true);
+            _autoaimToggle.isOn = PlayerPrefs.GetBool("AutoAim", false);
         }
 
         IEnumerator SetGaugeValue()
@@ -78,16 +95,17 @@ namespace IsolateIsland.Runtime.Hud
             _hpGauge.SetCurrnetFillAmount(_playerStat.HP);
             _hungerGauge.SetCurrnetFillAmount(_playerStat.Hungry);
 
+            // 테스트를 위한 코드
             if (_hungerGauge.GetCurrentFillAmountRatio() <= 0.25f)
                 Managers.Managers.Instance.statManager.UserStat.MoveSpeed = 10;
             else
                 Managers.Managers.Instance.statManager.UserStat.MoveSpeed = 20;
 
-            // 테스트를 위한 코드
             Managers.Managers.Instance.statManager.UserStat.HP--;
             Managers.Managers.Instance.statManager.UserStat.Hungry--;
-            Debug.Log(Managers.Managers.Instance.statManager.UserStat.MoveSpeed);
 
+            Debug.Log(Managers.Managers.Instance.statManager.UserStat.MoveSpeed);
+            // 끝
 
             yield return new WaitForEndOfFrame();
 
@@ -124,24 +142,24 @@ namespace IsolateIsland.Runtime.Hud
             //씬 전환 코드
         }
 
-        public void SetBgm()
+        public void SetBgm(float value)
         {
-
-        }
-        
-        public void SetSfx()
-        {
-
+            PlayerPrefs.SetFloat("Bgm", value);
         }
 
-        public void SetVibration()
+        public void SetSfx(float value)
         {
-
+            PlayerPrefs.SetFloat("Sfx", value);
         }
 
-        public void SetAutoaim()
+        public void ChangeVibration(bool isActive)
         {
+            PlayerPrefs.SetBool("Vibration", isActive);
+        }
 
+        public void ChangeAutoaim(bool isActive)
+        {
+            PlayerPrefs.SetBool("AutoAim", isActive);
         }
 
         public void ClickGoogleLogin()
@@ -153,6 +171,17 @@ namespace IsolateIsland.Runtime.Hud
         {
             _optionPopup.SetActive(false);
             _pausePopup.SetActive(true);
+        }
+
+        IEnumerator OnGameoverPopup()
+        {
+            _gameoverPopup.SetActive(true);
+            yield return 0;
+        }
+
+        public void ClickRetry()
+        {
+
         }
     }
 }
