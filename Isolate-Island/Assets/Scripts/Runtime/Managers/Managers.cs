@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace IsolateIsland.Runtime.Managers
 {
@@ -34,7 +32,7 @@ namespace IsolateIsland.Runtime.Managers
         }
 
         private CombinationManager _combinationManager;
-        public CombinationManager combinationManager
+        public CombinationManager Combination
         {
             get
             {
@@ -49,7 +47,7 @@ namespace IsolateIsland.Runtime.Managers
         }
 
         private InputManager _inputManager;
-        public InputManager inputManager
+        public InputManager Input
         {
             get
             {
@@ -64,7 +62,7 @@ namespace IsolateIsland.Runtime.Managers
         }
 
         private InventoryManager _inventoryManager;
-        public InventoryManager inventoryManager
+        public InventoryManager Inventory
         {
             get
             {
@@ -77,12 +75,40 @@ namespace IsolateIsland.Runtime.Managers
             }
         }
 
+        private StatManager _statManager;
+        public StatManager Stat
+        {
+            get
+            {
+                if (_statManager == null)
+                {
+                    _statManager = new StatManager();
+                    InitManager(_statManager);
+                }
+                return _statManager;
+            }
+        }
+
+        private DIManager _diManager;
+        public DIManager DI
+        {
+            get
+            {
+                if (_diManager == null)
+                {
+                    _diManager = new DIManager();
+                    InitManager(_diManager);
+                }
+                return _diManager;
+            }
+        }
+
         private void InitManager(IManagerInit manager) => manager.OnInit();
         private void UpdateManager(IManagerUpdate manager) => manager.OnUpdate();
 
         private void Update()
         {
-            UpdateManager(inputManager);
+            UpdateManager(Input);
         }
     }
 }

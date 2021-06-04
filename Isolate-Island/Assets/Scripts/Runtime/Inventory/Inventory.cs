@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace IsolateIsland.Runtime.Inventory
 {
@@ -8,7 +6,28 @@ namespace IsolateIsland.Runtime.Inventory
     {
         public virtual void AppendItem(ItemBase item)
         {
-            Managers.Managers.Instance.inventoryManager.AddItem(item);
+            Managers.Managers.Instance.Inventory.AddItem(item);
+        }
+
+        [ContextMenu("TryInqury")]
+        public void Inquiry()
+        {
+            Managers.Managers.Instance.Inventory.InquiryProductiveItem();
+        }
+
+        [ContextMenu("Product")]
+        public void Product()
+        {
+            Managers.Managers.Instance.Inventory.TryInquiryProductiveItem();
+        }
+
+
+
+
+        [ContextMenu("PrintItemList")]
+        public void PrintItemList()
+        {
+            Debug.Log(Managers.Managers.Instance.Inventory.ToString());
         }
     }
 }

@@ -23,7 +23,7 @@ namespace IsolateIsland.Runtime.TestCodes
         internal CombinationNode _combinationNode;
         public void SelectNode()
         {
-            var list = Managers.Managers.Instance.combinationManager.GetCombinationList();
+            var list = Managers.Managers.Instance.Combination.GetCombinationList();
 
             var nodes = list.Where(e => e == _combinationNode);
             bool existNode = false;

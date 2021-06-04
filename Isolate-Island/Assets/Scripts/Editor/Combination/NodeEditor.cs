@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using IsolateIsland.Runtime.Combination;
 using UnityEditor;
-using IsolateIsland.Runtime.Combination;
+using UnityEngine;
 
 namespace IsolateIsland.Editor.Combination
 {
@@ -13,7 +11,9 @@ namespace IsolateIsland.Editor.Combination
     {
         static CombinationNode _combinationNode;
 
-        private void OnEnable()
+        protected void OnEnable() => OnEditorInitalize();
+
+        protected virtual void OnEditorInitalize()
         {
             _combinationNode = (CombinationNode)target;
         }
@@ -21,7 +21,12 @@ namespace IsolateIsland.Editor.Combination
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
-            _combinationNode.sprite = EditorGUILayout.ObjectField("Sprite", _combinationNode.sprite, typeof(Sprite), true) as Sprite;
+
+            if (_combinationNode == null)
+                return;
+            
+            _combinationNode.sprite = EditorGUILayout.ObjectField("Sprite Info", _combinationNode.sprite, typeof(Sprite), true) as Sprite;
+            EditorUtility.SetDirty(_combinationNode);
         }
 
     }

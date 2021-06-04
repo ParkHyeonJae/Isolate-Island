@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 namespace IsolateIsland.Runtime.Inventory
@@ -10,6 +8,20 @@ namespace IsolateIsland.Runtime.Inventory
         [System.Serializable]
         public class ItemEvent : UnityEvent { }
         [SerializeField] protected ItemEvent _onItemCollect;
+
+        private ItemBase @base = null;
+        public ItemBase Base
+        {
+            get => @base = @base ?? GetComponent<ItemBase>();
+        }
+        private void Start()
+        {
+            _onItemCollect?.AddListener(() =>
+            {
+                Managers.Managers.Instance.Inventory.AddItem(Base);
+                gameObject.SetActive(false);
+            });
+        }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
