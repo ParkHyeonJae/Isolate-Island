@@ -1,7 +1,5 @@
 ﻿using IsolateIsland.Runtime.Combination;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEditor;
@@ -29,14 +27,15 @@ namespace IsolateIsland.Runtime.TestCodes
             bool existNode = false;
 
             StringBuilder @sb = new StringBuilder();
-            
+
             foreach (var node in nodes)
             {
                 _combinationTestUISet.icon.sprite = node.sprite;
                 _combinationTestUISet.description.text = node.description;
-                
+
                 @sb.Append("재료 : \n");
-                Array.ForEach(node.combinationNodes, e => {
+                Array.ForEach(node.combinationNodes, e =>
+                {
                     @sb.Append(e.Name);
                     @sb.Append(" : ");
                     @sb.Append(e.Count);
@@ -68,7 +67,7 @@ namespace IsolateIsland.Runtime.TestCodes
 
             Editor_InspectorPadding(5, 20);
 
-            combinationTest._combinationNode 
+            combinationTest._combinationNode
                 = EditorGUILayout.ObjectField(nameof(CombinationNode)
                 , combinationTest._combinationNode
                 , typeof(CombinationNode), true) as CombinationNode;

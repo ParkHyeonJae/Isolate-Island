@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace IsolateIsland.Runtime.Character
 {
@@ -37,7 +34,7 @@ namespace IsolateIsland.Runtime.Character
             var _z = yAxis * m_MoveSpeed * Time.deltaTime;
 
             var _translate = m_bIsXY ? new Vector3(_x, _y, 0) : new Vector3(_x, 0, _z);
-            
+
             transform.Translate(_translate, Space.World);
         }
     }
