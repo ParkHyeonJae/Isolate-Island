@@ -76,7 +76,7 @@ namespace IsolateIsland.Runtime.Managers
         }
 
         private StatManager _statManager;
-        public StatManager Stat
+        public StatManager statManager
         {
             get
             {

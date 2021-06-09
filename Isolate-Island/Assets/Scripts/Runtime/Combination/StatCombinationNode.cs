@@ -10,7 +10,7 @@ namespace IsolateIsland.Runtime.Combination
     public class StatCombinationNode : CombinationNode
     {
         [HideInInspector]
-        public Stat.Stat Stat;
+        public Stat.EffectStat Stat;
 
     }
 }

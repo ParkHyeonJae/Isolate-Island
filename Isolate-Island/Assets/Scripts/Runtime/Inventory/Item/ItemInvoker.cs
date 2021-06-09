@@ -18,7 +18,7 @@ namespace IsolateIsland.Runtime.Inventory
         {
             _onItemCollect?.AddListener(() =>
             {
-                Managers.Managers.Instance.Inventory.AddItem(Base);
+                Managers.Managers.Instance.Inventory.Game.AddItem(Base);
                 gameObject.SetActive(false);
             });
         }

@@ -26,6 +26,16 @@ namespace IsolateIsland.Runtime.Stat
     [System.Serializable]
     public class Stat
     {
+        public int HP { get; set; }
+        public int Hungry { get; set; }
+
+        public int MoveSpeed;
+        public int AttackSpeed;
+    }
+
+    [System.Serializable]
+    public class EffectStat : Stat
+    {
         #region Ability Stat
 
         public int ATK_ATK;
@@ -38,26 +48,19 @@ namespace IsolateIsland.Runtime.Stat
         public int HEALTH_Hungry;
 
 
-        public int MoveSpeed;
-        public int AttackSpeed;
+
+
 
         public int EFFECT_ATK;
         public int EFFECT_RANGE;
         public int EFFECT_DEF;
 
-        public string EFFECT_STR;
-
-        public int BUFF_H;
-        public int BUFF_H1;
-        public int BUFF_H2;
-        public int BUFF_H3;
+        public int BUFF_SLOT1;
+        public int BUFF_SLOT2;
+        public int BUFF_SLOT3;
+        public int BUFF_SLOT4;
 
         #endregion
-    }
-
-    public class IncreaseStat : Stat
-    {
-
     }
 
 
@@ -68,12 +71,12 @@ namespace IsolateIsland.Runtime.Stat
 
         public StatBuilder SetHP(int _hp)
         {
-            Stat.HEALTH_HP = _hp;
+            Stat.HP = _hp;
             return this;
         }
         public StatBuilder SetHungry(int _hungry)
         {
-            Stat.HEALTH_Hungry = _hungry;
+            Stat.Hungry = _hungry;
             return this;
         }
         public StatBuilder SetMoveSpeed(int _moveSpeed)

@@ -11,7 +11,7 @@ namespace IsolateIsland.Runtime.TestCodes
         {
             //Managers.Managers.Instance.DI.Get(Defines.Load_Object.Player).SetActive(false);
 
-            var inventory = Managers.Managers.Instance.DI.Get<IsolateIsland.Runtime.Inventory.Inventory>();
+            var inventory = Managers.Managers.Instance.Inventory.Game;
             inventory.PrintItemList();
 
             //Managers.Managers.Instance.DI.Get<IsolateIsland.Runtime.Inventory.Inventory>().PrintItemList();
