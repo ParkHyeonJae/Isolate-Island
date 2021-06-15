@@ -12,5 +12,6 @@ namespace IsolateIsland.Runtime.Combination
         [HideInInspector]
         public Stat.EffectStat Stat;
 
+
     }
 }

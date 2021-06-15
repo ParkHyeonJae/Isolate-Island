@@ -32,7 +32,13 @@ namespace IsolateIsland.Runtime.Managers
 
         public void OnInit()
         {
-            var elements = Enum.GetNames(typeof(Utils.Defines.Load_Object));
+            CachingObjectByEnumField<Utils.Defines.Load_Object>();
+        }
+
+
+        private void CachingObjectByEnumField<T>()
+        {
+            var elements = Enum.GetNames(typeof(T));
             foreach (var element in elements)
             {
                 var findObject = GameObject.Find(element);
@@ -40,8 +46,38 @@ namespace IsolateIsland.Runtime.Managers
                 if (findObject == null)
                     continue;
 
+                if (Objects.ContainsKey(element))
+                    continue;
+
                 Objects.Add(element, findObject);
             }
+        }
+
+        public GameObject Get<T>(in T enumField) where T : Enum
+        {
+            var enumFieldName = enumField.ToString();
+            GameObject go = null;
+            if ((go = Get(enumFieldName)) != null)
+                return go;
+
+            this.CachingObjectByEnumField<T>();
+
+            return Get(enumFieldName);
+        }
+
+        [Obsolete("WRONG METHOD")]
+        public FROM Get<TO, FROM>(in TO enumField) 
+            where TO : Enum 
+            where FROM : MonoBehaviour
+        {
+            var enumFieldName = enumField.ToString();
+            GameObject go = null;
+            if ((go = Get(enumFieldName)) != null)
+                return Get<FROM>(go);
+
+            this.CachingObjectByEnumField<TO>();
+
+            return Get<FROM>(go = Get(enumFieldName));
         }
 
         public GameObject Get(Utils.Defines.Load_Object objects)
@@ -49,47 +85,74 @@ namespace IsolateIsland.Runtime.Managers
             return Objects[objects.ToString()];
         }
 
+        public GameObject Get(in string findName)
+        {
+            GameObject findObject = null;
+            if (!Objects.TryGetValue(findName, out findObject))
+                return default(GameObject);
+
+            return findObject;
+        }
+
         public T Get<T>() where T : MonoBehaviour
         {
             T component;
-            if (Components.ContainsKey(nameof(T)))
-                return (Components[nameof(T)] as T[])[0];
+            var name = typeof(T).ToString();
+            if (Components.ContainsKey(name))
+                return (Components[name] as T[])[0];
 
             if (((component = GameObject.FindObjectOfType<T>()) is null))
                 return default(T);
 
-            Components.Add(nameof(T), new[] { component });
+            Components.Add(name, new[] { component });
+            return component;
+        }
+
+        [Obsolete("WRONG METHOD")]
+        public T Get<T>(GameObject go) where T : MonoBehaviour
+        {
+            T component;
+            var name = typeof(T).ToString();
+
+            if (Components.ContainsKey(name))
+                return (Components[name] as T[])[0];
+
+            if (((component = go.GetComponent<T>()) is null))
+                return default(T);
+
+            Components.Add(name, new[] { component });
             return component;
         }
         public T[] Gets<T>(in bool reload = false) where T : MonoBehaviour
         {
             T[] component;
-            
+            var name = typeof(T).ToString();
+
             switch (reload)
             {
-                case true when reload == true:
+                case true:
                     if (((component = GameObject.FindObjectsOfType<T>()) is null))
                         return default(T[]);
 
 
-                    if (!Components.ContainsKey(nameof(T)))
+                    if (!Components.ContainsKey(name))
                     {
-                        Components.Add(nameof(T), component);
+                        Components.Add(name, component);
                         return component;
                     }
 
-                    Components[nameof(T)] = component;
+                    Components[name] = component;
 
                     return component;
-                case true when reload == false:
+                case false:
 
-                    if (Components.ContainsKey(nameof(T)))
-                        return Components[nameof(T)] as T[];
+                    if (Components.ContainsKey(name))
+                        return Components[name] as T[];
 
                     if (((component = GameObject.FindObjectsOfType<T>()) is null))
                         return default(T[]);
 
-                    Components.Add(nameof(T), component);
+                    Components.Add(name, component);
 
                     return component;
                 default:

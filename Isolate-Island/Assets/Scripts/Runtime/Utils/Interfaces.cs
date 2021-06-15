@@ -8,4 +8,11 @@ namespace IsolateIsland.Runtime.Utils
     {
         T Build();
     }
+    internal interface IStatAble
+    {
+        string GetStatInfo { get; }
+    }
+
 }
+
+

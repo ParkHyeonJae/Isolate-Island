@@ -10,24 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e5f0cb11f771494cb0e2baa78c02403, type: 3}
-  m_Name: StatCombinationNode
+  m_Name: "\uB0A0\uACE0\uAE30"
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 8ce4faaf5cc66534a8a959f1e004551d, type: 3}
-  description: 
+  sprite: {fileID: 21300118, guid: b08e570699f1c8a4f9cc388204aef3bc, type: 3}
+  description: "\uD3EC\uB9CC\uAC10\uC740 \uC788\uACA0\uC9C0\uB9CC \uAC74\uAC15\uC740
+    \uBCF4\uC99D \uBABB \uD55C\uB2E4."
   combinationNodes: []
   Stat:
     MoveSpeed: 0
     AttackSpeed: 0
-    ATK_ATK: 0
-    ATK_Range: 0
-    DEF_DEF: 0
-    DEF_eParts: 0
-    HEALTH_HP: 0
-    HEALTH_Hungry: 0
     EFFECT_ATK: 0
     EFFECT_RANGE: 0
     EFFECT_DEF: 0
-    BUFF_SLOT1: 0
-    BUFF_SLOT2: 0
-    BUFF_SLOT3: 0
-    BUFF_SLOT4: 0
+    EFFECT_HEALTH: -5
+    EFFECT_HUNGRY: 20

@@ -26,11 +26,25 @@ namespace IsolateIsland.Runtime.Inventory
             return this;
         }
 
+        public ItemBuilder SetItemBase<T>() where T : ItemBase
+        {
+            if (_itemObject is null)
+                _itemObject = new GameObject();
+            _itemBase = _itemObject.GetOrAddComponent<T>();
+            return this;
+        }
+
         public ItemBase Build()
         {
-            _itemObject = new GameObject();
+            if (_itemObject is null)
+                _itemObject = new GameObject();
+            if (_itemBase is null)
+                _itemBase = _itemObject.GetOrAddComponent<ItemBase>();
+            
+
+
             _itemObject.SetActive(false);
-            _itemBase = _itemObject.AddComponent<ItemBase>();
+            
             if (!_combinationNode)
                 return _itemBase;
 
@@ -72,7 +86,6 @@ namespace IsolateIsland.Runtime.Inventory
                 SpriteRenderer.sprite = CombinationNode.sprite;
             SpriteRenderer.sortingOrder = 1;
         }
-
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

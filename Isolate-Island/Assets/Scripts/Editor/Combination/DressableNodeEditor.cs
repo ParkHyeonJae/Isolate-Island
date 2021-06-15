@@ -11,17 +11,17 @@ namespace IsolateIsland.Editor.Combination
 
     using Editor = UnityEditor.Editor;
 
-    [CustomEditor(typeof(StatCombinationNode))]
-    public class StatNodeEditor : NodeEditor
+    [CustomEditor(typeof(DressableCombinationNode))]
+    public class DressableNodeEditor : StatNodeEditor
     {
-        static StatCombinationNode _combinationNode;
-        static EAbilityStatType eAbilityStatType;
+        static DressableCombinationNode _combinationNode;
+        static EAbilityDressableType eAbilityDressableType;
 
         protected override void OnEditorInitalize()
         {
             base.OnEditorInitalize();
 
-            _combinationNode = (StatCombinationNode)target;
+            _combinationNode = (DressableCombinationNode)target;
         }
 
         //private T Editor_RenderFieldByType<T>(T value)
@@ -37,12 +37,12 @@ namespace IsolateIsland.Editor.Combination
 
         private void SetPropertyValue<T>(FieldInfo propertyInfo, T selected)
         {
-            propertyInfo.SetValue(_combinationNode.Stat, selected);
+            propertyInfo.SetValue(_combinationNode.DressableStat, selected);
             EditorUtility.SetDirty(_combinationNode);
             //AssetDatabase.Refresh();
         }
 
-        private void SetPropertyValueByType<T>(FieldInfo propertyInfo,  T value)
+        private void SetPropertyValueByType<T>(FieldInfo propertyInfo, T value)
         {
             switch (value)
             {
@@ -73,30 +73,29 @@ namespace IsolateIsland.Editor.Combination
             EditorGUILayout.Space(20, true);
             EditorGUILayout.Space(20, true);
 
+            eAbilityDressableType
+                = (EAbilityDressableType)EditorGUILayout.EnumPopup(
+                    eAbilityDressableType, GUILayout.ExpandWidth(true));
 
-            eAbilityStatType
-                = (EAbilityStatType)EditorGUILayout.EnumPopup(
-                    eAbilityStatType, GUILayout.ExpandWidth(true));
-
-            if (_combinationNode == null || _combinationNode.Stat == null)
+            if (_combinationNode == null || _combinationNode.DressableStat == null)
                 return;
 
-            foreach (var propertyInfo in _combinationNode.Stat.GetType()?.GetFields(
-                  BindingFlags.Public 
+            foreach (var propertyInfo in _combinationNode.DressableStat.GetType()?.GetFields(
+                  BindingFlags.Public
                 | BindingFlags.NonPublic
                 | BindingFlags.Instance))
             {
-                var value = propertyInfo.GetValue(_combinationNode.Stat);
-                
+                var value = propertyInfo.GetValue(_combinationNode.DressableStat);
+
                 var splitProperty = propertyInfo.Name.Split('_');
-                var enumNames = Enum.GetNames(typeof(EAbilityStatType));
+                var enumNames = Enum.GetNames(typeof(EAbilityDressableType));
 
                 foreach (var name in enumNames)
                 {
                     if (splitProperty[0] != name)
                         continue;
 
-                    if (eAbilityStatType.ToString() != name)
+                    if (eAbilityDressableType.ToString() != name)
                         continue;
 
                     EditorGUILayout.LabelField(propertyInfo.Name);
@@ -105,10 +104,10 @@ namespace IsolateIsland.Editor.Combination
 
                 }
 
-                
+
             }
 
-            
+
 
         }
 
