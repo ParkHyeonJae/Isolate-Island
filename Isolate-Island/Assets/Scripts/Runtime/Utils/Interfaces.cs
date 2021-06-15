@@ -13,6 +13,10 @@ namespace IsolateIsland.Runtime.Utils
         string GetStatInfo { get; }
     }
 
+    internal interface ISingleton<T>
+    {
+        T Instance { get; }
+    }
 }
 
 

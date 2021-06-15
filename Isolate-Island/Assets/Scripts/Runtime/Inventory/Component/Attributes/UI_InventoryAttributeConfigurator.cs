@@ -8,64 +8,6 @@ using UnityEngine.UI;
 
 namespace IsolateIsland.Runtime.Inventory
 {
-    internal abstract class ItemApplyer
-    {
-        internal virtual void Use<T>(in T item) where T : ItemBase
-        {
-            Managers.Managers.Instance.Inventory.Game.SubtractItem(item);
-            var config = Managers.Managers.Instance.DI.Get<UI_InventoryAttributeConfigurator>();
-            config.SetAttribute();
-
-        }
-        internal virtual void Drop<T>(in T item) where T : ItemBase
-        {
-            Managers.Managers.Instance.Inventory.Game.SubtractItem(item);
-            var config = Managers.Managers.Instance.DI.Get<UI_InventoryAttributeConfigurator>();
-            config.SetAttribute();
-        }
-    }
-
-
-    internal class StatItemApplyer : ItemApplyer
-    {
-        internal override void Use<T>(in T item)
-        {
-            base.Use<T>(item);
-            Debug.Log("StatItemApplyer : Use");
-            var converted = item as StatItem;
-
-            var effectStat = Managers.Managers.Instance.statManager.UserStat;
-            converted.StatCombinationNode.Stat.Apply(ref effectStat);
-            Managers.Managers.Instance.statManager.UserStat = effectStat;
-            Debug.Log(Managers.Managers.Instance.statManager.UserStat.ToString());
-        }
-
-        internal override void Drop<T>(in T item)
-        {
-            base.Drop<T>(item);
-            Debug.Log("StatItemApplyer : Drop");
-        }
-    }
-
-    internal class DressableItemApplyer : ItemApplyer
-    {
-        internal override void Use<T>(in T item)
-        {
-            base.Use<T>(item);
-            Debug.Log("DressableItemApplyer : Use");
-
-
-
-        }
-
-        internal override void Drop<T>(in T item)
-        {
-            base.Drop<T>(item);
-            Debug.Log("DressableItemApplyer : Drop");
-        }
-    }
-
-
     public class UI_InventoryAttributeConfigurator : MonoBehaviour
     {
         internal struct AttributeForm
@@ -98,6 +40,38 @@ namespace IsolateIsland.Runtime.Inventory
             internal Button item_dropButton;
         }
 
+        internal struct DressableAttributeForm
+        {
+            internal enum Equipment
+            {
+                Equipment_Parent,
+                Person_Image,
+                Head,
+                Body,
+                Leg,
+                Weapon,
+                Item
+            }
+
+            internal GameObject obj_Equipment;
+            internal GameObject obj_Person_Image;
+            internal GameObject obj_Head;
+            internal GameObject obj_Body;
+            internal GameObject obj_Leg;
+            internal GameObject obj_Weapon;
+            internal GameObject obj_Item;
+
+
+            internal UI_InventoryAttributeSetter ui_Person_Image;
+            internal UI_InventoryAttributeSetter ui_Head;
+            internal UI_InventoryAttributeSetter ui_Body;
+            internal UI_InventoryAttributeSetter ui_Leg;
+            internal UI_InventoryAttributeSetter ui_Weapon;
+            internal UI_InventoryAttributeSetter ui_Item;
+
+        }
+
+
         private Transform _itemListParent;
         public Transform ItemListParent 
             => _itemListParent = _itemListParent 
@@ -107,10 +81,13 @@ namespace IsolateIsland.Runtime.Inventory
 
         private ItemBase _selectItem = null;
 
-        private AttributeForm _attributeForm = new AttributeForm();
+        internal AttributeForm _attributeForm = new AttributeForm();
+        internal DressableAttributeForm _dressableAttrForm = new DressableAttributeForm();
 
-        private EventHandler<ItemBase> _onClickInventroyItemHandler;
-
+        private void Start()
+        {
+            CachingAttributeAssets();
+        }
         private void OnEnable() => SetAttribute();
 
         class InventoryAttributeSetterComparer : IComparer<UI_InventoryAttributeSetter>
@@ -168,17 +145,49 @@ namespace IsolateIsland.Runtime.Inventory
 
             Array.Sort(setter, new InventoryAttributeSetterComparer());
 
-            CachingAttributeAssets();
+            //CachingAttributeAssets();
 
             OnResetInventroy(itemList, setter);
             OnSettingInventory(itemList, setter);
 
         }
 
-       
 
-        
 
+
+        internal void CachingDressableAttributeAssets()
+        {
+            // Caching Objects
+            _dressableAttrForm.obj_Equipment = Managers.Managers.Instance.DI.Get(DressableAttributeForm.Equipment.Equipment_Parent).transform.GetChild(0).gameObject;
+            _dressableAttrForm.obj_Equipment.SetActive(true);
+
+            _dressableAttrForm.obj_Person_Image = Managers.Managers.Instance.DI.Get(DressableAttributeForm.Equipment.Person_Image);
+            _dressableAttrForm.obj_Head = Managers.Managers.Instance.DI.Get(DressableAttributeForm.Equipment.Head);
+            _dressableAttrForm.obj_Body = Managers.Managers.Instance.DI.Get(DressableAttributeForm.Equipment.Body);
+            _dressableAttrForm.obj_Leg = Managers.Managers.Instance.DI.Get(DressableAttributeForm.Equipment.Leg);
+            _dressableAttrForm.obj_Weapon = Managers.Managers.Instance.DI.Get(DressableAttributeForm.Equipment.Weapon);
+            _dressableAttrForm.obj_Item = Managers.Managers.Instance.DI.Get(DressableAttributeForm.Equipment.Item);
+
+            // Caching Components
+
+
+
+            //_dressableAttrForm.ui_Person_Image = _dressableAttrForm.obj_Person_Image.GetOrAddComponent<UI_InventoryAttributeSetter>();
+            _dressableAttrForm.ui_Head = _dressableAttrForm.obj_Head.GetOrAddComponent<UI_InventoryAttributeSetter>();
+            _dressableAttrForm.ui_Body = _dressableAttrForm.obj_Body.GetOrAddComponent<UI_InventoryAttributeSetter>();
+            _dressableAttrForm.ui_Leg = _dressableAttrForm.obj_Leg.GetOrAddComponent<UI_InventoryAttributeSetter>();
+            _dressableAttrForm.ui_Weapon = _dressableAttrForm.obj_Weapon.GetOrAddComponent<UI_InventoryAttributeSetter>();
+            _dressableAttrForm.ui_Item = _dressableAttrForm.obj_Item.GetOrAddComponent<UI_InventoryAttributeSetter>();
+
+            //_dressableAttrForm.ui_Head.SetAttribute()
+
+            //_attributeForm.item_useButton.onClick.RemoveAllListeners();
+            //_attributeForm.item_dropButton.onClick.RemoveAllListeners();
+
+            //_attributeForm.item_useButton.onClick.AddListener(Button_OnUse);
+            //_attributeForm.item_dropButton.onClick.AddListener(Button_OnDrop);
+
+        }
 
         private void CachingAttributeAssets()
         {
@@ -220,7 +229,7 @@ namespace IsolateIsland.Runtime.Inventory
                 case DressableItem _:
                     return new DressableItemApplyer();
                 default:
-                    return default(ItemApplyer);
+                    return new DefaultItemApplyer();
             }
         }
 
@@ -255,7 +264,7 @@ namespace IsolateIsland.Runtime.Inventory
             }
         }
 
-        private void OnSelectAttribute(ItemBase item)
+        internal void OnSelectAttribute(ItemBase item)
         {
             _selectItem = item;
 
@@ -268,7 +277,7 @@ namespace IsolateIsland.Runtime.Inventory
 
 
             var statAble = GetTypeToReturnStatAbleFactory(item);
-            _attributeForm.item_statText.text = (statAble != null) ? statAble.GetStatInfo : "";
+            _attributeForm.item_statText.text = (!(statAble is null)) ? statAble.GetStatInfo : "";
 
         }
 

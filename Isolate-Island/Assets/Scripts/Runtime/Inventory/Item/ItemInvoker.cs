@@ -14,13 +14,12 @@ namespace IsolateIsland.Runtime.Inventory
         {
             get => @base = @base ?? GetComponent<ItemBase>();
         }
-        private void Start()
+        private void Start() => _onItemCollect?.AddListener(OnInvoke);
+
+        protected virtual void OnInvoke()
         {
-            _onItemCollect?.AddListener(() =>
-            {
-                Managers.Managers.Instance.Inventory.Game.AddItem(Base);
-                gameObject.SetActive(false);
-            });
+            Managers.Managers.Instance.Inventory.Game.AddItem(Base);
+            gameObject.SetActive(false);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

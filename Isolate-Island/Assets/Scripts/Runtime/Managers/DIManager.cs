@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IsolateIsland.Runtime.Utils;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,8 @@ namespace IsolateIsland.Runtime.Managers
         
 
         private Dictionary<string, Component[]> _components;
-        public Dictionary<string, Component[]> Components => _components = _components ?? new Dictionary<string, Component[]>(new StringComparer());
+        public Dictionary<string, Component[]> Components => _components = _components ?? new Dictionary<string, Component[]>(new StringComparer());        
+        
 
         class StringComparer : IEqualityComparer<string>
         {
@@ -24,6 +26,18 @@ namespace IsolateIsland.Runtime.Managers
             }
 
             public int GetHashCode(string obj)
+            {
+                return obj.GetHashCode();
+            }
+        }
+        class ObjectComparer : IEqualityComparer<object>
+        {
+            public new bool Equals(object x, object y)
+            {
+                return x.GetHashCode() == y.GetHashCode();
+            }
+
+            public int GetHashCode(object obj)
             {
                 return obj.GetHashCode();
             }
@@ -51,6 +65,17 @@ namespace IsolateIsland.Runtime.Managers
 
                 Objects.Add(element, findObject);
             }
+        }
+
+        public bool Set<T>(in T dependency) where T : Component
+        {
+            var name = typeof(T).Name;
+
+            if (Components.ContainsKey(name))
+                return false;
+
+            Components.Add(name, new[] { dependency });
+            return true;
         }
 
         public GameObject Get<T>(in T enumField) where T : Enum

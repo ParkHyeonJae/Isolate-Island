@@ -67,7 +67,12 @@ namespace IsolateIsland.Runtime.Inventory
 
         public CombinationNode CombinationNode
         {
-            get => _combinationNode;
+            get
+            {
+                if (_combinationNode is null)
+                    Debug.LogError($"{transform.name} : Combination Node has null");
+                return _combinationNode;
+            }
             set => _combinationNode = value;
         }
 

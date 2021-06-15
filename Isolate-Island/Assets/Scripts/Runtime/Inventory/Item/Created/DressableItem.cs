@@ -40,7 +40,7 @@ namespace IsolateIsland.Runtime.Inventory
                     sb.Append($"공격력 : <color=red>{atk}</color>\t");
                 if (range != 0)
                     sb.Append($"사거리 : <color=red>{range}</color>\t");
-                if (atk != 0)
+                if (def != 0)
                     sb.Append($"방어력 : <color=red>{def}</color>\t");
                 if (health != 0)
                     sb.Append($"체력 : <color=red>{health}</color>\t");

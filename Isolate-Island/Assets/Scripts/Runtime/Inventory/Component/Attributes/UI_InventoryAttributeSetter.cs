@@ -43,6 +43,7 @@ namespace IsolateIsland.Runtime.Inventory
         public void SetAttribute(ItemBase @base, Action<ItemBase> onClickHandler)
         {
             image.sprite = @base.CombinationNode.sprite;
+            button.onClick.RemoveAllListeners();
             button.onClick.AddListener(() => onClickHandler?.Invoke(@base));
         }
 
