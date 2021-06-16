@@ -29,6 +29,7 @@ namespace IsolateIsland.Runtime.Inventory
                 var atk = node.DressableStat.DRESSABLE_ATK;
                 var range = node.DressableStat.DRESSABLE_RANGE;
                 var def = node.DressableStat.DRESSABLE_DEF;
+                var max_health = node.DressableStat.DRESSABLE_MAX_HEALTH;
                 var health = node.DressableStat.DRESSABLE_HEALTH;
                 var hungry = node.DressableStat.DRESSABLE_HUNGRY;
                 var parts = node.DressableStat.DRESSABLE_Parts;
@@ -42,6 +43,8 @@ namespace IsolateIsland.Runtime.Inventory
                     sb.Append($"사거리 : <color=red>{range}</color>\t");
                 if (def != 0)
                     sb.Append($"방어력 : <color=red>{def}</color>\t");
+                if (max_health != 0)
+                    sb.Append($"최대 체력 : <color=red>{max_health}</color>\t");
                 if (health != 0)
                     sb.Append($"체력 : <color=red>{health}</color>\t");
                 if (hungry != 0)
