@@ -17,6 +17,11 @@ namespace IsolateIsland.Runtime.Managers
         public DressableInventory Dressable 
             => _dressableInventory = _dressableInventory ?? new DressableInventory();
 
+        private ProductiveInventory _productiveInventory;
+        public ProductiveInventory Productive
+            => _productiveInventory = _productiveInventory ?? new ProductiveInventory();
+
+
         public void AddItem(ItemBase item)
         {
 

@@ -28,6 +28,8 @@ namespace IsolateIsland.Runtime.Inventory
             }
         }
 
+        private List<Combination.CombinationNode> _productiveNodes = new List<Combination.CombinationNode>();
+
         class ItemsEqualityComparer : IEqualityComparer<ItemBase>
         {
             public bool Equals(ItemBase x, ItemBase y)
@@ -64,10 +66,8 @@ namespace IsolateIsland.Runtime.Inventory
             DeleteItem(@base);
         }
 
-        private ItemBase FindItemByCombinationNode(Combination.CombinationNode combinationNode)
+        internal ItemBase FindItemByCombinationNode(Combination.CombinationNode combinationNode)
         {
-            //Items.OfType<ItemBase>().First((pair) => pair.CombinationNode == combinationNode);
-
             foreach (var item in Items)
             {
                 if (item.Key.CombinationNode != combinationNode)
@@ -115,9 +115,25 @@ namespace IsolateIsland.Runtime.Inventory
 
                 //Todo : 생산 가능한 아이템들
                 Debug.Log($"제작가능한 아이템 목록 : {_combinationNode.name}");
-
-
             }
+        }
+
+        public List<Combination.CombinationNode> GetProductiveItem()
+        {
+            _productiveNodes.Clear();
+
+            var craftingTable = Managers.Managers.Instance.Combination.CraftingTable;
+            foreach (var _item in craftingTable)
+            {
+                var _combinationNode = _item.Value;
+                if (!IsProductiveItem(_combinationNode))        // 만들 수 있는 아이템인지
+                    continue;
+
+                //Todo : 생산 가능한 아이템들
+                Debug.Log($"제작가능한 아이템 목록 : {_combinationNode.name}");
+                _productiveNodes.Add(_combinationNode);
+            }
+            return _productiveNodes;
         }
 
         //[ContextMenu("TryInquiryProductiveItem")]
