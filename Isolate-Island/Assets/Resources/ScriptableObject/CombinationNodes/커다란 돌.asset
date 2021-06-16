@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7b957db3149f0847acb4ce129a1da12, type: 3}
-  m_Name: "\uACE0\uBB34"
+  m_Name: "\uCEE4\uB2E4\uB780 \uB3CC"
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 2da59c2cf54589d49b335b7adb8c8346, type: 3}
-  description: "\uADFC\uB370 \uC774 \uC12C\uC5D0 \uACE0\uBB34\uAC00 \uC5B4\uB5BB\uAC8C
-    \uC788\uB294 \uAC78\uAE4C?"
-  combinationNodes: []
+  sprite: {fileID: 21300000, guid: 48ced59e7184eda4386feb79c60a59bc, type: 3}
+  description: "\uC5B4\uC5B4\u3153\u3147\uC5C4\uCCAD \uCEE4\uB2E4\uB780 \uB3CC"
+  combinationNodes:
+  - Name: "\uB3CC\uBA69\uC774"
+    Count: 3
+    combinationNode: {fileID: 11400000, guid: 6fe3fa7f888748b46abec6bd0ec818bb, type: 2}
