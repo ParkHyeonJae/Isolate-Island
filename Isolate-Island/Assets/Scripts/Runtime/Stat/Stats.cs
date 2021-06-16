@@ -36,6 +36,7 @@ namespace IsolateIsland.Runtime.Stat
     [System.Serializable]
     public class Stat
     {
+        public int MAX_HP { get; set; }
         public int HP { get; set; }
         public int Hungry { get; set; }
 
@@ -50,6 +51,7 @@ namespace IsolateIsland.Runtime.Stat
         {
             StringBuilder sb = new StringBuilder();
 
+            sb.Append($"MAX HP : {MAX_HP}\n");
             sb.Append($"HP : {HP}\n");
             sb.Append($"HUNGRY : {Hungry}\n");
             sb.Append($"ATK : {ATK}\n");
@@ -66,6 +68,7 @@ namespace IsolateIsland.Runtime.Stat
 
         public void ApplyEffect(ref Stat stat)
         {
+            stat.MAX_HP += EFFECT_MAX_HEALTH;
             stat.HP += EFFECT_HEALTH;
             stat.Hungry += EFFECT_HUNGRY;
             stat.ATK += EFFECT_ATK;
@@ -93,6 +96,7 @@ namespace IsolateIsland.Runtime.Stat
         public int EFFECT_ATK;
         public int EFFECT_RANGE;
         public int EFFECT_DEF;
+        public int EFFECT_MAX_HEALTH;
         public int EFFECT_HEALTH;
         public int EFFECT_HUNGRY;
 
@@ -114,11 +118,13 @@ namespace IsolateIsland.Runtime.Stat
         public int DRESSABLE_ATK;
         public int DRESSABLE_RANGE;
         public int DRESSABLE_DEF;
+        public int DRESSABLE_MAX_HEALTH;
         public int DRESSABLE_HEALTH;
         public int DRESSABLE_HUNGRY;
 
         public void ApplyDressable(ref Stat stat)
         {
+            stat.MAX_HP += DRESSABLE_MAX_HEALTH;
             stat.HP += DRESSABLE_HEALTH;
             stat.Hungry += DRESSABLE_HUNGRY;
             stat.ATK += DRESSABLE_ATK;
@@ -127,6 +133,7 @@ namespace IsolateIsland.Runtime.Stat
         }
         public void DeApplyDressable(ref Stat stat)
         {
+            stat.MAX_HP -= DRESSABLE_MAX_HEALTH;
             stat.HP -= DRESSABLE_HEALTH;
             stat.Hungry -= DRESSABLE_HUNGRY;
             stat.ATK -= DRESSABLE_ATK;
@@ -142,6 +149,11 @@ namespace IsolateIsland.Runtime.Stat
         private Stat _stat = null;
         public Stat Stat { get => _stat = _stat ?? new Stat(); }
 
+        public StatBuilder SetMAXHP(int _maxhp)
+        {
+            Stat.MAX_HP = _maxhp;
+            return this;
+        }
         public StatBuilder SetHP(int _hp)
         {
             Stat.HP = _hp;

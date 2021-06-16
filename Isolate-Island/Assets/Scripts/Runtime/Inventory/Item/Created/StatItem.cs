@@ -30,6 +30,7 @@ namespace IsolateIsland.Runtime.Inventory
                 var atk = statNode.Stat.EFFECT_ATK;
                 var range = statNode.Stat.EFFECT_RANGE;
                 var def = statNode.Stat.EFFECT_DEF;
+                var max_health = statNode.Stat.EFFECT_MAX_HEALTH;
                 var health = statNode.Stat.EFFECT_HEALTH;
                 var hungry = statNode.Stat.EFFECT_HUNGRY;
 
@@ -40,6 +41,8 @@ namespace IsolateIsland.Runtime.Inventory
                     sb.Append($"사거리 : <color=red>{range}</color>\t");
                 if (atk != 0)
                     sb.Append($"방어력 : <color=red>{def}</color>\t");
+                if (max_health != 0)
+                    sb.Append($"최대 체력 : <color=red>{max_health}</color>\t");
                 if (health != 0)
                     sb.Append($"체력 : <color=red>{health}</color>\t");
                 if (hungry != 0)

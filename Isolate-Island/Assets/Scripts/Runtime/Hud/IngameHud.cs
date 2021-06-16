@@ -96,15 +96,15 @@ namespace IsolateIsland.Runtime.Hud
             _hungerGauge.SetCurrnetFillAmount(_playerStat.Hungry);
 
             // 테스트를 위한 코드
-            if (_hungerGauge.GetCurrentFillAmountRatio() <= 0.25f)
-                Managers.Managers.Instance.statManager.UserStat.MoveSpeed = 10;
-            else
-                Managers.Managers.Instance.statManager.UserStat.MoveSpeed = 20;
+            //if (_hungerGauge.GetCurrentFillAmountRatio() <= 0.25f)
+            //    Managers.Managers.Instance.statManager.UserStat.MoveSpeed = 10;
+            //else
+            //    Managers.Managers.Instance.statManager.UserStat.MoveSpeed = 20;
 
-            Managers.Managers.Instance.statManager.UserStat.HP--;
-            Managers.Managers.Instance.statManager.UserStat.Hungry--;
+            //Managers.Managers.Instance.statManager.UserStat.HP--;
+            //Managers.Managers.Instance.statManager.UserStat.Hungry--;
 
-            Debug.Log(Managers.Managers.Instance.statManager.UserStat.MoveSpeed);
+            //Debug.Log(Managers.Managers.Instance.statManager.UserStat.MoveSpeed);
             // 끝
 
             yield return new WaitForEndOfFrame();
