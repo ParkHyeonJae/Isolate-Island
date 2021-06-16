@@ -49,21 +49,42 @@ namespace IsolateIsland.Runtime.Inventory
 
             _stat = dressableItem.DressableCombinationNode.DressableStat;
 
-            var parts = _stat.DRESSABLE_Parts;
+            var userStat = Managers.Managers.Instance.statManager.UserStat;
+            _stat.ApplyDressable(ref userStat);
+            Managers.Managers.Instance.statManager.UserStat = userStat;
+
+           var parts = _stat.DRESSABLE_Parts;
 
             SetPartsToAttribute(parts, dressableItem, (setter) => {
                 setter.SetAttribute(dressableItem, InventoryAttributeConfigurator.OnSelectAttribute);
             });
         }
 
-        protected override void OnCountingItem(ItemBase @bas)
+        protected override void OnCountingItem(ItemBase @base)
         {
 
         }
 
         protected override void OnSubtractItem(ItemBase @base)
         {
-            Debug.Log("Drop !!");
+            var dressableItem = @base as DressableItem;
+
+            if (dressableItem is null)
+                return;
+
+            _form = InventoryAttributeConfigurator._dressableAttrForm;
+
+            _stat = dressableItem.DressableCombinationNode.DressableStat;
+
+            var userStat = Managers.Managers.Instance.statManager.UserStat;
+            _stat.DeApplyDressable(ref userStat);
+            Managers.Managers.Instance.statManager.UserStat = userStat;
+
+            var parts = _stat.DRESSABLE_Parts;
+
+            SetPartsToAttribute(parts, dressableItem, (setter) => {
+                setter.OnReset();
+            });
         }
 
         protected override void OnProductItem(ItemBase @base)

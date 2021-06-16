@@ -13,7 +13,7 @@ namespace IsolateIsland.Runtime.Inventory
             var converted = item as StatItem;
 
             var effectStat = Managers.Managers.Instance.statManager.UserStat;
-            converted.StatCombinationNode.Stat.Apply(ref effectStat);
+            converted.StatCombinationNode.Stat.ApplyEffect(ref effectStat);
             Managers.Managers.Instance.statManager.UserStat = effectStat;
             Debug.Log(Managers.Managers.Instance.statManager.UserStat.ToString());
         }

@@ -64,7 +64,7 @@ namespace IsolateIsland.Runtime.Stat
     public class EffectStat : Stat
     {
 
-        public void Apply(ref Stat stat)
+        public void ApplyEffect(ref Stat stat)
         {
             stat.HP += EFFECT_HEALTH;
             stat.Hungry += EFFECT_HUNGRY;
@@ -117,6 +117,22 @@ namespace IsolateIsland.Runtime.Stat
         public int DRESSABLE_HEALTH;
         public int DRESSABLE_HUNGRY;
 
+        public void ApplyDressable(ref Stat stat)
+        {
+            stat.HP += DRESSABLE_HEALTH;
+            stat.Hungry += DRESSABLE_HUNGRY;
+            stat.ATK += DRESSABLE_ATK;
+            stat.DEF += DRESSABLE_DEF;
+            stat.RANGE += DRESSABLE_RANGE;
+        }
+        public void DeApplyDressable(ref Stat stat)
+        {
+            stat.HP -= DRESSABLE_HEALTH;
+            stat.Hungry -= DRESSABLE_HUNGRY;
+            stat.ATK -= DRESSABLE_ATK;
+            stat.DEF -= DRESSABLE_DEF;
+            stat.RANGE -= DRESSABLE_RANGE;
+        }
 
     }
 
