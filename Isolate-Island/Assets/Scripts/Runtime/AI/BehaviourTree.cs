@@ -105,10 +105,10 @@ namespace AI.BT
                 var child = nodes.ToArray()[curIndex++];
 
                 if (child.OnUpdate() == true)
-                    return false;
+                    return true;
             }
             
-            return true;
+            return false;
         }
     }
 
