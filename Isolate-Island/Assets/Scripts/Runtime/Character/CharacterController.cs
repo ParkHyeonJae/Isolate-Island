@@ -21,8 +21,8 @@ namespace IsolateIsland.Runtime.Character
             xAxis = 0f;
             yAxis = 0f;
         }
-
-        void Update() => Move();
+        protected virtual void OnUpdate() => Move();
+        void Update() => OnUpdate();
 
         public virtual void Move()
         {
