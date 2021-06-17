@@ -86,6 +86,8 @@ public class AITest : MonoBehaviour
         InitBT();
 
         _movePos = transform.position;
+
+        _targetTrans = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void InitBT()
