@@ -137,6 +137,8 @@ namespace IsolateIsland.Runtime.Inventory
 
         internal virtual void OnSelectAttribute(ItemBase item)
         {
+            OnInitalizeButtonEvent();
+
             string use = string.Empty, drop = string.Empty;
             SetGUIText(item, out use, out drop);
 
@@ -202,13 +204,17 @@ namespace IsolateIsland.Runtime.Inventory
             attributeForm.item_useText = attributeForm.item_useButton.transform.GetChild(0).GetComponent<Text>();
             attributeForm.item_dropText = attributeForm.item_dropButton.transform.GetChild(0).GetComponent<Text>();
 
+
+            OnInitalizeButtonEvent();
+        }
+
+        protected virtual void OnInitalizeButtonEvent()
+        {
             attributeForm.item_useButton.onClick.RemoveAllListeners();
             attributeForm.item_dropButton.onClick.RemoveAllListeners();
 
             attributeForm.item_useButton.onClick.AddListener(Button_OnUse);
             attributeForm.item_dropButton.onClick.AddListener(Button_OnDrop);
-
-
         }
     }
 }
