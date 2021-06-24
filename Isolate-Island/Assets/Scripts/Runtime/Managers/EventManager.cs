@@ -1,4 +1,6 @@
-﻿using IsolateIsland.Runtime.Stat;
+﻿using IsolateIsland.Runtime.Event;
+using IsolateIsland.Runtime.Inventory;
+using IsolateIsland.Runtime.Stat;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,69 +9,38 @@ using UnityEngine;
 namespace IsolateIsland.Runtime.Managers
 {
 
-    public class EventListener
-    {
-        private Action _listener { get; set; }
-
-        internal virtual void Set(Action action)
-            => _listener = action;
-        internal virtual void Add(Action action)
-            => _listener += action;
-    }
-
-    public class GenericEventListener<T> : EventListener
-    {
-        private Action<T> _listener { get; set; }
-        internal sealed override void Add(Action action)
-            => base.Add(action);
-        internal sealed override void Set(Action action)
-            => base.Set(action);
-
-        internal virtual void Add(Action<T> action)
-            => _listener += action;
-
-        internal virtual void Set(Action<T> action)
-            => _listener = action;
-
-    }
-
-    public sealed class DressableEventListener : GenericEventListener<EParts>
-    {
-
-    }
 
     public class EventManager : IManagerInit
     {
-        public DressableEventListener _dressableEventListener = new DressableEventListener();
+        public Dictionary<Type, EventListener> listeners = new Dictionary<Type, EventListener>();
 
-        //EventListener HasListener<T>(T listener) where T : EventListener
-        //{
-        //    switch (typeof(T))
-        //    {
 
-        //        default:
-        //            break;
-        //    }
-        //}
+        public T CreateListener<T>() where T : EventListener, new()
+        {
+            if (listeners.ContainsKey(typeof(T)))
+                return default(T);
+            var listener = new T();
+            listeners.Add(typeof(T), listener);
+            return listener;
+        }
 
-        //public void SetEventListener<T>(Action evt) where T : EventListener
-        //{
-        //    EventListener eventListener;
-        //    if (!listeners.TryGetValue(typeof(T), out eventListener))
-        //        return;
-        //    eventListener.Set(evt);
-        //}
-        //public void SetEventListener<T>(Action<T> evt) where T : GenericEventListener<T>
-        //{
-        //    GenericEventListener<T> eventListener;
-        //    if (!listeners.TryGetValue(typeof(T), out eventListener))
-        //        return;
-        //    eventListener.Add(evt);
-        //}
+        public T GetListener<T>() where T : EventListener, new()
+        {
+            if (!listeners.ContainsKey(typeof(T)))
+                return CreateListener<T>();
+
+            EventListener listener;
+            if (!listeners.TryGetValue(typeof(T), out listener))
+                return default(T);
+
+            var conv = listener as T;
+
+            return conv;
+        }
 
         public void OnInit()
         {
-            //OnDressableEvt = delegate { };
+            
 
         }
     }

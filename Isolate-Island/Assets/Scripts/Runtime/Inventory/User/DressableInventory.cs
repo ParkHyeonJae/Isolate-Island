@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IsolateIsland.Runtime.Character;
+using System;
 using UnityEngine;
 
 namespace IsolateIsland.Runtime.Inventory
@@ -58,6 +59,9 @@ namespace IsolateIsland.Runtime.Inventory
             SetPartsToAttribute(parts, dressableItem, (setter) => {
                 setter.SetAttribute(dressableItem, InventoryAttributeConfigurator.OnSelectAttribute);
             });
+
+            Managers.Managers.Instance.Event.GetListener<DressableEventListener>()
+                .Invoke(Utils.Defines.EDressableState.Use, dressableItem);
         }
 
         protected override void OnCountingItem(ItemBase @base)
@@ -85,6 +89,9 @@ namespace IsolateIsland.Runtime.Inventory
             SetPartsToAttribute(parts, dressableItem, (setter) => {
                 setter.OnReset();
             });
+
+            Managers.Managers.Instance.Event.GetListener<DressableEventListener>()
+                .Invoke(Utils.Defines.EDressableState.Drop, dressableItem);
         }
 
         protected override void OnProductItem(ItemBase @base)

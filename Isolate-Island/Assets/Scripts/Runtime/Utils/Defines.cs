@@ -21,5 +21,12 @@ namespace IsolateIsland.Runtime.Utils
             Item_List
         }
         #endregion LOAD
+
+
+        public enum EDressableState
+        {
+            Use,
+            Drop
+        }
     }
 }
