@@ -55,7 +55,7 @@ public class AITest : MonoBehaviour
 
     [SerializeField] Transform _targetTrans;
 
-    public Vector3 _movePos;
+    Vector3 _movePos;
     bool _isAttackCooltime = false;
     bool _isHearNoise = false;
     float _makePosTime = 0;
