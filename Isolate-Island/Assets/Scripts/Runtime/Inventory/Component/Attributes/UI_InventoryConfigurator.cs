@@ -135,6 +135,12 @@ namespace IsolateIsland.Runtime.Inventory
             }
         }
 
+        internal void SetUseText(in string useText)
+            => attributeForm.item_useText.text = useText;
+
+        internal void SetDropText(in string dropText)
+            => attributeForm.item_dropText.text = dropText;
+
         internal virtual void OnSelectAttribute(ItemBase item)
         {
             OnInitalizeButtonEvent();
@@ -143,8 +149,8 @@ namespace IsolateIsland.Runtime.Inventory
             SetGUIText(item, out use, out drop);
 
 
-            attributeForm.item_useText.text = use;
-            attributeForm.item_dropText.text = drop;
+            SetUseText(use);
+            SetDropText(drop);
 
 
 

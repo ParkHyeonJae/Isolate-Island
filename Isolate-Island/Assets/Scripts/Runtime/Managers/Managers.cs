@@ -103,6 +103,20 @@ namespace IsolateIsland.Runtime.Managers
             }
         }
 
+        private EventManager _eventManager;
+       public EventManager Event
+        {
+            get
+            {
+                if (_eventManager == null)
+                {
+                    _eventManager = new EventManager();
+                    InitManager(_eventManager);
+                }
+                return _eventManager;
+            }
+        }
+
         private void InitManager(IManagerInit manager) => manager.OnInit();
         private void UpdateManager(IManagerUpdate manager) => manager.OnUpdate();
 

@@ -43,9 +43,12 @@ namespace IsolateIsland.Runtime.Inventory
             }
         }
 
+        public bool IsContain(ItemBase @base)
+            => Items.ContainsKey(@base);
+
         private void DeleteItem(ItemBase @base)
         {
-            if (!Items.ContainsKey(@base))
+            if (!IsContain(@base))
                 return;
             Items.Remove(@base);
         }
