@@ -1,6 +1,7 @@
 ﻿using IsolateIsland.Runtime.Character;
 using System;
 using UnityEngine;
+using System.Linq;
 
 namespace IsolateIsland.Runtime.Inventory
 {
@@ -38,6 +39,10 @@ namespace IsolateIsland.Runtime.Inventory
                     return;
             }
         }
+
+        public DressableItem GetParts(Stat.EParts eParts)
+            => Items.Keys.OfType<DressableItem>().FirstOrDefault((item) 
+                => item.DressableCombinationNode.DressableStat.DRESSABLE_Parts == eParts);
 
         protected override void OnObtainItem(ItemBase @base)
         {
