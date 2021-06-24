@@ -15,6 +15,7 @@ namespace IsolateIsland.Runtime.Managers
         {
             StatBuilder stat = new StatBuilder();
             UserStat = stat
+                .SetMAXHP(100)
                 .SetHP(100)
                 .SetHungry(100)
                 .SetMoveSpeed(20)

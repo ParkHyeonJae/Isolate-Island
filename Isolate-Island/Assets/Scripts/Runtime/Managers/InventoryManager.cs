@@ -9,92 +9,46 @@ namespace IsolateIsland.Runtime.Managers
 {
     public class InventoryManager : IManagerInit
     {
-        private Dictionary<ItemBase, int> items;
-        public Dictionary<ItemBase, int> Items
-        {
-            get
-            {
-                if (items == null)
-                    items = new Dictionary<ItemBase, int>(new ItemsEqualityComparer());
+        private GameInventory _gameInventory;
+        public GameInventory Game 
+            => _gameInventory = _gameInventory ?? new GameInventory();
 
-                return items;
-            }
+        private DressableInventory _dressableInventory;
+        public DressableInventory Dressable 
+            => _dressableInventory = _dressableInventory ?? new DressableInventory();
+
+        private ProductiveInventory _productiveInventory;
+        public ProductiveInventory Productive
+            => _productiveInventory = _productiveInventory ?? new ProductiveInventory();
+
+
+        public void AddItem(ItemBase item)
+        {
+
         }
 
-        class ItemsEqualityComparer : IEqualityComparer<ItemBase>
+        public virtual void AppendItem(ItemBase item)
         {
-            public bool Equals(ItemBase x, ItemBase y)
-            {
-                return ((string)x).Equals((string)y);
-            }
-
-            public int GetHashCode(ItemBase obj)
-            {
-                return (int)obj;
-            }
+            //Managers.Instance.Inventory.AddItem(item);
         }
 
-        [ContextMenu("InquiryProductiveItem")]
-        public void InquiryProductiveItem()
+        [ContextMenu("TryInqury")]
+        public void Inquiry()
         {
-            var craftingTable = Managers.Instance.combinationManager.CraftingTable;
-            foreach (var _item in craftingTable)
-            {
-                var _combinationNode = _item.Value;
-                if (!IsProductiveItem(_combinationNode))        // 만들 수 있는 아이템인지
-                    continue;
-
-                //Todo : 생산 가능한 아이템들
-                Debug.Log($"제작가능한 아이템 목록 : {_combinationNode.name}");
-            }
-        }
-
-        private bool IsProductiveItem(Combination.CombinationNode @node)
-        {
-            if (Items.Count == 0 || @node.combinationNodes.Length == 0)
-                return false;
-
-            return @node.combinationNodes.All((_node) =>
-            {
-                foreach (var _item in Items.Keys)
-                {
-                    var nodeCompare = _item.GetCombinationNode == _node.combinationNode;
-                    var countCompare = _node.Count <= Items[_item];
-                    if (nodeCompare && countCompare)
-                        return true;
-                }
-                return false;
-            });
+            //Managers.Instance.Inventory.InquiryProductiveItem();
         }
 
         public void OnInit()
         {
-            
+
+
         }
 
-        public void AddItem(ItemBase @base)
+        [ContextMenu("Product")]
+        public void Product()
         {
-            var value = 0;
-            if (!Items.TryGetValue(@base, out value))
-            {
-                Items.Add(@base, 1);
-                Debug.Log($"{@base.GetCombinationNode.name} 획득");
-                Debug.Log(@base.ToString());
-                return;
-            }
-
-            Debug.Log($"{@base.GetCombinationNode.name} : {Items[@base]} + 1");
-            Items[@base] = value + 1;
+            //Managers.Managers.Instance.Inventory.TryInquiryProductiveItem();
         }
 
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("현재 아이템 목록 : \n");
-
-            Items.ToList().ForEach(e => sb.Append($"{e.Key.name} : {e.Value}개\n"));
-
-            return sb.ToString();
-        }
     }
 }
