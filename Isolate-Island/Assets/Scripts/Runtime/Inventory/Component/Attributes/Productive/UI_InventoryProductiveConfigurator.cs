@@ -56,8 +56,7 @@ namespace IsolateIsland.Runtime.Inventory
 
         internal override void OnSettingInventory(KeyValuePair<ItemBase, int>[] itemList, UI_InventorySetter[] setter)
         {
-            attributeForm.obj_use.SetActive(true);
-            attributeForm.obj_drop.SetActive(false);
+
         }
 
         internal override void OnResetInventroy(KeyValuePair<ItemBase, int>[] itemList, UI_InventorySetter[] setter)
@@ -67,6 +66,8 @@ namespace IsolateIsland.Runtime.Inventory
 
         internal virtual void OnSelectProductiveAttribute(Combination.CombinationNode node)
         {
+            OnInitalizeButtonEvent();
+
             attributeForm.item_useText.text = "조합";
 
             _selectNode = node;
@@ -81,7 +82,8 @@ namespace IsolateIsland.Runtime.Inventory
             var statNode = node as Combination.StatCombinationNode;
             attributeForm.item_statText.text = (!(statNode is null)) ? statNode.Stat.ToString() : "";
 
-
+            attributeForm.obj_use.SetActive(true);
+            attributeForm.obj_drop.SetActive(false);
         }
 
 
@@ -92,6 +94,7 @@ namespace IsolateIsland.Runtime.Inventory
 
             SetAttribute();
             Managers.Managers.Instance.DI.Get<UI_InventoryAttributeConfigurator>().SetAttribute();
+
         }
 
 

@@ -56,7 +56,7 @@ namespace IsolateIsland.Runtime.Managers
             foreach (var element in elements)
             {
                 var findObject = GameObject.Find(element);
-
+                
                 if (findObject == null)
                     continue;
 
@@ -64,6 +64,23 @@ namespace IsolateIsland.Runtime.Managers
                     continue;
 
                 Objects.Add(element, findObject);
+            }
+        }
+        
+        private void CachingObjectByEnumField<T>(Transform parentGo)
+        {
+            var elements = Enum.GetNames(typeof(T));
+            foreach (var element in elements)
+            {
+                var findObject = parentGo.Find(element);
+                
+                if (findObject == null)
+                    continue;
+
+                if (Objects.ContainsKey(element))
+                    continue;
+
+                Objects.Add(element, findObject.gameObject);
             }
         }
 
@@ -78,6 +95,12 @@ namespace IsolateIsland.Runtime.Managers
             return true;
         }
 
+        /// <summary>
+        /// Find And Caching Active Object
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="enumField"></param>
+        /// <returns></returns>
         public GameObject Get<T>(in T enumField) where T : Enum
         {
             var enumFieldName = enumField.ToString();
@@ -86,6 +109,25 @@ namespace IsolateIsland.Runtime.Managers
                 return go;
 
             this.CachingObjectByEnumField<T>();
+
+            return Get(enumFieldName);
+        }
+
+        /// <summary>
+        /// Find And Caching Active, InActive Object
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="parentGo">find object in parent</param>
+        /// <param name="enumField"></param>
+        /// <returns></returns>
+        public GameObject Get<T>(Transform parentGo, in T enumField) where T : Enum
+        {
+            var enumFieldName = enumField.ToString();
+            GameObject go = null;
+            if ((go = Get(enumFieldName)) != null)
+                return go;
+
+            this.CachingObjectByEnumField<T>(parentGo);
 
             return Get(enumFieldName);
         }
