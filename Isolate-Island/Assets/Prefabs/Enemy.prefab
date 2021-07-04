@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3694339706165356288}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.72, y: 1.21, z: -0.19}
+  m_LocalPosition: {x: 8.4487505, y: -2.563792, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -177,9 +177,9 @@ MonoBehaviour:
     _revengeDuration: 5
     _sleepingTime: 60
     _sleepingCooltime: 30
+    _makePosCooltime: 5
   _enemyStatus:
     _hp: 10
     _moveSpeed: 2
     _attackDamage: 10
   _targetTrans: {fileID: 0}
-  _movePos: {x: 0, y: 0, z: 0}
