@@ -2,7 +2,7 @@
 
 namespace IsolateIsland.Runtime.Character
 {
-    public class CharacterController : MonoBehaviour
+    public class CharacterController : Entity
     {
         [Range(0, 50)]
         [Tooltip("캐릭터 이동 속도")]
@@ -13,6 +13,8 @@ namespace IsolateIsland.Runtime.Character
 
         protected float xAxis;
         protected float yAxis;
+        public Vector2 MoveDir => new Vector2(xAxis, yAxis); 
+        public Vector2 MoveNormalDir => new Vector2(xAxis, yAxis).normalized; 
 
         void Awake() => Init();
 

@@ -117,6 +117,46 @@ namespace IsolateIsland.Runtime.Managers
             }
         }
 
+        private ResourceManager _resourceManager;
+        public ResourceManager Resource
+        {
+            get
+            {
+                if (_resourceManager == null)
+                {
+                    _resourceManager = new ResourceManager();
+                    InitManager(_resourceManager);
+                }
+                return _resourceManager;
+            }
+        }
+
+        private PoolManager _poolManager;
+        public PoolManager Pool
+        {
+            get
+            {
+                if (_poolManager == null)
+                {
+                    _poolManager = new PoolManager();
+                    InitManager(_poolManager);
+                }
+                return _poolManager;
+            }
+        }
+        private CoroutineManager _coroutineManager;
+        public CoroutineManager Coroutine
+        {
+            get
+            {
+                if (_coroutineManager == null)
+                {
+                    InitManager(_coroutineManager);
+                }
+                return _coroutineManager;
+            }
+        }
+
         private void InitManager(IManagerInit manager) => manager.OnInit();
         private void UpdateManager(IManagerUpdate manager) => manager.OnUpdate();
 

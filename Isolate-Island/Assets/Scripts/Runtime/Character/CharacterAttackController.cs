@@ -21,11 +21,22 @@ namespace IsolateIsland.Runtime.Character
         public BoxCollider2D weaponCollider
             => _weaponCollider = _weaponCollider ?? weaponPartsSetter.GetComponent<BoxCollider2D>();
 
+        private CharacterInteractSimulator characterInteractSimulator;
 
+
+        private Rigidbody2D _rigidBody;
+        public Rigidbody2D rigidBody
+            => _rigidBody = _rigidBody ?? GetComponent<Rigidbody2D>();
+
+
+        private CharacterAnimController _characterAnimController;
+        public CharacterAnimController characterAnimController
+            => _characterAnimController = _characterAnimController ?? GetComponent<CharacterAnimController>();
 
         private void Awake()
         {
             weaponCollider.enabled = false;
+            characterInteractSimulator = new CharacterInteractSimulator(characterAnimController.Animator);
         }
 
         // Invoke by Animation Event Trigger
@@ -42,6 +53,9 @@ namespace IsolateIsland.Runtime.Character
             var sprite = renderer.sprite;
             collider.size = new Vector2(1f, 1f);
             collider.enabled = true;
+
+            rigidBody.AddForce(characterAnimController.MoveNormalDir * 20f, ForceMode2D.Impulse);
+            
         }
 
         // Invoke by Animation Event Trigger
@@ -52,7 +66,7 @@ namespace IsolateIsland.Runtime.Character
             var collider = weaponCollider;
 
             collider.enabled = false;
-
+            rigidBody.velocity = Vector2.zero;
         }
     }
 }

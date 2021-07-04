@@ -36,5 +36,36 @@ namespace IsolateIsland.Runtime.TestCodes
 
             
         }
+
+
+        [ContextMenu("ResourcesTest")]
+        void ResourceLoadTest()
+        {
+            var prefabs = Resources.LoadAll<GameObject>("Prefabs");
+            var sprites = Resources.LoadAll<Sprite>("Sprites");
+
+            
+        }
+
+
+        Stack<GameObject> _onMemeoryObjects = new Stack<GameObject>();
+
+        [ContextMenu("SpawnEnemy")]
+        void SpawnEnemy()
+        {
+            var enemyPrefab = Managers.Managers.Instance.Resource.Load<GameObject>("Enemy");
+            var spawn = Managers.Managers.Instance.Pool.Instantiate("Enemy");
+
+            _onMemeoryObjects.Push(spawn);
+        }
+
+
+        [ContextMenu("DeleteEnemy")]
+        void DeleteEnemy()
+        {
+            var popEnemy = _onMemeoryObjects.Pop();
+            Managers.Managers.Instance.Pool.Destroy(popEnemy);
+        }
+        
     }
 }

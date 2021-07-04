@@ -18,12 +18,10 @@ namespace IsolateIsland.Runtime.Character
             }
         }
 
-        private CharacterInteractSimulator characterInteractSimulator;
-
+       
         public override void Init()
         {
             base.Init();
-            characterInteractSimulator = new CharacterInteractSimulator(Animator);
         }
 
         protected override void OnUpdate()
