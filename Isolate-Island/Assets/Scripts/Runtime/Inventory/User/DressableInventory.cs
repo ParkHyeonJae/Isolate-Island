@@ -1,5 +1,6 @@
 ﻿using IsolateIsland.Runtime.Character;
 using System;
+using System.Linq;
 using UnityEngine;
 
 namespace IsolateIsland.Runtime.Inventory
@@ -37,6 +38,15 @@ namespace IsolateIsland.Runtime.Inventory
                     action?.Invoke(_form.ui_Leg);
                     return;
             }
+        }
+
+        public T GetParts<T>(Stat.EParts eParts) where T : CharacterDressablePartsSetter
+        {
+            var _setters = Managers.Managers.Instance.DI.Gets<T>();
+
+            var parts = _setters.Where(e => e.Parts == eParts).Single();
+
+            return parts;
         }
 
         protected override void OnObtainItem(ItemBase @base)

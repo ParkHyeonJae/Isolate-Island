@@ -13,6 +13,7 @@ namespace IsolateIsland.Runtime.Character
     public class CharacterDressablePartsSetter : MonoBehaviour
     {
         [SerializeField] EParts eParts = EParts.PARTS_NONE;
+        public EParts Parts => eParts;
         private SpriteRenderer _spriteRenderer;
         public SpriteRenderer SpriteRenderer
             => _spriteRenderer = _spriteRenderer ?? GetComponent<SpriteRenderer>();

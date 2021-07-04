@@ -6,6 +6,7 @@ using System;
 using IsolateIsland.Runtime.Inventory;
 using IsolateIsland.Runtime.Combination;
 
+#if UNITY_EDITOR
 namespace IsolateIsland.Editor.Utils
 {
     using EditorWindow = UnityEditor.EditorWindow;
@@ -58,3 +59,4 @@ namespace IsolateIsland.Editor.Utils
 
     }
 }
+#endif

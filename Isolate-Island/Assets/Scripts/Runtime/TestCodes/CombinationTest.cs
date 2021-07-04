@@ -7,6 +7,8 @@ using UnityEngine;
 
 namespace IsolateIsland.Runtime.TestCodes
 {
+#if UNITY_EDITOR
+
     [System.Serializable]
     public struct CombinationTestUISet
     {
@@ -84,4 +86,5 @@ namespace IsolateIsland.Runtime.TestCodes
                 EditorGUILayout.Space(width);
         }
     }
+#endif
 }

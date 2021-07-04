@@ -7,14 +7,20 @@ namespace IsolateIsland.Runtime.Inventory
     {
         [System.Serializable]
         public class ItemEvent : UnityEvent { }
-        [SerializeField] protected ItemEvent _onItemCollect;
+        [SerializeField] ItemEvent _onItemCollctEvent;
+
+        private System.Action _onItemCollect;
 
         private ItemBase @base = null;
         public ItemBase Base
         {
             get => @base = @base ?? GetComponent<ItemBase>();
         }
-        private void Start() => _onItemCollect?.AddListener(OnInvoke);
+        private void Awake()
+        {
+            _onItemCollect += OnInvoke;
+            _onItemCollect += () => _onItemCollctEvent.Invoke();
+        }
 
         protected virtual void OnInvoke()
         {
