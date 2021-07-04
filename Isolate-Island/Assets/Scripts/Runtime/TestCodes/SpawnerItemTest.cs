@@ -50,6 +50,7 @@ namespace IsolateIsland.Runtime.TestCodes
                 Build();
 
             itemBase.transform.position = randomPos;
+            itemBase.transform.SetParent(transform);
             itemBase.gameObject.SetActive(true);
         }
         
@@ -61,6 +62,7 @@ namespace IsolateIsland.Runtime.TestCodes
                 Build();
 
             itemBase.transform.position = randomPos;
+            itemBase.transform.SetParent(transform);
             itemBase.gameObject.SetActive(true);
         }
     }

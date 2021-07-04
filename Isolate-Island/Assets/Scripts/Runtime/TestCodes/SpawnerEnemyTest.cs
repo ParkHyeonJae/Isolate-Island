@@ -21,10 +21,22 @@ public class SpawnerEnemyTest : MonoBehaviour
         }
     }
 
+    private static Queue<GameObject> _poolQueue;
+
     [SerializeField] private GameObject _object;
     [SerializeField] [Range(0, 50)] private int _startAmount;
 
-    private void Start() => SpawnEnemyAll();
+    private void Start()
+    {
+        _poolQueue = new Queue<GameObject>();
+
+        GameObject obj = Instantiate(_object);
+        obj.SetActive(false);
+        obj.transform.SetParent(transform);
+        _poolQueue.Enqueue(obj);
+
+        SpawnEnemyAll();
+    }
 
     private void SpawnEnemyAll()
     {
@@ -36,10 +48,40 @@ public class SpawnerEnemyTest : MonoBehaviour
 
     private void SpawnEnemyOne()
     {
-        GameObject @object = Instantiate(_object);
+        SpawnPool(randomPos);
+    }
 
-        @object.transform.position = randomPos;
-        @object.gameObject.SetActive(true);
+    public static GameObject SpawnPool(Vector3 pos)
+    {
+        foreach (GameObject obj in _poolQueue)
+        {
+            if (!obj.activeSelf)
+            {
+                GameObject objectSpawn = _poolQueue.Dequeue();
+
+                objectSpawn.SetActive(true);
+                objectSpawn.transform.position = pos;
+                objectSpawn.name = "Enemy";
+
+                _poolQueue.Enqueue(objectSpawn);
+
+                return objectSpawn;
+            }
+        }
+
+        //print("Is full");
+        GameObject newObject = Instantiate(_poolQueue.Peek());
+
+        newObject.transform.SetParent(_poolQueue.Peek().transform.parent);
+
+        newObject.SetActive(true);
+
+        newObject.transform.position = pos;
+        newObject.name = "Enemy";
+
+        _poolQueue.Enqueue(newObject);
+
+        return newObject;
     }
 }
 

@@ -81,6 +81,8 @@ public class AITest : MonoBehaviour
 
     void Start() => Init();
 
+    void OnEnable() => _movePos = transform.position;
+
     void Init()
     {
         InitBT();
