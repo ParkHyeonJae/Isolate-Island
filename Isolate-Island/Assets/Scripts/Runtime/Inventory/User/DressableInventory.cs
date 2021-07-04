@@ -40,6 +40,11 @@ namespace IsolateIsland.Runtime.Inventory
             }
         }
 
+        public DressableItem GetParts(Stat.EParts eParts)
+             => Items.Keys.OfType<DressableItem>().FirstOrDefault((item)
+                 => item.DressableCombinationNode.DressableStat.DRESSABLE_Parts == eParts);
+
+
         public T GetParts<T>(Stat.EParts eParts) where T : CharacterDressablePartsSetter
         {
             var _setters = Managers.Managers.Instance.DI.Gets<T>();
