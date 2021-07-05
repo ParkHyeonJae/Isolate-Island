@@ -31,12 +31,14 @@ namespace IsolateIsland.Runtime.Inventory
         public virtual void OnReset()
         {
             image.sprite = null;
+            image.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
             button.onClick.RemoveAllListeners();
         }
 
         public virtual void SetAttribute(ItemBase @base, Action<ItemBase> onClickHandler)
         {
             image.sprite = @base.CombinationNode.sprite;
+            image.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(() => onClickHandler?.Invoke(@base));
         }

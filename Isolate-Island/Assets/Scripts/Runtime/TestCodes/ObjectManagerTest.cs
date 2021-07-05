@@ -27,6 +27,7 @@ namespace IsolateIsland.Runtime.TestCodes
                 SpawnEnemy();
             }
 
+            Managers.Managers.Instance.Sound.Play("동굴 소리");
         }
 
 
