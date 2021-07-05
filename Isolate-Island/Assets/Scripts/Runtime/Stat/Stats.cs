@@ -76,7 +76,7 @@ namespace IsolateIsland.Runtime.Stat
             stat.RANGE += EFFECT_RANGE;
         }
 
-
+        public bool ExistEffectStat => (EFFECT_ATK | EFFECT_RANGE | EFFECT_DEF | EFFECT_MAX_HEALTH | EFFECT_HEALTH | EFFECT_HUNGRY) != 0;
 
         #region Ability Stat
 
