@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using AI.BT;
+using IsolateIsland.Runtime.Managers;
 
 public class AITest : MonoBehaviour
 {
@@ -47,6 +48,8 @@ public class AITest : MonoBehaviour
 
         [SerializeField] float _makePosCooltime = 5f;
         public float makePosCooltime { get => _makePosCooltime; set => _makePosCooltime = value; }
+
+        public bool isDayOrNight { get => Managers.Instance.GameManager.isDay; }
     }
 
     [SerializeField] EnemyBehaviour _enemyBehaviour;
