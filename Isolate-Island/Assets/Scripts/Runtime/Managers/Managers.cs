@@ -111,7 +111,7 @@ namespace IsolateIsland.Runtime.Managers
 
         private GameManager _gameManager;
         public GameManager GameManager
-        { 
+        {
             get
             {
                 if (_gameManager == null)
@@ -123,11 +123,8 @@ namespace IsolateIsland.Runtime.Managers
             }
         }
 
-        private void InitManager(IManagerInit manager) => manager.OnInit();
-        private void UpdateManager(IManagerUpdate manager) => manager.OnUpdate();
-
         private EventManager _eventManager;
-       public EventManager Event
+        public EventManager Event
         {
             get
             {
@@ -205,7 +202,7 @@ namespace IsolateIsland.Runtime.Managers
                 return _cameraManager;
             }
         }
-        
+
         private SoundManager _soundManager;
         public SoundManager Sound
         {
