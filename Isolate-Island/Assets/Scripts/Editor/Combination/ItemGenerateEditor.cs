@@ -6,6 +6,7 @@ using System;
 using IsolateIsland.Runtime.Inventory;
 using IsolateIsland.Runtime.Combination;
 
+#if UNITY_EDITOR
 namespace IsolateIsland.Editor.Utils
 {
     using EditorWindow = UnityEditor.EditorWindow;
@@ -31,6 +32,7 @@ namespace IsolateIsland.Editor.Utils
                 ItemBuilder itemBuilder = new ItemBuilder();
                 itemBuilder.
                     SetCombinationNode(scriptableObject)
+                    .AddShadowCaster2D()
                     .Build();
 
             }if (GUILayout.Button("Generate Stat"))
@@ -39,6 +41,7 @@ namespace IsolateIsland.Editor.Utils
                 itemBuilder.
                     SetCombinationNode(scriptableObject)
                     .SetItemBase<StatItem>()
+                    .AddShadowCaster2D()
                     .Build();
 
             }if (GUILayout.Button("Generate Dressable"))
@@ -47,6 +50,25 @@ namespace IsolateIsland.Editor.Utils
                 itemBuilder.
                     SetCombinationNode(scriptableObject)
                     .SetItemBase<DressableItem>()
+                    .AddShadowCaster2D()
+                    .Build();
+
+            }if (GUILayout.Button("Generate Weapon"))
+            {
+                ItemBuilder itemBuilder = new ItemBuilder();
+                itemBuilder.
+                    SetCombinationNode(scriptableObject)
+                    .SetItemBase<WeaponItem>()
+                    .AddShadowCaster2D()
+                    .Build();
+
+            }if (GUILayout.Button("Generate Proximity"))
+            {
+                ItemBuilder itemBuilder = new ItemBuilder();
+                itemBuilder.
+                    SetCombinationNode(scriptableObject)
+                    .SetItemBase<ProximityWeaponItem>()
+                    .AddShadowCaster2D()
                     .Build();
 
             }
@@ -58,3 +80,4 @@ namespace IsolateIsland.Editor.Utils
 
     }
 }
+#endif

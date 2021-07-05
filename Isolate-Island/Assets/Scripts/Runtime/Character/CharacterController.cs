@@ -2,17 +2,24 @@
 
 namespace IsolateIsland.Runtime.Character
 {
-    public class CharacterController : MonoBehaviour
+    public class CharacterController : Entity
     {
         [Range(0, 50)]
         [Tooltip("캐릭터 이동 속도")]
         [SerializeField] float m_MoveSpeed = 20;
 
+        [Range(0, 400)]
+        [SerializeField] float m_RigidbodyMoveSpeed = 100;
+        public float RigidbodyMoveSpeed => m_RigidbodyMoveSpeed;
+
         [Tooltip("XY 좌표 기준으로 이동할 것인가")]
         [SerializeField] protected bool m_bIsXY = false;
+        [SerializeField] protected bool m_bIsRigidbodyMove = false;
 
         protected float xAxis;
         protected float yAxis;
+        public Vector2 MoveDir => new Vector2(xAxis, yAxis); 
+        public Vector2 MoveNormalDir => new Vector2(xAxis, yAxis).normalized; 
 
         void Awake() => Init();
 
@@ -21,21 +28,32 @@ namespace IsolateIsland.Runtime.Character
             xAxis = 0f;
             yAxis = 0f;
         }
-
-        void Update() => Move();
+        protected virtual void OnUpdate() => Move();
+        void Update() => OnUpdate();
 
         public virtual void Move()
         {
             xAxis = Input.GetAxisRaw("Horizontal");
             yAxis = Input.GetAxisRaw("Vertical");
 
-            var _x = xAxis * m_MoveSpeed * Time.deltaTime;
-            var _y = yAxis * m_MoveSpeed * Time.deltaTime;
-            var _z = yAxis * m_MoveSpeed * Time.deltaTime;
+            if (!m_bIsRigidbodyMove)
+            {
+                var _x = xAxis * m_MoveSpeed * Time.deltaTime;
+                var _y = yAxis * m_MoveSpeed * Time.deltaTime;
+                var _z = yAxis * m_MoveSpeed * Time.deltaTime;
 
-            var _translate = m_bIsXY ? new Vector3(_x, _y, 0) : new Vector3(_x, 0, _z);
+                var _translate = m_bIsXY ? new Vector3(_x, _y, 0) : new Vector3(_x, 0, _z);
 
-            transform.Translate(_translate, Space.World);
+                transform.Translate(_translate, Space.World);
+            }
+            else
+            {
+                if (GetRigidBody2D is null)
+                    return;
+
+                GetRigidBody2D.AddForce(MoveNormalDir * m_RigidbodyMoveSpeed, ForceMode2D.Force);
+                GetRigidBody2D.velocity = Vector2.zero;
+            }
         }
     }
 }

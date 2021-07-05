@@ -6,6 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using System.Linq.Expressions;
 
+#if UNITY_EDITOR
 namespace IsolateIsland.Editor.Combination
 {
 
@@ -114,3 +115,4 @@ namespace IsolateIsland.Editor.Combination
 
     }
 }
+#endif

@@ -52,6 +52,7 @@ public class AITest : MonoBehaviour
     [SerializeField] EnemyBehaviour _enemyBehaviour;
 
     [SerializeField] EnemyStatus _enemyStatus;
+    public EnemyStatus enemyStatus => _enemyStatus;
 
     [SerializeField] Transform _targetTrans;
 
