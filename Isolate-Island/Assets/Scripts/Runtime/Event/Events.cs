@@ -8,6 +8,7 @@ using static IsolateIsland.Runtime.Utils.Defines;
 namespace IsolateIsland.Runtime.Event
 {
     public sealed class DressableEventListener : GenericEventListener<EDressableState, DressableItem> { }
+    public sealed class OnClickConfigButtonEventListener : GenericEventListener<EDressableState> { }
 
     public abstract class InteractEvent : EventListener
     {

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,6 +23,16 @@ namespace IsolateIsland.Runtime.Inventory
             base.Use<T>(item);
             Debug.Log("DressableItemApplyer : Use");
 
+            var dressable = item as DressableItem;
+            if (dressable is null)
+                return;
+
+            var parts = Managers.Managers.Instance.Inventory.Dressable
+                    .GetParts(dressable.DressableCombinationNode.DressableStat.DRESSABLE_Parts);
+
+            if (parts)
+                Drop(parts);
+
             Managers.Managers.Instance.Inventory.Dressable.AddItem(item);
         }
 
@@ -32,6 +43,10 @@ namespace IsolateIsland.Runtime.Inventory
 
             switch (true)
             {
+                case true when HasUseInDressable_GameInventroy(item):
+                    Managers.Managers.Instance.Inventory.Dressable.SubtractItem(item);
+                    Managers.Managers.Instance.Inventory.Game.AddItem(item);
+                    break;
                 case true when HasUseInDressableInventroy(item):
                     Managers.Managers.Instance.Inventory.Dressable.SubtractItem(item);
                     Managers.Managers.Instance.Inventory.Game.AddItem(item);
@@ -45,6 +60,16 @@ namespace IsolateIsland.Runtime.Inventory
             
             var config = Managers.Managers.Instance.DI.Get<UI_InventoryAttributeConfigurator>();
             config.SetAttribute();
+        }
+
+        internal bool HasUseInDressable_GameInventroy<T>(in T item) where T : ItemBase
+        {
+            var dressableContain = Managers.Managers.Instance.Inventory.Dressable.IsContain(item);
+            var gameContain = Managers.Managers.Instance.Inventory.Game.IsContain(item);
+
+            if (dressableContain & gameContain)
+                return true;
+            return false;
         }
 
         internal bool HasUseInDressableInventroy<T>(in T item) where T : ItemBase
