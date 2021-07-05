@@ -56,7 +56,7 @@ public class AITest : MonoBehaviour
 
     [SerializeField] Transform _targetTrans;
 
-    public Vector3 _movePos;
+    Vector3 _movePos;
     bool _isAttackCooltime = false;
     bool _isHearNoise = false;
     float _makePosTime = 0;
@@ -81,6 +81,8 @@ public class AITest : MonoBehaviour
     BTCondition makePos = new BTCondition();
 
     void Start() => Init();
+
+    void OnEnable() => _movePos = transform.position;
 
     void Init()
     {

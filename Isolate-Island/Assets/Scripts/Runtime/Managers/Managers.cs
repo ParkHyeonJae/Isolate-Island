@@ -109,6 +109,23 @@ namespace IsolateIsland.Runtime.Managers
             }
         }
 
+        private GameManager _gameManager;
+        public GameManager GameManager
+        { 
+            get
+            {
+                if (_gameManager == null)
+                {
+                    _gameManager = new GameManager();
+                    InitManager(_gameManager);
+                }
+                return _gameManager;
+            }
+        }
+
+        private void InitManager(IManagerInit manager) => manager.OnInit();
+        private void UpdateManager(IManagerUpdate manager) => manager.OnUpdate();
+
         private EventManager _eventManager;
        public EventManager Event
         {
@@ -217,6 +234,7 @@ namespace IsolateIsland.Runtime.Managers
         private void Update()
         {
             UpdateManager(Input);
+            UpdateManager(GameManager);
         }
     }
 }

@@ -15,6 +15,7 @@ namespace IsolateIsland.Runtime.Inventory
         {
             get => @base = @base ?? GetComponent<ItemBase>();
         }
+
         private void Awake()
         {
             _onItemCollctEvent.AddListener(OnInvoke);
@@ -24,6 +25,7 @@ namespace IsolateIsland.Runtime.Inventory
         protected virtual void OnInvoke()
         {
             Managers.Managers.Instance.Inventory.Game.AddItem(Base);
+            Debug.Log(Base);
             gameObject.SetActive(false);
         }
 
