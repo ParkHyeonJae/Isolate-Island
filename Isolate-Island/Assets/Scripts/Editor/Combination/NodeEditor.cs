@@ -2,6 +2,8 @@
 using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
+
 namespace IsolateIsland.Editor.Combination
 {
     using Editor = UnityEditor.Editor;
@@ -31,3 +33,4 @@ namespace IsolateIsland.Editor.Combination
 
     }
 }
+#endif

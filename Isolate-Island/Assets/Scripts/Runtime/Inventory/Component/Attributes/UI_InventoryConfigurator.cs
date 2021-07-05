@@ -1,4 +1,5 @@
-﻿using IsolateIsland.Runtime.Utils;
+﻿using IsolateIsland.Runtime.Event;
+using IsolateIsland.Runtime.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -56,6 +57,10 @@ namespace IsolateIsland.Runtime.Inventory
             }
         }
 
+        private void Awake()
+        {
+            Managers.Managers.Instance.Event.GetListener<OnCollectItemEvent>().Subscribe(SetAttribute);
+        }
         private void OnEnable() => SetAttribute();
         internal abstract void SetAttribute();
 
@@ -135,14 +140,22 @@ namespace IsolateIsland.Runtime.Inventory
             }
         }
 
+        internal void SetUseText(in string useText)
+            => attributeForm.item_useText.text = useText;
+
+        internal void SetDropText(in string dropText)
+            => attributeForm.item_dropText.text = dropText;
+
         internal virtual void OnSelectAttribute(ItemBase item)
         {
+            OnInitalizeButtonEvent();
+
             string use = string.Empty, drop = string.Empty;
             SetGUIText(item, out use, out drop);
 
 
-            attributeForm.item_useText.text = use;
-            attributeForm.item_dropText.text = drop;
+            SetUseText(use);
+            SetDropText(drop);
 
 
 
@@ -152,7 +165,7 @@ namespace IsolateIsland.Runtime.Inventory
 
 
             attributeForm.item_image.sprite = item.CombinationNode.sprite;
-            attributeForm.item_nameText.text = item.CombinationNode.name;
+            attributeForm.item_nameText.text = item.CombinationNode.name + " +" + Managers.Managers.Instance.Inventory.Game.GetItemCount(item);
             attributeForm.item_descriptionText.text = item.CombinationNode.description;
 
 
@@ -202,13 +215,17 @@ namespace IsolateIsland.Runtime.Inventory
             attributeForm.item_useText = attributeForm.item_useButton.transform.GetChild(0).GetComponent<Text>();
             attributeForm.item_dropText = attributeForm.item_dropButton.transform.GetChild(0).GetComponent<Text>();
 
+
+            OnInitalizeButtonEvent();
+        }
+
+        protected virtual void OnInitalizeButtonEvent()
+        {
             attributeForm.item_useButton.onClick.RemoveAllListeners();
             attributeForm.item_dropButton.onClick.RemoveAllListeners();
 
             attributeForm.item_useButton.onClick.AddListener(Button_OnUse);
             attributeForm.item_dropButton.onClick.AddListener(Button_OnDrop);
-
-
         }
     }
 }

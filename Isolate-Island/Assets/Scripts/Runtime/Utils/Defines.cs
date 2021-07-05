@@ -6,6 +6,13 @@ namespace IsolateIsland.Runtime.Utils
 {
     public class Defines
     {
+        public enum MouseEvent
+        {
+            Press,
+            Click
+        }
+
+
         #region LOAD
         public enum Load_Object
         {
@@ -14,5 +21,12 @@ namespace IsolateIsland.Runtime.Utils
             Item_List
         }
         #endregion LOAD
+
+
+        public enum EDressableState
+        {
+            Use,
+            Drop
+        }
     }
 }

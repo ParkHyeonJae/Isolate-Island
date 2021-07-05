@@ -52,6 +52,7 @@ public class AITest : MonoBehaviour
     [SerializeField] EnemyBehaviour _enemyBehaviour;
 
     [SerializeField] EnemyStatus _enemyStatus;
+    public EnemyStatus enemyStatus => _enemyStatus;
 
     [SerializeField] Transform _targetTrans;
 
@@ -129,7 +130,7 @@ public class AITest : MonoBehaviour
     void Update()
     {
         root.OnUpdate();
-        Debug.Log("루트!");
+        //Debug.Log("루트!");
     }
 
     bool Dead()
@@ -177,7 +178,7 @@ public class AITest : MonoBehaviour
         {
             Vector2 dir = (_targetTrans.position - transform.position).normalized;
             transform.Translate(dir * (_enemyStatus.moveSpeed * 1.2f) * Time.deltaTime);
-            Debug.Log("추적! : dist." + dist + "  dir." + (dir));
+            //Debug.Log("추적! : dist." + dist + "  dir." + (dir));
             return true;
         }
         else
@@ -222,7 +223,7 @@ public class AITest : MonoBehaviour
 
             _movePos = new Vector3(x, y, 0) + transform.position;
 
-            Debug.Log("좌표 생성! " + _movePos);
+            //Debug.Log("좌표 생성! " + _movePos);
 
             _makePosTime = Time.time;
 

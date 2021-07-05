@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Experimental.Rendering.Universal;
 
 namespace IsolateIsland.Runtime.Inventory
 {
@@ -31,6 +32,12 @@ namespace IsolateIsland.Runtime.Inventory
             if (_itemObject is null)
                 _itemObject = new GameObject();
             _itemBase = _itemObject.GetOrAddComponent<T>();
+            return this;
+        }
+
+        public ItemBuilder AddShadowCaster2D()
+        {
+            _itemObject.GetOrAddComponent<ShadowCaster2D>();
             return this;
         }
 
@@ -67,12 +74,7 @@ namespace IsolateIsland.Runtime.Inventory
 
         public CombinationNode CombinationNode
         {
-            get
-            {
-                if (_combinationNode is null)
-                    Debug.LogError($"{transform.name} : Combination Node has null");
-                return _combinationNode;
-            }
+            get => _combinationNode;
             set => _combinationNode = value;
         }
 
@@ -83,12 +85,17 @@ namespace IsolateIsland.Runtime.Inventory
         public SpriteRenderer SpriteRenderer => _spriteRenderer = _spriteRenderer ?? GetComponent<SpriteRenderer>();
 
 
-        private void Awake() => SetSprite();
+        private void Awake() {
+            Initalize();
+            SetSprite();
+        }
+        protected virtual void Initalize() { }
 
         public void SetSprite()
         {
             if (CombinationNode)
                 SpriteRenderer.sprite = CombinationNode.sprite;
+            SpriteRenderer.sortingLayerName = "Item";
             SpriteRenderer.sortingOrder = 1;
         }
         public override string ToString()

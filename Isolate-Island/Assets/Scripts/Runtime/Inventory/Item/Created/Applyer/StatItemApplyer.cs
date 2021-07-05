@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using IsolateIsland.Runtime.Combination;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,12 +11,15 @@ namespace IsolateIsland.Runtime.Inventory
         {
             base.Use<T>(item);
             Debug.Log("StatItemApplyer : Use");
-            var converted = item as StatItem;
+            var converted = item.CombinationNode as StatCombinationNode;
 
-            var effectStat = Managers.Managers.Instance.statManager.UserStat;
-            converted.StatCombinationNode.Stat.ApplyEffect(ref effectStat);
-            Managers.Managers.Instance.statManager.UserStat = effectStat;
-            Debug.Log(Managers.Managers.Instance.statManager.UserStat.ToString());
+            if (converted)
+            {
+                var effectStat = Managers.Managers.Instance.statManager.UserStat;
+                converted.Stat.ApplyEffect(ref effectStat);
+                Managers.Managers.Instance.statManager.UserStat = effectStat;
+                Debug.Log(Managers.Managers.Instance.statManager.UserStat.ToString());
+            }
         }
 
         internal override void Drop<T>(in T item)
