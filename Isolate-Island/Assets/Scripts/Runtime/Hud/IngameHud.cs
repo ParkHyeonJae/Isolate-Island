@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using IsolateIsland.Runtime.Stat;
 using PlayerPrefs = IsolateIsland.Runtime.Managers.PlayerPrefs;
+using Manager = IsolateIsland.Runtime.Managers.Managers;
 
 namespace IsolateIsland.Runtime.Hud
 {
-    public class Gauge : MonoBehaviour
+    public class Gauge
     {
         private Image _fillImage;
         private float _min, _max;
@@ -18,6 +19,14 @@ namespace IsolateIsland.Runtime.Hud
             _fillImage = fillImage;
             _max = max;
             _min = min;
+            SetCurrnetFillAmount(curValue);
+        }
+
+        public Gauge(Image fillImage, float curValue = 0)
+        {
+            _fillImage = fillImage;
+            _max = 1;
+            _min = 0;
             SetCurrnetFillAmount(curValue);
         }
 
@@ -51,10 +60,14 @@ namespace IsolateIsland.Runtime.Hud
         private Stat.Stat _playerStat;
         private Gauge _hpGauge;
         private Gauge _hungerGauge;
+        private Gauge _timeDayGauge;
+        private Gauge _timeNightGauge;
 
         [Header("Gauge")]
         [SerializeField] private Image _hpGaugeImage;
         [SerializeField] private Image _hungerGaugeImage;
+        [SerializeField] private Image _timeDayGaugeImage;
+        [SerializeField] private Image _timeNightGaugeImage;
 
         [Header("Popup")]
         [SerializeField] private GameObject _pausePopup;
@@ -70,9 +83,8 @@ namespace IsolateIsland.Runtime.Hud
         [SerializeField] private Toggle _autoaimToggle;
         [SerializeField] private Toggle _googleToggle;
 
-        [Header("Quick Slot")]
-        [SerializeField] private Image _slotImage;
-        [SerializeField] private Text _slotText;
+        [Header("Text")]
+        [SerializeField] private Text _timeDateText;
 
         private void Start()
         {
@@ -82,24 +94,41 @@ namespace IsolateIsland.Runtime.Hud
 
         private void Init()
         {
-            _playerStat = Managers.Managers.Instance.statManager.UserStat;
+            _playerStat = Manager.Instance.statManager.UserStat;
 
             _hpGauge = new Gauge(_hpGaugeImage, _playerStat.HP, 0, _playerStat.HP);
             _hungerGauge = new Gauge(_hungerGaugeImage, _playerStat.Hungry, 0, _playerStat.Hungry);
+
+            _timeDayGauge = new Gauge(_timeDayGaugeImage, 1);
+            _timeNightGauge = new Gauge(_timeNightGaugeImage, 1);
 
             _bgmSlider.value = PlayerPrefs.GetFloat("Bgm", 1);
             _sfxSlider.value = PlayerPrefs.GetFloat("Sfx", 1);
 
             _vibrationToggle.isOn = PlayerPrefs.GetBool("Vibration", true);
             _autoaimToggle.isOn = PlayerPrefs.GetBool("AutoAim", false);
-
-            Managers.Managers.Instance.Event.GetListener<Event.OnClickConfigButtonEventListener>().Subscribe(OnInitQuickSlot);
         }
 
         IEnumerator SetGaugeValue()
         {
             _hpGauge.SetCurrnetFillAmount(_playerStat.HP);
             _hungerGauge.SetCurrnetFillAmount(_playerStat.Hungry);
+
+            if (Manager.Instance.GameManager.isDay)
+            {
+                _timeDayGauge.SetCurrnetFillAmount(Manager.Instance.GameManager.flowDayTime);
+            }
+            else
+            {
+                _timeNightGauge.SetCurrnetFillAmount(Manager.Instance.GameManager.flowDayTime);
+
+                if (_timeNightGauge.GetCurrentFillAmountValue() <= 0)
+                {
+                    _timeNightGauge.SetCurrnetFillAmount(1);
+                    _timeDayGauge.SetCurrnetFillAmount(1);
+                    _timeDateText.text = "Day " + Manager.Instance.GameManager.survivalDate.ToString();
+                }
+            }
 
             // 테스트를 위한 코드
             //if (_hungerGauge.GetCurrentFillAmountRatio() <= 0.25f)
@@ -188,18 +217,6 @@ namespace IsolateIsland.Runtime.Hud
         public void ClickRetry()
         {
 
-        }
-
-
-        public void OnInitQuickSlot(Utils.Defines.EDressableState eDressableState)
-        {
-            var itemParts = Managers.Managers.Instance.Inventory.Dressable.GetParts(EParts.PARTS_RIGHT_HAND);
-            if (itemParts is null)
-                return;
-
-            var itemCount = Managers.Managers.Instance.Inventory.Dressable.GetItemCount(itemParts);
-            _slotImage.sprite = itemParts.DressableCombinationNode.sprite;
-            _slotText.text = itemCount.ToString();
         }
     }
 }
