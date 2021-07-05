@@ -77,7 +77,7 @@ namespace IsolateIsland.Runtime.Stat
         }
 
         public bool ExistEffectStat => (EFFECT_ATK | EFFECT_RANGE | EFFECT_DEF | EFFECT_MAX_HEALTH | EFFECT_HEALTH | EFFECT_HUNGRY) != 0;
-
+        public bool IsConsumable => ExistEffectStat;
         #region Ability Stat
 
         //public int ATK_ATK;

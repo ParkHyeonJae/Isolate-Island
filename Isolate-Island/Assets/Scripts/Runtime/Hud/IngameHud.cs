@@ -70,6 +70,10 @@ namespace IsolateIsland.Runtime.Hud
         [SerializeField] private Toggle _autoaimToggle;
         [SerializeField] private Toggle _googleToggle;
 
+        [Header("Quick Slot")]
+        [SerializeField] private Image _slotImage;
+        [SerializeField] private Text _slotText;
+
         private void Start()
         {
             Init();
@@ -88,6 +92,8 @@ namespace IsolateIsland.Runtime.Hud
 
             _vibrationToggle.isOn = PlayerPrefs.GetBool("Vibration", true);
             _autoaimToggle.isOn = PlayerPrefs.GetBool("AutoAim", false);
+
+            Managers.Managers.Instance.Event.GetListener<Event.OnClickConfigButtonEventListener>().Subscribe(OnInitQuickSlot);
         }
 
         IEnumerator SetGaugeValue()
@@ -182,6 +188,18 @@ namespace IsolateIsland.Runtime.Hud
         public void ClickRetry()
         {
 
+        }
+
+
+        public void OnInitQuickSlot(Utils.Defines.EDressableState eDressableState)
+        {
+            var itemParts = Managers.Managers.Instance.Inventory.Dressable.GetParts(EParts.PARTS_RIGHT_HAND);
+            if (itemParts is null)
+                return;
+
+            var itemCount = Managers.Managers.Instance.Inventory.Dressable.GetItemCount(itemParts);
+            _slotImage.sprite = itemParts.DressableCombinationNode.sprite;
+            _slotText.text = itemCount.ToString();
         }
     }
 }

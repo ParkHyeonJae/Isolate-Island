@@ -85,8 +85,8 @@ namespace IsolateIsland.Runtime.Inventory
         internal override void OnSelectAttribute(ItemBase item)
         {
             base.OnSelectAttribute(item);
-            attributeForm.obj_use.SetActive(true);
-            attributeForm.obj_drop.SetActive(true);
+            //attributeForm.obj_use.SetActive(true);
+            //attributeForm.obj_drop.SetActive(true);
         }
 
         internal override void OnSettingInventory(KeyValuePair<ItemBase, int>[] itemList, UI_InventorySetter[] setter)
