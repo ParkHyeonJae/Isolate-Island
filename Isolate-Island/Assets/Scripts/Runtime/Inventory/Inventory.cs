@@ -139,6 +139,13 @@ namespace IsolateIsland.Runtime.Inventory
             return _productiveNodes;
         }
 
+        public int GetItemCount(ItemBase @base)
+        {
+            if (!Items.ContainsKey(@base))
+                return 0;
+            return Items[@base];
+        }
+
         //[ContextMenu("TryInquiryProductiveItem")]
         public void TryInquiryProductiveItem()
         {

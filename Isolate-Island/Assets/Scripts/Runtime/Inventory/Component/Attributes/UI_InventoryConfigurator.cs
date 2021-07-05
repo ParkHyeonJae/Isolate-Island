@@ -1,4 +1,5 @@
-﻿using IsolateIsland.Runtime.Utils;
+﻿using IsolateIsland.Runtime.Event;
+using IsolateIsland.Runtime.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -56,6 +57,10 @@ namespace IsolateIsland.Runtime.Inventory
             }
         }
 
+        private void Awake()
+        {
+            Managers.Managers.Instance.Event.GetListener<OnCollectItemEvent>().Subscribe(SetAttribute);
+        }
         private void OnEnable() => SetAttribute();
         internal abstract void SetAttribute();
 
@@ -160,7 +165,7 @@ namespace IsolateIsland.Runtime.Inventory
 
 
             attributeForm.item_image.sprite = item.CombinationNode.sprite;
-            attributeForm.item_nameText.text = item.CombinationNode.name;
+            attributeForm.item_nameText.text = item.CombinationNode.name + " +" + Managers.Managers.Instance.Inventory.Game.GetItemCount(item);
             attributeForm.item_descriptionText.text = item.CombinationNode.description;
 
 

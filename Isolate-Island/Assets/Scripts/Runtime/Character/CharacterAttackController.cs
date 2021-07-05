@@ -21,6 +21,11 @@ namespace IsolateIsland.Runtime.Character
         public BoxCollider2D weaponCollider
             => _weaponCollider = _weaponCollider ?? weaponPartsSetter.GetComponent<BoxCollider2D>();
 
+        private BoxCollider2D _dressableWeaponCollider;
+        public BoxCollider2D dressableWeaponCollider
+            => _dressableWeaponCollider = _dressableWeaponCollider ?? Managers.Managers
+            .Instance.Inventory.Dressable.GetParts(Stat.EParts.PARTS_LEFT_HAND).GetComponent<BoxCollider2D>();
+
         private CharacterInteractSimulator characterInteractSimulator;
 
 
@@ -51,11 +56,10 @@ namespace IsolateIsland.Runtime.Character
                 return;
 
             var sprite = renderer.sprite;
-            collider.size = new Vector2(1f, 1f);
+            collider.size = dressableWeaponCollider.size;
             collider.enabled = true;
 
             rigidBody.AddForce(characterAnimController.MoveNormalDir * 20f, ForceMode2D.Impulse);
-            
         }
 
         // Invoke by Animation Event Trigger

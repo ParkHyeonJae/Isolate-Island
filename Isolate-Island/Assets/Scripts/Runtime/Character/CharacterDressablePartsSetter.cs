@@ -8,8 +8,6 @@ using static IsolateIsland.Runtime.Utils.Defines;
 
 namespace IsolateIsland.Runtime.Character
 {
-    public sealed class DressableEventListener : GenericEventListener<EDressableState, DressableItem> { }
-
     public class CharacterDressablePartsSetter : MonoBehaviour
     {
         [SerializeField] EParts eParts = EParts.PARTS_NONE;

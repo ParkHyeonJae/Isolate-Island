@@ -6,20 +6,24 @@ using UnityEngine;
 
 namespace IsolateIsland.Runtime.Interact
 {
-    public class InteractDummy : Entity, IInteractable
+    public class InteractDummy : Entity
     {
-        public void OnInteract(InteractEvent interactEvent)
+        private void Awake()
+
         {
-            switch (interactEvent)
+            Managers.Managers.Instance.Event.GetListener<HitInteractEvent>().Subscribe((entity) =>
             {
-                case HitInteractEvent hit:
-                    
-                    Debug.Log("HIt !");
-                    hit.OnInteract(this);
-                    break;
-                default:
-                    break;
-            }
+                if (entity == this)
+                {
+                    Managers.Managers.Instance.Event.GetListener<HitInteractEvent>().OnInteract(entity);
+                    OnInteractHitEvent(entity);
+                }
+            });
+        }
+
+        protected virtual void OnInteractHitEvent(Entity entity)
+        {
+
         }
     }
 }

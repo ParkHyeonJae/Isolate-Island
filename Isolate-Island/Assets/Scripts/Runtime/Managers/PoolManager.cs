@@ -51,17 +51,21 @@ namespace IsolateIsland.Runtime.Managers
             return Instantiate(prefab);
         }
 
-        //public GameObject ParticleInstantiate(GameObject prefab, float disappearTime)
-        //{
-        //    var newObject = Instantiate(prefab);
-        //    Managers.Instance.Coroutine.RegisterRoutine(ref timer);
-            
-        //}
-
-        public IEnumerator timer()
+        public GameObject ParticleInstantiate(GameObject prefab, float Time)
         {
-            yield return null;
+            var newObject = Instantiate(prefab);
+            Managers.Instance.Util.AddTimer(Time, () => Destroy(newObject));
+            return newObject;
         }
+        
+        public GameObject ParticleInstantiate(string poolPrefabName, float Time)
+        {
+            var newObject = Instantiate(poolPrefabName);
+            Managers.Instance.Util.AddTimer(Time, () => Destroy(newObject));
+            return newObject;
+        }
+
+        
 
         public void Destroy(GameObject gameObject)
         {

@@ -21,6 +21,7 @@ namespace IsolateIsland.Runtime.Character
 
         private void Input_OnMouseAction(Utils.Defines.MouseEvent evt)
         {
+            
             _animator.Play("Attack");
         }
 

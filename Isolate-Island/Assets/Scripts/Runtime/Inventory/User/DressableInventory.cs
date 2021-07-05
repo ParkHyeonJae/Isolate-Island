@@ -1,4 +1,5 @@
 ﻿using IsolateIsland.Runtime.Character;
+using IsolateIsland.Runtime.Event;
 using System;
 using System.Linq;
 using UnityEngine;

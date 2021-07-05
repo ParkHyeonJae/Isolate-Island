@@ -22,7 +22,10 @@ namespace IsolateIsland.Runtime.TestCodes
             //Managers.Managers.Instance.DI.Get<IsolateIsland.Runtime.Inventory.Inventory>().PrintItemList();
             //Managers.Managers.Instance.DI.Get<IsolateIsland.Runtime.Inventory.Inventory>().PrintItemList();
 
-            
+            for (int i = 0; i < 30; i++)
+            {
+                SpawnEnemy();
+            }
 
         }
 
@@ -53,8 +56,7 @@ namespace IsolateIsland.Runtime.TestCodes
         [ContextMenu("SpawnEnemy")]
         void SpawnEnemy()
         {
-            var enemyPrefab = Managers.Managers.Instance.Resource.Load<GameObject>("Enemy");
-            var spawn = Managers.Managers.Instance.Pool.Instantiate("Enemy");
+            var spawn = Managers.Managers.Instance.Pool.Instantiate("InteractableEnemy");
 
             _onMemeoryObjects.Push(spawn);
         }

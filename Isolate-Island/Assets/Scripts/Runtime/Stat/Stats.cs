@@ -174,6 +174,11 @@ namespace IsolateIsland.Runtime.Stat
             Stat.AttackSpeed = _attackSpeed;
             return this;
         }
+        public StatBuilder SetAttack(int _attack)
+        {
+            Stat.ATK = _attack;
+            return this;
+        }
 
 
         public Stat Build()

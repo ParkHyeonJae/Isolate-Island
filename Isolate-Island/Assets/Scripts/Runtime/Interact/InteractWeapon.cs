@@ -1,26 +1,20 @@
-﻿using System.Collections;
+﻿using IsolateIsland.Runtime.Character;
+using IsolateIsland.Runtime.Event;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace IsolateIsland.Runtime.Interact
 {
-    public class InteractWeapon : MonoBehaviour, IInteractable
+    public class InteractWeapon : MonoBehaviour
     {
-        HitInteractEvent hitInteractEvent = new HitInteractEvent();
-
-        public void OnInteract(InteractEvent interactEvent)
-        {
-
-        }
-
-
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            IInteractable interactable;
-            if (!collision.TryGetComponent<IInteractable>(out interactable))
+            Entity entity;
+            if (!collision.TryGetComponent<Entity>(out entity))
                 return;
 
-            interactable.OnInteract(hitInteractEvent);
+            Managers.Managers.Instance.Event.GetListener<HitInteractEvent>().Invoke(entity);
         }
     }
 }

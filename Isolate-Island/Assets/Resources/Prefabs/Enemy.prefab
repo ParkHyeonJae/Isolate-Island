@@ -177,6 +177,7 @@ MonoBehaviour:
     _revengeDuration: 5
     _sleepingTime: 60
     _sleepingCooltime: 30
+    _makePosCooltime: 5
   _enemyStatus:
     _hp: 10
     _moveSpeed: 2

@@ -7,6 +7,12 @@ namespace IsolateIsland.Runtime.Managers
         void OnInit();
     }
 
+    public abstract class MonoManagerInit : MonoBehaviour, IManagerInit
+    {
+        public abstract void OnInit();
+    }
+
+
     public interface IManagerUpdate
     {
         void OnUpdate();
@@ -151,14 +157,62 @@ namespace IsolateIsland.Runtime.Managers
             {
                 if (_coroutineManager == null)
                 {
-                    InitManager(_coroutineManager);
+                    MonoInitManager(out _coroutineManager);
                 }
                 return _coroutineManager;
             }
         }
+        private UtilManager _utilManager;
+        public UtilManager Util
+        {
+            get
+            {
+                if (_utilManager == null)
+                {
+                    _utilManager = new UtilManager();
+                    InitManager(_utilManager);
+                }
+                return _utilManager;
+            }
+        }
+        private CameraManager _cameraManager;
+        public CameraManager Camera
+        {
+            get
+            {
+                if (_cameraManager == null)
+                {
+                    _cameraManager = new CameraManager();
+                    InitManager(_cameraManager);
+                }
+                return _cameraManager;
+            }
+        }
+        
+        private SoundManager _soundManager;
+        public SoundManager Sound
+        {
+            get
+            {
+                if (_soundManager == null)
+                {
+                    MonoInitManager(out _soundManager);
+                }
+                return _soundManager;
+            }
+        }
 
-        private void InitManager(IManagerInit manager) => manager.OnInit();
-        private void UpdateManager(IManagerUpdate manager) => manager.OnUpdate();
+        private void InitManager<I>(I manager) where I : IManagerInit => manager.OnInit();
+        private void MonoInitManager<I>(out I manager) where I : MonoManagerInit
+        {
+            var name = typeof(I).ToString();
+            name = name.Substring(name.LastIndexOf(".") + 1);
+            var routineObject = new GameObject($"@{name}");
+            routineObject.transform.SetParent(Managers.Instance.transform);
+            manager = routineObject.AddComponent<I>();
+            InitManager(manager);
+        }
+        private void UpdateManager<I>(I manager) where I : IManagerUpdate => manager.OnUpdate();
 
         private void Update()
         {
