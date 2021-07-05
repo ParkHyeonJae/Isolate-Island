@@ -20,6 +20,7 @@ namespace IsolateIsland.Runtime.Managers
                 .SetHungry(100)
                 .SetMoveSpeed(20)
                 .SetAttackSpeed(10)
+                .SetAttack(5)
                 .Build();
 
 

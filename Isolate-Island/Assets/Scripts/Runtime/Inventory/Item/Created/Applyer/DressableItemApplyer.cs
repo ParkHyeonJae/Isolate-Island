@@ -29,10 +29,41 @@ namespace IsolateIsland.Runtime.Inventory
         {
             
             Debug.Log("DressableItemApplyer : Drop");
-            Managers.Managers.Instance.Inventory.Dressable.SubtractItem(item);
-            Managers.Managers.Instance.Inventory.Game.AddItem(item);
+
+            switch (true)
+            {
+                case true when HasUseInDressableInventroy(item):
+                    Managers.Managers.Instance.Inventory.Dressable.SubtractItem(item);
+                    Managers.Managers.Instance.Inventory.Game.AddItem(item);
+                    break;
+                case true when HasUseInGameInventroy(item):
+                    Managers.Managers.Instance.Inventory.Game.SubtractItem(item);
+                    break;
+                default:
+                    break;
+            }
+            
             var config = Managers.Managers.Instance.DI.Get<UI_InventoryAttributeConfigurator>();
             config.SetAttribute();
+        }
+
+        internal bool HasUseInDressableInventroy<T>(in T item) where T : ItemBase
+        {
+            var dressableContain = Managers.Managers.Instance.Inventory.Dressable.IsContain(item);
+            var gameContain      = Managers.Managers.Instance.Inventory.Game.IsContain(item);
+
+            if (dressableContain & !gameContain) 
+                return true;
+            return false;
+        }
+        internal bool HasUseInGameInventroy<T>(in T item) where T : ItemBase
+        {
+            var dressableContain = Managers.Managers.Instance.Inventory.Dressable.IsContain(item);
+            var gameContain      = Managers.Managers.Instance.Inventory.Game.IsContain(item);
+
+            if (!dressableContain & gameContain) 
+                return true;
+            return false;
         }
     }
 }

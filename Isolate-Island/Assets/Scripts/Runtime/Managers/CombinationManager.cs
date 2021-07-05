@@ -1,4 +1,5 @@
 ﻿using IsolateIsland.Runtime.Combination;
+using IsolateIsland.Runtime.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,16 +17,12 @@ namespace IsolateIsland.Runtime.Managers
             get
             {
                 if (_craftingTable == null)
-                    _craftingTable = new Dictionary<string, CombinationNode>(new StringStateComparer());
+                    _craftingTable = new Dictionary<string, CombinationNode>(new Comparers.StringStateComparer());
                 return _craftingTable;
             }
         }
 
-        class StringStateComparer : IEqualityComparer<string>
-        {
-            public bool Equals(string x, string y) => x.GetHashCode() == y.GetHashCode();
-            public int GetHashCode(string obj) => obj.GetHashCode();
-        }
+        
 
         public void OnInit()
         {

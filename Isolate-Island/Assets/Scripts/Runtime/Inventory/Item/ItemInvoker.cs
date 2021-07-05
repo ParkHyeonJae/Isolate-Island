@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using IsolateIsland.Runtime.Event;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace IsolateIsland.Runtime.Inventory
@@ -7,14 +8,18 @@ namespace IsolateIsland.Runtime.Inventory
     {
         [System.Serializable]
         public class ItemEvent : UnityEvent { }
-        [SerializeField] protected ItemEvent _onItemCollect;
+        [SerializeField] ItemEvent _onItemCollctEvent = new ItemEvent();
 
         private ItemBase @base = null;
         public ItemBase Base
         {
             get => @base = @base ?? GetComponent<ItemBase>();
         }
-        private void Start() => _onItemCollect?.AddListener(OnInvoke);
+        private void Awake()
+        {
+            _onItemCollctEvent.AddListener(OnInvoke);
+            _onItemCollctEvent.AddListener(() => Managers.Managers.Instance.Event.GetListener<OnCollectItemEvent>()?.Invoke());
+        }
 
         protected virtual void OnInvoke()
         {
@@ -26,7 +31,7 @@ namespace IsolateIsland.Runtime.Inventory
         {
             if (!collision.CompareTag("Player"))
                 return;
-            _onItemCollect?.Invoke();
+            _onItemCollctEvent?.Invoke();
         }
     }
 }

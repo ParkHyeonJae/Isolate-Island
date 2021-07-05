@@ -1,4 +1,7 @@
-﻿using System;
+﻿using IsolateIsland.Runtime.Character;
+using IsolateIsland.Runtime.Event;
+using System;
+using System.Linq;
 using UnityEngine;
 
 namespace IsolateIsland.Runtime.Inventory
@@ -38,6 +41,20 @@ namespace IsolateIsland.Runtime.Inventory
             }
         }
 
+        public DressableItem GetParts(Stat.EParts eParts)
+             => Items.Keys.OfType<DressableItem>().FirstOrDefault((item)
+                 => item.DressableCombinationNode.DressableStat.DRESSABLE_Parts == eParts);
+
+
+        public T GetParts<T>(Stat.EParts eParts) where T : CharacterDressablePartsSetter
+        {
+            var _setters = Managers.Managers.Instance.DI.Gets<T>();
+
+            var parts = _setters.Where(e => e.Parts == eParts).Single();
+
+            return parts;
+        }
+
         protected override void OnObtainItem(ItemBase @base)
         {
             var dressableItem = @base as DressableItem;
@@ -58,6 +75,9 @@ namespace IsolateIsland.Runtime.Inventory
             SetPartsToAttribute(parts, dressableItem, (setter) => {
                 setter.SetAttribute(dressableItem, InventoryAttributeConfigurator.OnSelectAttribute);
             });
+
+            Managers.Managers.Instance.Event.GetListener<DressableEventListener>()
+                .Invoke(Utils.Defines.EDressableState.Use, dressableItem);
         }
 
         protected override void OnCountingItem(ItemBase @base)
@@ -85,6 +105,9 @@ namespace IsolateIsland.Runtime.Inventory
             SetPartsToAttribute(parts, dressableItem, (setter) => {
                 setter.OnReset();
             });
+
+            Managers.Managers.Instance.Event.GetListener<DressableEventListener>()
+                .Invoke(Utils.Defines.EDressableState.Drop, dressableItem);
         }
 
         protected override void OnProductItem(ItemBase @base)
@@ -92,5 +115,6 @@ namespace IsolateIsland.Runtime.Inventory
 
         }
 
+        
     }
 }

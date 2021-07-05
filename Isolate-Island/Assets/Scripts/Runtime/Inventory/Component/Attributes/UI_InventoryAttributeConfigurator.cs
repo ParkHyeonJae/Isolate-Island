@@ -16,7 +16,9 @@ namespace IsolateIsland.Runtime.Inventory
         {
             internal enum Equipment
             {
+                Bag,
                 Equipment_Parent,
+                ProductiveTable,
                 Person_Image,
                 Head,
                 Body,
@@ -25,7 +27,9 @@ namespace IsolateIsland.Runtime.Inventory
                 Item
             }
 
+            internal GameObject obj_uiBag;
             internal GameObject obj_Equipment;
+            internal GameObject obj_ProductiveTable;
             internal GameObject obj_Person_Image;
             internal GameObject obj_Head;
             internal GameObject obj_Body;
@@ -78,12 +82,15 @@ namespace IsolateIsland.Runtime.Inventory
             }
         }
 
+        internal override void OnSelectAttribute(ItemBase item)
+        {
+            base.OnSelectAttribute(item);
+            attributeForm.obj_use.SetActive(true);
+            attributeForm.obj_drop.SetActive(true);
+        }
 
         internal override void OnSettingInventory(KeyValuePair<ItemBase, int>[] itemList, UI_InventorySetter[] setter)
         {
-            attributeForm.obj_use.SetActive(true);
-            attributeForm.obj_drop.SetActive(true);
-
             base.OnSettingInventory(itemList, setter);
         }
 
@@ -116,11 +123,17 @@ namespace IsolateIsland.Runtime.Inventory
         internal void CachingDressableAttributeAssets()
         {
             // Caching Objects
-            _dressableAttrForm.obj_Equipment = Managers.Managers.Instance.DI.Get(DressableAttributeForm.Equipment.Equipment_Parent).transform.GetChild(0).gameObject;
-            _dressableAttrForm.obj_Equipment.SetActive(true);
 
-            _dressableAttrForm.obj_Person_Image = Managers.Managers.Instance.DI.Get(DressableAttributeForm.Equipment.Person_Image);
-            _dressableAttrForm.obj_Head = Managers.Managers.Instance.DI.Get(DressableAttributeForm.Equipment.Head);
+            _dressableAttrForm.obj_uiBag             = Managers.Managers.Instance.DI.Get(DressableAttributeForm.Equipment.Bag);
+
+            _dressableAttrForm.obj_Equipment         = Managers.Managers.Instance.DI.Get(DressableAttributeForm.Equipment.Equipment_Parent).transform.GetChild(0).gameObject;
+            _dressableAttrForm.obj_ProductiveTable   = Managers.Managers.Instance.DI.Get(_dressableAttrForm.obj_uiBag.transform, DressableAttributeForm.Equipment.ProductiveTable);
+
+            _dressableAttrForm.obj_Equipment        .SetActive(true);
+            _dressableAttrForm.obj_ProductiveTable  .SetActive(false);
+
+            _dressableAttrForm.obj_Person_Image     = Managers.Managers.Instance.DI.Get(DressableAttributeForm.Equipment.Person_Image);
+            _dressableAttrForm.obj_Head  = Managers.Managers.Instance.DI.Get(DressableAttributeForm.Equipment.Head);
             _dressableAttrForm.obj_Body = Managers.Managers.Instance.DI.Get(DressableAttributeForm.Equipment.Body);
             _dressableAttrForm.obj_Leg = Managers.Managers.Instance.DI.Get(DressableAttributeForm.Equipment.Leg);
             _dressableAttrForm.obj_Weapon = Managers.Managers.Instance.DI.Get(DressableAttributeForm.Equipment.Weapon);

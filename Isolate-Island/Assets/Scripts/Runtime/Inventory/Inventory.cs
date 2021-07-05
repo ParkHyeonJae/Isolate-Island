@@ -43,9 +43,12 @@ namespace IsolateIsland.Runtime.Inventory
             }
         }
 
+        public bool IsContain(ItemBase @base)
+            => Items.ContainsKey(@base);
+
         private void DeleteItem(ItemBase @base)
         {
-            if (!Items.ContainsKey(@base))
+            if (!IsContain(@base))
                 return;
             Items.Remove(@base);
         }
@@ -134,6 +137,13 @@ namespace IsolateIsland.Runtime.Inventory
                 _productiveNodes.Add(_combinationNode);
             }
             return _productiveNodes;
+        }
+
+        public int GetItemCount(ItemBase @base)
+        {
+            if (!Items.ContainsKey(@base))
+                return 0;
+            return Items[@base];
         }
 
         //[ContextMenu("TryInquiryProductiveItem")]
