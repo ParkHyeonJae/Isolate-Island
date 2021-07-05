@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e5f0cb11f771494cb0e2baa78c02403, type: 3}
+  m_Script: {fileID: 11500000, guid: eacc0f2f92685c9449731fbe00cd73ea, type: 3}
   m_Name: "\uAD6C\uC6B4\uC0DD\uC120"
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
@@ -24,3 +24,19 @@ MonoBehaviour:
     EFFECT_MAX_HEALTH: 0
     EFFECT_HEALTH: 0
     EFFECT_HUNGRY: 0
+  DressableStat:
+    MoveSpeed: 0
+    AttackSpeed: 0
+    EFFECT_ATK: 0
+    EFFECT_RANGE: 0
+    EFFECT_DEF: 0
+    EFFECT_MAX_HEALTH: 0
+    EFFECT_HEALTH: 0
+    EFFECT_HUNGRY: 0
+    DRESSABLE_Parts: 3
+    DRESSABLE_ATK: 0
+    DRESSABLE_RANGE: 0
+    DRESSABLE_DEF: 0
+    DRESSABLE_MAX_HEALTH: 0
+    DRESSABLE_HEALTH: 0
+    DRESSABLE_HUNGRY: 0

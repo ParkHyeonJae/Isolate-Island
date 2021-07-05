@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace IsolateIsland.Runtime.Inventory
 {
-    internal class DressableItemApplyer : ItemApplyer
+    internal class DressableItemApplyer : StatItemApplyer
     {
         private UI_InventoryAttributeConfigurator inventoryAttributeConfigurator;
         internal UI_InventoryAttributeConfigurator InventoryAttributeConfigurator

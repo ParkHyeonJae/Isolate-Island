@@ -31,6 +31,8 @@ namespace IsolateIsland.Runtime.Inventory
         {
             if (!collision.CompareTag("Player"))
                 return;
+            if (Managers.Managers.Instance.Inventory.Game.Items.Count == 10)
+                return;
             _onItemCollctEvent?.Invoke();
         }
     }
