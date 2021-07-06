@@ -33,4 +33,8 @@ namespace IsolateIsland.Runtime.Event
 
     }
 
+    public class OnGameoverEvent : EventListener
+    { 
+    
+    }
 }
