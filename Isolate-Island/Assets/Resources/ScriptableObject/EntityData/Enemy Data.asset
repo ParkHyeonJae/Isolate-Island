@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: 10
   _moveSpeed: 5
-  _attackDamage: 10
+  _attackDamage: 0
   _moveRange: 30
   _trackRange: 10
   _attackRange: 5
   _makePosCooltime: 5
-  _attackDelay: 1
+  _attackDelay: 1.5
   _revengeDuration: 5
   _sleepingTime: 60
   _sleepingCooltime: 30

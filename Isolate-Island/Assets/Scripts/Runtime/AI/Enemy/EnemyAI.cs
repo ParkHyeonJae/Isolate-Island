@@ -52,6 +52,18 @@ namespace IsolateIsland.Runtime.Ai
                 return animator;
             }
         }
+        
+        [SerializeField] protected SpriteRenderer sprite;
+        public SpriteRenderer Sprite
+        {
+            get
+            {
+                if (sprite == null)
+                    sprite = GetComponent<SpriteRenderer>();
+
+                return sprite;
+            }
+        }
 
         void Start() => Init();
 
@@ -145,6 +157,7 @@ namespace IsolateIsland.Runtime.Ai
 
             if (dist <= enemyData.attackRange)
             {
+                Fliping(_targetTrans.position);
                 Debug.Log("공격!");
                 StartCoroutine(CooldownAttack());
                 return true;
@@ -167,6 +180,7 @@ namespace IsolateIsland.Runtime.Ai
 
             if (dist <= enemyData.trackRange)
             {
+                Fliping(_targetTrans.position);
                 Vector2 dir = (_targetTrans.position - transform.position).normalized;
                 transform.Translate(dir * (enemyData.moveSpeed * 1.2f) * Time.deltaTime);
                 //Debug.Log("추적! : dist." + dist + "  dir." + (dir));
@@ -239,11 +253,17 @@ namespace IsolateIsland.Runtime.Ai
             //else
             //    return false;
 
+            Fliping(_movePos);
             Vector2 dir = (_movePos - transform.position).normalized;
             transform.Translate(dir * (enemyData.moveSpeed) * Time.deltaTime);
             //Debug.Log("이동! " + dir);
             return true;
 
+        }
+
+        public void Fliping(Vector3 target)
+        {
+            Sprite.flipX = transform.position.x <= target.x;
         }
     }
 

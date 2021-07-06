@@ -37,6 +37,8 @@ namespace IsolateIsland.Runtime.Managers
 
         public void ReducePlayerHp(int value)
         {
+            float defend = value * UserStat.DEF * 0.05f;
+            int damage = value - Mathf.RoundToInt(defend);
             UserStat.HP -= value;
             if (UserStat.HP <= 0)
                 Managers.Instance.Event.GetListener<OnGameoverEvent>().Invoke();
