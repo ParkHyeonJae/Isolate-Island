@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eacc0f2f92685c9449731fbe00cd73ea, type: 3}
   m_Name: "\uAC11\uC637"
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  description: 
+  sprite: {fileID: 21300152, guid: b08e570699f1c8a4f9cc388204aef3bc, type: 3}
+  description: "\uC0DD\uAC01\uBCF4\uB2E4 \uC81C\uB300\uB85C \uB41C \uAC11\uC637\uC774\uB2E4."
   combinationNodes:
   - Name: "\uC2A4\uCE74\uD504"
     Count: 1
