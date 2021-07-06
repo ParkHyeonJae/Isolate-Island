@@ -214,13 +214,16 @@ namespace IsolateIsland.Runtime.Hud
 
         IEnumerator OnGameoverPopup()
         {
+            float fadeDurationDimming = 4;
+            float fadeDurationUi = 2.5f;
+
             _gameoverPopup.SetActive(true);
 
             _gameoverPopup.transform.Find("Dimming").gameObject.GetOrAddComponent<Image>()
-                .DOFade(180f/255f, 4);
-            yield return new WaitForSeconds(4);
+                .DOFade(180f/255f, fadeDurationDimming);
+            yield return new WaitForSeconds(fadeDurationDimming);
             _gameoverPopup.transform.Find("UI").gameObject.GetOrAddComponent<CanvasGroup>()
-                .DOFade(1, 2.5f);
+                .DOFade(1, fadeDurationUi);
         }
 
         public void ClickRetry()
