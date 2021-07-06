@@ -23,9 +23,8 @@ MonoBehaviour:
     EFFECT_RANGE: 0
     EFFECT_DEF: 0
     EFFECT_MAX_HEALTH: 0
-<<<<<<< Updated upstream
-    EFFECT_HEALTH: 0
-    EFFECT_HUNGRY: 0
+    EFFECT_HEALTH: 5
+    EFFECT_HUNGRY: -5
   DressableStat:
     MoveSpeed: 0
     AttackSpeed: 0
@@ -35,14 +34,10 @@ MonoBehaviour:
     EFFECT_MAX_HEALTH: 0
     EFFECT_HEALTH: 0
     EFFECT_HUNGRY: 0
-    DRESSABLE_Parts: 3
+    DRESSABLE_Parts: 0
     DRESSABLE_ATK: 0
     DRESSABLE_RANGE: 0
     DRESSABLE_DEF: 0
     DRESSABLE_MAX_HEALTH: 0
     DRESSABLE_HEALTH: 0
     DRESSABLE_HUNGRY: 0
-=======
-    EFFECT_HEALTH: 10
-    EFFECT_HUNGRY: 10
->>>>>>> Stashed changes
