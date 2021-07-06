@@ -18,7 +18,7 @@ MonoBehaviour:
   combinationNodes:
   - Name: "\uB0A0\uC0DD\uC120"
     Count: 1
-    combinationNode: {fileID: 11400000, guid: 870030793a2dca44cac30e05b9229ce7, type: 2}
+    combinationNode: {fileID: 11400000, guid: 4e28a7efea3931c458735260064b2cb0, type: 2}
   - Name: "\uBD88"
     Count: 1
     combinationNode: {fileID: 11400000, guid: c99774da43add114d96778ccd7a97237, type: 2}
@@ -29,8 +29,8 @@ MonoBehaviour:
     EFFECT_RANGE: 0
     EFFECT_DEF: 0
     EFFECT_MAX_HEALTH: 0
-    EFFECT_HEALTH: 0
-    EFFECT_HUNGRY: 0
+    EFFECT_HEALTH: 40
+    EFFECT_HUNGRY: 60
   DressableStat:
     MoveSpeed: 0
     AttackSpeed: 0

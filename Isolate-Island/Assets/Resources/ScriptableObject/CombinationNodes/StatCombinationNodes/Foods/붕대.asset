@@ -17,7 +17,7 @@ MonoBehaviour:
   combinationNodes:
   - Name: "\uC57D\uCD08"
     Count: 1
-    combinationNode: {fileID: 11400000, guid: 7e55524ee8432684aa3563cb8b5453ec, type: 2}
+    combinationNode: {fileID: 0}
   - Name: "\uCC9C"
     Count: 1
     combinationNode: {fileID: 11400000, guid: ac4c171c6ec2da04384cec3eaa041a8d, type: 2}
