@@ -7,11 +7,24 @@ namespace IsolateIsland.Runtime.Light
 {
     public class DayNightConfigurator : MonoBehaviour
     {
-        [SerializeField] Light2D globalLight;
+        [SerializeField] Light2D _globalLight;
         // Start is called before the first frame update
         void Start()
         {
-            //Managers.Managers.Instance.GameManager.isDay;
+            Managers.Managers.Instance.Coroutine.RegisterRoutine(Updater());
+        }
+
+        IEnumerator Updater()
+        {
+            while (gameObject.activeInHierarchy)
+            {
+                if (Managers.Managers.Instance.GameManager.isDay)
+                    _globalLight.intensity = 1.0f;
+                if (!Managers.Managers.Instance.GameManager.isDay)
+                    _globalLight.intensity = 0.3f;
+                
+                yield return null;
+            }
         }
     }
 }
