@@ -9,24 +9,24 @@ namespace IsolateIsland.Runtime.Ai
     public class EnemyAI : MonoBehaviour
     {
         #region Root
-        Selector root = new Selector();
+        protected Selector root = new Selector();
 
-        Selector behavior = new Selector();
-        BTCondition dead = new BTCondition();
+        protected Selector behavior = new Selector();
+        protected BTCondition dead = new BTCondition();
 
-        Selector patrol = new Selector();
-        Selector trace = new Selector();
-        BTCondition attack = new BTCondition();
+        protected Selector patrol = new Selector();
+        protected Selector trace = new Selector();
+        protected BTCondition attack = new BTCondition();
 
-        Selector noise = new Selector();
-        BTCondition track = new BTCondition();
+        protected Selector noise = new Selector();
+        protected BTCondition track = new BTCondition();
         // note: 공격 당했을 때 추적하는 행동 추가
 
-        BTAction chaseNoise = new BTAction();
-        BTCondition checkNoise = new BTCondition();
+        protected BTAction chaseNoise = new BTAction();
+        protected BTCondition checkNoise = new BTCondition();
 
-        BTCondition move = new BTCondition();
-        BTCondition makePos = new BTCondition();
+        protected BTCondition move = new BTCondition();
+        protected BTCondition makePos = new BTCondition();
         #endregion
 
         private Transform _targetTrans;
@@ -73,7 +73,7 @@ namespace IsolateIsland.Runtime.Ai
             hp = enemyData.hp;
         }
 
-        void Init()
+        protected virtual void Init()
         {
             InitBT();
 
@@ -117,7 +117,7 @@ namespace IsolateIsland.Runtime.Ai
             makePos.action = MakePos;
         }
 
-        void Update()
+        protected virtual void Update()
         {
             root.OnUpdate();
             //Debug.Log("루트!");
