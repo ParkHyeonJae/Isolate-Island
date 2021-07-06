@@ -12,9 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eacc0f2f92685c9449731fbe00cd73ea, type: 3}
   m_Name: "\uC2A4\uD29C"
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  description: 
-  combinationNodes: []
+  sprite: {fileID: 21300000, guid: e85f6c30fe98441449cc3ae4c9151df9, type: 3}
+  description: "\uACE0\uC18C\uD55C \uD5A5\uC774 \uC62C\uB77C\uC624\uB294\uAC8C \uAD70\uCE68\uC774
+    \uB3C8\uB2E4."
+  combinationNodes:
+  - Name: "\uC0D0\uB7EC\uB4DC"
+    Count: 1
+    combinationNode: {fileID: 11400000, guid: 05f56396f631b3b40a3e69f19dabd641, type: 2}
+  - Name: "\uC0DD\uC218"
+    Count: 1
+    combinationNode: {fileID: 11400000, guid: ea983f4cfcd56ad46bb0b7df9b61e999, type: 2}
   Stat:
     MoveSpeed: 0
     AttackSpeed: 0
