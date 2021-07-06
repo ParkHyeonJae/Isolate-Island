@@ -17,10 +17,10 @@ MonoBehaviour:
   combinationNodes:
   - Name: "\uBC84\uC12F"
     Count: 1
-    combinationNode: {fileID: 11400000, guid: b1dff4a2354f91e47a6f7072a934f92d, type: 2}
+    combinationNode: {fileID: 11400000, guid: 1cd74c447c7d9f145b68d96aae2bdd11, type: 2}
   - Name: "\uC0DD\uC218"
     Count: 1
-    combinationNode: {fileID: 11400000, guid: ea983f4cfcd56ad46bb0b7df9b61e999, type: 2}
+    combinationNode: {fileID: 11400000, guid: 6cab2d6b519549840a8778006af41dc1, type: 2}
   Stat:
     MoveSpeed: 0
     AttackSpeed: 0
@@ -28,9 +28,8 @@ MonoBehaviour:
     EFFECT_RANGE: 0
     EFFECT_DEF: 0
     EFFECT_MAX_HEALTH: 0
-<<<<<<< Updated upstream
-    EFFECT_HEALTH: 0
-    EFFECT_HUNGRY: 0
+    EFFECT_HEALTH: 30
+    EFFECT_HUNGRY: 30
   DressableStat:
     MoveSpeed: 0
     AttackSpeed: 0
@@ -40,14 +39,10 @@ MonoBehaviour:
     EFFECT_MAX_HEALTH: 0
     EFFECT_HEALTH: 0
     EFFECT_HUNGRY: 0
-    DRESSABLE_Parts: 3
+    DRESSABLE_Parts: 0
     DRESSABLE_ATK: 0
     DRESSABLE_RANGE: 0
     DRESSABLE_DEF: 0
     DRESSABLE_MAX_HEALTH: 0
     DRESSABLE_HEALTH: 0
     DRESSABLE_HUNGRY: 0
-=======
-    EFFECT_HEALTH: 30
-    EFFECT_HUNGRY: 30
->>>>>>> Stashed changes

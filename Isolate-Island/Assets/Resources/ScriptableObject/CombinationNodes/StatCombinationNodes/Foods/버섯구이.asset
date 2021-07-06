@@ -15,13 +15,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 53ddcc25805bf1246867bdf6b3da8c27, type: 3}
   description: "\uBC84\uC12F\uC744 \uBD88\uC5D0 \uAD6C\uC6CC\uBA39\uC73C\uBA74 \uC0DD\uAC01\uBCF4\uB2E4
     \uB9DB\uC788\uB2E4."
-  combinationNodes:
-  - Name: "\uBC84\uC12F"
-    Count: 1
-    combinationNode: {fileID: 11400000, guid: b1dff4a2354f91e47a6f7072a934f92d, type: 2}
-  - Name: "\uBD88"
-    Count: 1
-    combinationNode: {fileID: 11400000, guid: c99774da43add114d96778ccd7a97237, type: 2}
+  combinationNodes: []
   Stat:
     MoveSpeed: 0
     AttackSpeed: 0
@@ -29,9 +23,8 @@ MonoBehaviour:
     EFFECT_RANGE: 0
     EFFECT_DEF: 0
     EFFECT_MAX_HEALTH: 0
-<<<<<<< Updated upstream
-    EFFECT_HEALTH: 0
-    EFFECT_HUNGRY: 0
+    EFFECT_HEALTH: 20
+    EFFECT_HUNGRY: 50
   DressableStat:
     MoveSpeed: 0
     AttackSpeed: 0
@@ -41,14 +34,10 @@ MonoBehaviour:
     EFFECT_MAX_HEALTH: 0
     EFFECT_HEALTH: 0
     EFFECT_HUNGRY: 0
-    DRESSABLE_Parts: 3
+    DRESSABLE_Parts: 0
     DRESSABLE_ATK: 0
     DRESSABLE_RANGE: 0
     DRESSABLE_DEF: 0
     DRESSABLE_MAX_HEALTH: 0
     DRESSABLE_HEALTH: 0
     DRESSABLE_HUNGRY: 0
-=======
-    EFFECT_HEALTH: 20
-    EFFECT_HUNGRY: 50
->>>>>>> Stashed changes
