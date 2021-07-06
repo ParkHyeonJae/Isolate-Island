@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using AI.BT;
+using DG.Tweening;
 
 namespace IsolateIsland.Runtime.Ai
 {
@@ -37,16 +38,35 @@ namespace IsolateIsland.Runtime.Ai
 
         public EnemyData enemyData;
 
+        private int _hp;
+        public int hp { get { return _hp; } set { _hp = value; } }
+
+        [SerializeField] protected Animator animator;
+        public Animator Animator
+        {
+            get
+            {
+                if (animator == null)
+                    animator = GetComponent<Animator>();
+
+                return animator;
+            }
+        }
 
         void Start() => Init();
 
-        void OnEnable() => _movePos = transform.position;
+        void OnEnable() 
+        {
+            _movePos = transform.position;
+            hp = enemyData.hp;
+        }
 
         void Init()
         {
             InitBT();
 
             _movePos = transform.position;
+            hp = enemyData.hp;
 
             _targetTrans = GameObject.FindGameObjectWithTag("Player").transform;
         }
@@ -93,17 +113,30 @@ namespace IsolateIsland.Runtime.Ai
 
         bool Dead()
         {
-            if (enemyData.hp <= 0)
+            if (hp <= 0)
             {
-                Debug.Log("죽음~");
-                gameObject.SetActive(false);
+                animator.Play("Dead");
+                Invoke("Destroy", 3);
                 return true;
             }
             else
                 return false;
         }
 
-        bool Attack()
+        void Destroy()
+        {
+            SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+
+            sprite.DOFade(0, 1)
+                .OnComplete(() =>
+                { 
+                    gameObject.SetActive(false);
+                    sprite.DOFade(1, 0.1f)
+                    .OnComplete(() => Managers.Managers.Instance.Pool.Destroy(gameObject));
+                });
+        }
+
+        protected virtual bool Attack()
         {
             float dist = Vector3.Distance(transform.position, _targetTrans.position);
 
@@ -128,7 +161,7 @@ namespace IsolateIsland.Runtime.Ai
             _isAttackCooltime = false;
         }
 
-        bool Track()
+        protected virtual bool Track()
         {
             float dist = Vector2.Distance(transform.position, _targetTrans.position);
 
@@ -191,7 +224,7 @@ namespace IsolateIsland.Runtime.Ai
                 return false;
         }
 
-        bool Move()
+        protected virtual bool Move()
         {
             float dist = Vector3.Distance(transform.position, _movePos);
 

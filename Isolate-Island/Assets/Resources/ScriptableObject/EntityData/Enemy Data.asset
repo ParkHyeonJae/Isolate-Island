@@ -15,9 +15,9 @@ MonoBehaviour:
   _hp: 10
   _moveSpeed: 5
   _attackDamage: 10
-  _moveRange: 5
-  _trackRange: 3
-  _attackRange: 1.5
+  _moveRange: 30
+  _trackRange: 10
+  _attackRange: 5
   _makePosCooltime: 5
   _attackDelay: 1
   _revengeDuration: 5

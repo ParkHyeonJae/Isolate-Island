@@ -7,8 +7,8 @@ namespace IsolateIsland.Runtime.Ai
     {
         [Header("Enemy Status")]
         [Tooltip("체력")]
-        [SerializeField] private float _hp;
-        public float hp { get => _hp; set => _hp = value; }
+        [SerializeField] private int _hp;
+        public int hp { get => _hp; set => _hp = value; }
 
         [Tooltip("이동속도")]
         [SerializeField] float _moveSpeed;
