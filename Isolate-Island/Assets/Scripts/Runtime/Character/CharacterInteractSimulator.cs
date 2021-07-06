@@ -8,6 +8,7 @@ namespace IsolateIsland.Runtime.Character
     public class CharacterInteractSimulator
     {
         private Animator _animator;
+        private Entity _entity;
         public CharacterInteractSimulator(Animator animator)
         {
             _animator = animator;
@@ -20,19 +21,19 @@ namespace IsolateIsland.Runtime.Character
             Managers.Managers.Instance.Input.OnMouseAction += Input_OnAttackMouseAction;
             Managers.Managers.Instance.Event.GetListener<Event.OnDetectCasterEvent>().Subscribe((entity, isInteractable) =>
             {
+                _entity = entity;
                 switch (isInteractable)
                 {
                     // Interact
                     case true when entity is InteractableEntity:
                         Managers.Managers.Instance.Input.OnMouseAction -= Input_OnAttackMouseAction;
-                        Managers.Managers.Instance.Input.OnMouseAction += (evt) => Input_OnInteractMouseAction(evt, entity);
-                        Managers.Managers.Instance.Event.GetListener<Event.OnInteractCasterEvent>()?.Invoke(entity);
+                        Managers.Managers.Instance.Input.OnMouseAction += Input_OnInteractMouseAction;
                         break;
 
                     // Attack
                     case false:
                         Managers.Managers.Instance.Input.OnMouseAction += Input_OnAttackMouseAction;
-                        Managers.Managers.Instance.Input.OnMouseAction -= (evt) => Input_OnInteractMouseAction(evt, entity);
+                        Managers.Managers.Instance.Input.OnMouseAction -= Input_OnInteractMouseAction;
                         break;
                 }
             });
@@ -49,9 +50,13 @@ namespace IsolateIsland.Runtime.Character
             _animator.Play(key);
         }
 
-        private void Input_OnInteractMouseAction(Utils.Defines.MouseEvent evt, Entity entity)
+        private void Input_OnInteractMouseAction(Utils.Defines.MouseEvent evt)
         {
             //Debug.Log("Interact !");
+            if (evt == Utils.Defines.MouseEvent.Click)
+            {
+                Managers.Managers.Instance.Event.GetListener<Event.OnInteractCasterEvent>()?.Invoke(_entity);
+            }
         }
 
         public void Simulate()
