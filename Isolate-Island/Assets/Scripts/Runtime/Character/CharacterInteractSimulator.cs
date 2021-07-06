@@ -23,7 +23,6 @@ namespace IsolateIsland.Runtime.Character
         {
             
             _animator.Play("Attack");
-            Managers.Managers.Instance.statManager.ReducePlayerHp(100);
         }
 
         public void Simulate()
