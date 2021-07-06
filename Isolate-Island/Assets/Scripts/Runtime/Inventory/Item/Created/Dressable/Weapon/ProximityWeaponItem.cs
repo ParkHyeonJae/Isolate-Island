@@ -10,7 +10,7 @@ namespace IsolateIsland.Runtime.Inventory
         {
             base.Initalize();
 
-            GetAttackAnimKey = "Attack";
+            GetAttackAnimKey = Utils.Defines.AnimationKeys.DefaultAttackAnimationKey;
         }
     }
 }

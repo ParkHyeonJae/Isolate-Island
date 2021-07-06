@@ -10,6 +10,15 @@ namespace IsolateIsland.Runtime.Event
     public sealed class DressableEventListener : GenericEventListener<EDressableState, DressableItem> { }
     public sealed class OnClickConfigButtonEventListener : GenericEventListener<EDressableState> { }
 
+    /// <summary>
+    /// 플레이어에게 적용되어 있는 캐스팅 콜라이더가 감지되었을 때 발생하는 이벤트
+    /// </summary>
+    public sealed class OnDetectCasterEvent : GenericEventListener<Entity /*Target Entity*/, bool /*IsInteractable*/> { }
+    /// <summary>
+    /// 플레이어랑 캐스팅 가능한 물체하고 상호작용을 했을 시 발생하는 이벤트
+    /// </summary>
+    public sealed class OnInteractCasterEvent : GenericEventListener<Entity> { }
+
     public abstract class InteractEvent : EventListener
     {
         public abstract void OnInteract();

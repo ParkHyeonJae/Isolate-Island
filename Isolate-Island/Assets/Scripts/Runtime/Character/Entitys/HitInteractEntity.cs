@@ -4,12 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace IsolateIsland.Runtime.Interact
+namespace IsolateIsland.Runtime.Character
 {
-    public class InteractDummy : Entity
+    public class HitInteractEntity : Entity
     {
-        private void Awake()
-
+        public override void Initalize()
         {
             Managers.Managers.Instance.Event.GetListener<HitInteractEvent>().Subscribe((entity) =>
             {
@@ -21,9 +20,14 @@ namespace IsolateIsland.Runtime.Interact
             });
         }
 
+        /// <summary>
+        /// 타격했을 때 발생하는 함수
+        /// </summary>
+        /// <param name="entity">타격 받은 엔티티</param>
         protected virtual void OnInteractHitEvent(Entity entity)
         {
 
         }
+
     }
 }

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -7986936784660217929}
   m_Layer: 0
   m_Name: InteractableEnemy
-  m_TagString: Untagged
+  m_TagString: Entity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -184,7 +184,6 @@ MonoBehaviour:
     _moveSpeed: 2
     _attackDamage: 10
   _targetTrans: {fileID: 0}
-  _movePos: {x: 0, y: 0, z: 0}
 --- !u!114 &-7986936784660217929
 MonoBehaviour:
   m_ObjectHideFlags: 0

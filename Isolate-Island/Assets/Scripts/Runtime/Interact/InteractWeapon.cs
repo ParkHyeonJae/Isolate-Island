@@ -10,8 +10,11 @@ namespace IsolateIsland.Runtime.Interact
     {
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            Entity entity;
-            if (!collision.TryGetComponent<Entity>(out entity))
+            if (!collision.CompareTag(Utils.Defines.Tags.TAG_ENTITY))
+                return;
+
+            HitInteractEntity entity;
+            if (!collision.TryGetComponent<HitInteractEntity>(out entity))
                 return;
 
             Managers.Managers.Instance.Event.GetListener<HitInteractEvent>().Invoke(entity);
