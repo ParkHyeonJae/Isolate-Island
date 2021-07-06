@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using IsolateIsland.Runtime.Interact;
+using UnityEngine;
 
 namespace IsolateIsland.Runtime.Character
 {
-    public class CharacterController : Entity
+    public class CharacterController : HitInteractEntity
     {
         [Range(0, 50)]
         [Tooltip("캐릭터 이동 속도")]

@@ -40,7 +40,12 @@ namespace IsolateIsland.Runtime.Managers
 
             CraftingTable.Add(Key, value);
         }
-
+        public CombinationNode GetCombinationNode(string name)
+        {
+            if (!CraftingTable.ContainsKey(name))
+                return default(CombinationNode);
+            return CraftingTable[name];
+        }
         public CombinationNode[] GetCombinationList() => CraftingTable.Values.ToArray();
 
     }

@@ -37,6 +37,8 @@ namespace IsolateIsland.Runtime.Inventory
 
         public ItemBuilder AddShadowCaster2D()
         {
+            if (_itemObject is null)
+                _itemObject = new GameObject();
             _itemObject.GetOrAddComponent<ShadowCaster2D>();
             return this;
         }
@@ -47,9 +49,9 @@ namespace IsolateIsland.Runtime.Inventory
                 _itemObject = new GameObject();
             if (_itemBase is null)
                 _itemBase = _itemObject.GetOrAddComponent<ItemBase>();
-            
 
 
+            _itemObject.transform.SetParent(Managers.Managers.Instance.DI.Get(Defines.Load_Object.ItemParent)?.transform);
             _itemObject.SetActive(false);
             
             if (!_combinationNode)

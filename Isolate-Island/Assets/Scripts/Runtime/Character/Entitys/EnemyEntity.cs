@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace IsolateIsland.Runtime.Interact
 {
-    public class InteractEnemy : InteractDummy
+    public class EnemyEntity : HitInteractEntity
     {
         private AITest _aI = null;
         public AITest AI => _aI = _aI ?? GetComponent<AITest>();
