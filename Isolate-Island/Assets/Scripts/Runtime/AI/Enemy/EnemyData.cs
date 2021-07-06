@@ -12,7 +12,7 @@ namespace IsolateIsland.Runtime.Ai
 
         [Tooltip("이동속도")]
         [SerializeField] float _moveSpeed;
-        public float moveSpeed { get => _moveSpeed; }
+        public float moveSpeed { get => Managers.Managers.Instance.GameManager.isDay ? _moveSpeed : _moveSpeed * 0.5f; }
 
         [Tooltip("공격시 데미지")]
         [SerializeField] int _attackDamage;
@@ -23,11 +23,11 @@ namespace IsolateIsland.Runtime.Ai
         [Space(20)]
         [Tooltip("탐색 범위")]
         [SerializeField] float _moveRange;
-        public float moveRange { get => _moveRange; }
+        public float moveRange { get => Managers.Managers.Instance.GameManager.isDay ? _moveRange : _moveRange * 0.7f; }
 
         [Tooltip("플레이어를 발견하였을시 추격 범위")]
         [SerializeField] float _trackRange;
-        public float trackRange { get => _trackRange; }
+        public float trackRange { get => Managers.Managers.Instance.GameManager.isDay ? _trackRange : _trackRange * 0.7f; }
 
         [Tooltip("플레이어에게의 공격 범위")]
         [SerializeField] float _attackRange;

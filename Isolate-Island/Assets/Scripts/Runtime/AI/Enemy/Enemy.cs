@@ -35,6 +35,7 @@ namespace IsolateIsland.Runtime.Ai
             return base.Track();
         }
 
+
         // Invoke by Animation Event Trigger
         public void OnEnterAttack()
         {
