@@ -23,8 +23,22 @@ namespace IsolateIsland.Runtime.Character
 
         private BoxCollider2D _dressableWeaponCollider;
         public BoxCollider2D dressableWeaponCollider
-            => _dressableWeaponCollider = _dressableWeaponCollider ?? Managers.Managers
-            .Instance.Inventory.Dressable.GetParts(Stat.EParts.PARTS_LEFT_HAND).GetComponent<BoxCollider2D>();
+        {
+            get
+            {
+                if (_dressableWeaponCollider is null)
+                    _dressableWeaponCollider = Managers.Managers
+                        .Instance.Inventory.Dressable.GetParts(Stat.EParts.PARTS_LEFT_HAND)?.GetComponent<BoxCollider2D>();
+
+                if (_dressableWeaponCollider is null)
+                {
+                    _dressableWeaponCollider = Managers.Managers
+                        .Instance.Inventory.Dressable.GetParts<CharacterDressablePartsSetter>(Stat.EParts.PARTS_LEFT_HAND)?.GetComponent<BoxCollider2D>();
+                    _dressableWeaponCollider.size = Vector2.one;
+                }
+                return _dressableWeaponCollider;
+            }
+        }
 
         private CharacterInteractSimulator characterInteractSimulator;
 
@@ -51,13 +65,14 @@ namespace IsolateIsland.Runtime.Character
 
             var renderer = weaponRenderer;
             var collider = weaponCollider;
+            collider.size = dressableWeaponCollider.size;
+            collider.enabled = true;
 
             if (renderer.sprite is null)
                 return;
 
             var sprite = renderer.sprite;
-            collider.size = dressableWeaponCollider.size;
-            collider.enabled = true;
+            
 
             rigidBody.AddForce(characterAnimController.MoveNormalDir * 20f, ForceMode2D.Impulse);
         }

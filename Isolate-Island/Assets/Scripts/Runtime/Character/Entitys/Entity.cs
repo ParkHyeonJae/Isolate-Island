@@ -12,6 +12,14 @@ namespace IsolateIsland.Runtime.Character
         public Rigidbody2D GetRigidBody2D => _rigidbody2D ?? GetComponent<Rigidbody2D>();
         public Sprite sprite => spriteRenderer.sprite;
 
+        private Animator _animator;
+        public Animator animator
+            => _animator = _animator ?? gameObject.GetOrAddComponent<Animator>();
+
+        private Animation _animation;
+        public Animation GetAnimation
+            => _animation = _animation ?? gameObject.GetOrAddComponent<Animation>();
+
         private void Awake() => Initalize();
 
         /// <summary>

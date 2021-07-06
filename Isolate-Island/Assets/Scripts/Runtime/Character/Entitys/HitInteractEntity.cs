@@ -10,11 +10,11 @@ namespace IsolateIsland.Runtime.Character
     {
         public override void Initalize()
         {
-            Managers.Managers.Instance.Event.GetListener<HitInteractEvent>().Subscribe((entity) =>
+            Managers.Managers.Instance.Event.GetListener<OnHitInteractEvent>().Subscribe((entity) =>
             {
                 if (entity == this)
                 {
-                    Managers.Managers.Instance.Event.GetListener<HitInteractEvent>().OnInteract(entity);
+                    Managers.Managers.Instance.Event.GetListener<OnHitInteractEvent>().OnInteract(entity);
                     OnInteractHitEvent(entity);
                 }
             });

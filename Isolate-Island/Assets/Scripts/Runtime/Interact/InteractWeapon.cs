@@ -17,7 +17,7 @@ namespace IsolateIsland.Runtime.Interact
             if (!collision.TryGetComponent<HitInteractEntity>(out entity))
                 return;
 
-            Managers.Managers.Instance.Event.GetListener<HitInteractEvent>().Invoke(entity);
+            Managers.Managers.Instance.Event.GetListener<OnHitInteractEvent>().Invoke(entity);
         }
     }
 }

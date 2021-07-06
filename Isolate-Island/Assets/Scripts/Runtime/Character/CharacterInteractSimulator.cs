@@ -26,13 +26,13 @@ namespace IsolateIsland.Runtime.Character
                 {
                     // Interact
                     case true when entity is InteractableEntity:
-                        Managers.Managers.Instance.Input.OnMouseAction -= Input_OnAttackMouseAction;
+                        //Managers.Managers.Instance.Input.OnMouseAction += Input_OnAttackMouseAction;
                         Managers.Managers.Instance.Input.OnMouseAction += Input_OnInteractMouseAction;
                         break;
 
                     // Attack
                     case false:
-                        Managers.Managers.Instance.Input.OnMouseAction += Input_OnAttackMouseAction;
+                        //Managers.Managers.Instance.Input.OnMouseAction += Input_OnAttackMouseAction;
                         Managers.Managers.Instance.Input.OnMouseAction -= Input_OnInteractMouseAction;
                         break;
                 }

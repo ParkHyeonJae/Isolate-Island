@@ -18,7 +18,8 @@ namespace IsolateIsland.Runtime.Utils
         {
             Player,
             돌맹이,
-            Item_List
+            Item_List,
+            ItemParent
         }
         #endregion LOAD
 
