@@ -74,7 +74,7 @@ namespace IsolateIsland.Runtime.Character
             var sprite = renderer.sprite;
             
 
-            rigidBody.AddForce(characterAnimController.MoveNormalDir * 20f, ForceMode2D.Impulse);
+            //rigidBody.AddForce(characterAnimController.MoveNormalDir * 20f, ForceMode2D.Impulse);
         }
 
         // Invoke by Animation Event Trigger
@@ -85,7 +85,7 @@ namespace IsolateIsland.Runtime.Character
             var collider = weaponCollider;
 
             collider.enabled = false;
-            rigidBody.velocity = Vector2.zero;
+            //rigidBody.velocity = Vector2.zero;
         }
     }
 }
