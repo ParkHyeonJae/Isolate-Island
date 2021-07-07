@@ -22,7 +22,6 @@ namespace IsolateIsland.Runtime.Light
                 //{
                 //    _globalLight.intensity = Managers.Managers.Instance.GameManager.flowDayTime;
                 //}
-                _globalLight.intensity = Managers.Managers.Instance.GameManager.flowDayTime;
 
                 if (Managers.Managers.Instance.GameManager.isDay)
                     _globalLight.intensity = 1.0f;

@@ -25,7 +25,6 @@ namespace IsolateIsland.Runtime.Managers
             if (flowDayTime <= 0)
             {
                 ChangeDay();
-                flowDayTime = 1;
             }
         }
 
