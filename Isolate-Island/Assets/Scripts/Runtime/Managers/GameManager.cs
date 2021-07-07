@@ -22,6 +22,11 @@ namespace IsolateIsland.Runtime.Managers
         public void OnUpdate()
         {
             flowDayTime -= Time.deltaTime / _timeCycle;
+            if (flowDayTime <= 0)
+            {
+                ChangeDay();
+                flowDayTime = 1;
+            }
         }
 
         public void ChangeDay()

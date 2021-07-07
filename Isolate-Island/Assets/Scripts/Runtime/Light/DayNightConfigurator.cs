@@ -18,11 +18,17 @@ namespace IsolateIsland.Runtime.Light
         {
             while (gameObject.activeInHierarchy)
             {
+                //if (Managers.Managers.Instance.GameManager.flowDayTime >= 0)
+                //{
+                //    _globalLight.intensity = Managers.Managers.Instance.GameManager.flowDayTime;
+                //}
+                _globalLight.intensity = Managers.Managers.Instance.GameManager.flowDayTime;
+
                 if (Managers.Managers.Instance.GameManager.isDay)
                     _globalLight.intensity = 1.0f;
                 if (!Managers.Managers.Instance.GameManager.isDay)
                     _globalLight.intensity = 0.3f;
-                
+
                 yield return null;
             }
         }
