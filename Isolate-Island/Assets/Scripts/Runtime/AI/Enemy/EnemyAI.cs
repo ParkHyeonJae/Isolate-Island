@@ -148,6 +148,11 @@ namespace IsolateIsland.Runtime.Ai
                 });
         }
 
+        public virtual void ReduceHp(int value)
+        {
+            hp -= value;
+        }
+
         protected virtual bool Attack()
         {
             float dist = Vector3.Distance(transform.position, _targetTrans.position);
