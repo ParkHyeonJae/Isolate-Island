@@ -52,7 +52,5 @@ namespace IsolateIsland.Runtime.Ai
         [Tooltip("깨어난 후, 다시 수면상태가 될 때까지 걸리는 시간")]
         [SerializeField] float _sleepingCooltime;
         public float sleepingCooltime { get => _sleepingCooltime; }
-
-        public bool isDayOrNight { get => Managers.Managers.Instance.GameManager.isDay; }
     }
 }
