@@ -34,6 +34,8 @@ namespace IsolateIsland.Runtime.Inventory
                 Drop(parts);
 
             Managers.Managers.Instance.Inventory.Dressable.AddItem(item);
+
+            dressable.OnEnterDressable();
         }
 
         internal override void Drop<T>(in T item)
@@ -60,6 +62,12 @@ namespace IsolateIsland.Runtime.Inventory
             
             var config = Managers.Managers.Instance.DI.Get<UI_InventoryAttributeConfigurator>();
             config.SetAttribute();
+            var dressable = item as DressableItem;
+
+            if (dressable is null)
+                return;
+
+            dressable.OnExitDressable();
         }
 
         internal bool HasUseInDressable_GameInventroy<T>(in T item) where T : ItemBase

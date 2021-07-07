@@ -66,5 +66,16 @@ namespace IsolateIsland.Runtime.Inventory
             }
             return sb.ToString();
         }
+
+
+        public virtual void OnEnterDressable()
+        {
+        }
+
+
+        public virtual void OnExitDressable()
+        {
+        }
+
     }
 }
