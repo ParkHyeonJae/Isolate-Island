@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using IsolateIsland.Runtime.Event;
 
 namespace IsolateIsland.Runtime.Character
 {
@@ -22,6 +23,7 @@ namespace IsolateIsland.Runtime.Character
         public override void Init()
         {
             base.Init();
+            Managers.Managers.Instance.Event.GetListener<OnGameoverEvent>().Subscribe(() => Dead());
         }
 
         protected override void OnUpdate()
@@ -43,6 +45,12 @@ namespace IsolateIsland.Runtime.Character
 
             Animator.SetBool("isRun", true);
 
+        }
+
+        public void Dead()
+        {
+            animator.Play("Dead");
+            Managers.Managers.Instance.statManager.UserStat.MoveSpeed = 0;
         }
     }
 }

@@ -30,6 +30,8 @@ namespace IsolateIsland.Runtime.Inventory
             internal GameObject obj_use;
             internal GameObject obj_drop;
 
+            internal Vector3 startPos_use;
+            internal Vector3 startPos_drop;
 
             internal Image item_image;
             internal Text item_nameText;
@@ -129,13 +131,48 @@ namespace IsolateIsland.Runtime.Inventory
                     use = stat_use;
                     drop = stat_drop;
                     break;
-                case DressableItem _:
-                    use = dressable_use;
-                    drop = dressable_drop;
+                case DressableItem i:
+                    if (i.DressableCombinationNode.Stat.IsConsumable)
+                    {
+                        use = stat_use;
+                        drop = stat_drop;
+                    }
+                    else
+                    {
+                        use = dressable_use;
+                        drop = dressable_drop;
+                    }
                     break;
                 default:
                     use = stat_use;
                     drop = stat_drop;
+                    break;
+            }
+        }
+
+        internal virtual void SetGUIButton(ItemBase item)
+        {
+            switch (item)
+            {
+                case StatItem _:
+                    attributeForm.obj_use.SetActive(true);
+                    attributeForm.obj_drop.SetActive(true);
+
+                    attributeForm.obj_use.transform.position = attributeForm.startPos_use;
+                    attributeForm.obj_drop.transform.position = attributeForm.startPos_drop;
+                    break;
+                case DressableItem _:
+                    attributeForm.obj_use.SetActive(true);
+                    attributeForm.obj_drop.SetActive(true);
+
+                    attributeForm.obj_use.transform.position = attributeForm.startPos_use;
+                    attributeForm.obj_drop.transform.position = attributeForm.startPos_drop;
+                    break;
+                default:
+                    attributeForm.obj_use.SetActive(false);
+                    attributeForm.obj_drop.SetActive(true);
+
+                    attributeForm.obj_drop.transform.position = attributeForm.obj_use.transform.position;
                     break;
             }
         }
@@ -152,7 +189,7 @@ namespace IsolateIsland.Runtime.Inventory
 
             string use = string.Empty, drop = string.Empty;
             SetGUIText(item, out use, out drop);
-
+            SetGUIButton(item);
 
             SetUseText(use);
             SetDropText(drop);
@@ -162,10 +199,20 @@ namespace IsolateIsland.Runtime.Inventory
             _selectItem = item;
 
             attributeForm.obj_making.SetActive(true);
+            var dressableContainCheck = Managers.Managers.Instance.Inventory.Dressable.IsContain(_selectItem);
+            var gameContainCheck = Managers.Managers.Instance.Inventory.Game.IsContain(_selectItem);
 
+            var dressableCount = Managers.Managers.Instance.Inventory.Dressable.GetItemCount(_selectItem);
+            var gameContainCount = Managers.Managers.Instance.Inventory.Game.GetItemCount(_selectItem);
 
+            var count = dressableContainCheck
+                ? dressableCount
+                : gameContainCount;
+
+            if (dressableContainCheck && gameContainCheck)
+                count = dressableCount + gameContainCount;
             attributeForm.item_image.sprite = item.CombinationNode.sprite;
-            attributeForm.item_nameText.text = item.CombinationNode.name + " +" + Managers.Managers.Instance.Inventory.Game.GetItemCount(item);
+            attributeForm.item_nameText.text = item.CombinationNode.name + " +" + count;
             attributeForm.item_descriptionText.text = item.CombinationNode.description;
 
 
@@ -180,8 +227,6 @@ namespace IsolateIsland.Runtime.Inventory
 
             var itemApplyer = GetTypeToReturnApplyerFactory(selectItem);
             itemApplyer.Use(selectItem);
-
-
         }
 
         protected virtual void Button_OnDrop()
@@ -203,6 +248,8 @@ namespace IsolateIsland.Runtime.Inventory
             attributeForm.obj_use = Managers.Managers.Instance.DI.Get(AttributeForm.Load_Making.Item_Use);
             attributeForm.obj_drop = Managers.Managers.Instance.DI.Get(AttributeForm.Load_Making.Item_Drop);
 
+            attributeForm.startPos_use = attributeForm.obj_use.transform.position;
+            attributeForm.startPos_drop = attributeForm.obj_drop.transform.position;
 
             // Caching Components
 
@@ -225,7 +272,13 @@ namespace IsolateIsland.Runtime.Inventory
             attributeForm.item_dropButton.onClick.RemoveAllListeners();
 
             attributeForm.item_useButton.onClick.AddListener(Button_OnUse);
+            attributeForm.item_useButton.onClick.AddListener(() => 
+                Managers.Managers.Instance.Event.GetListener<OnClickConfigButtonEventListener>()
+                    .Invoke(Defines.EDressableState.Use));
             attributeForm.item_dropButton.onClick.AddListener(Button_OnDrop);
+            attributeForm.item_dropButton.onClick.AddListener(() =>
+                Managers.Managers.Instance.Event.GetListener<OnClickConfigButtonEventListener>()
+                    .Invoke(Defines.EDressableState.Drop));
         }
     }
 }

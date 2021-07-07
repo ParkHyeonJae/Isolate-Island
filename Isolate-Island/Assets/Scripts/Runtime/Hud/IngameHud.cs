@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 using IsolateIsland.Runtime.Stat;
+using IsolateIsland.Runtime.Event;
 using PlayerPrefs = IsolateIsland.Runtime.Managers.PlayerPrefs;
+using Manager = IsolateIsland.Runtime.Managers.Managers;
 
 namespace IsolateIsland.Runtime.Hud
 {
-    public class Gauge : MonoBehaviour
+    public class Gauge
     {
         private Image _fillImage;
         private float _min, _max;
@@ -18,6 +21,14 @@ namespace IsolateIsland.Runtime.Hud
             _fillImage = fillImage;
             _max = max;
             _min = min;
+            SetCurrnetFillAmount(curValue);
+        }
+
+        public Gauge(Image fillImage, float curValue = 0)
+        {
+            _fillImage = fillImage;
+            _max = 1;
+            _min = 0;
             SetCurrnetFillAmount(curValue);
         }
 
@@ -51,10 +62,14 @@ namespace IsolateIsland.Runtime.Hud
         private Stat.Stat _playerStat;
         private Gauge _hpGauge;
         private Gauge _hungerGauge;
+        private Gauge _timeDayGauge;
+        private Gauge _timeNightGauge;
 
         [Header("Gauge")]
         [SerializeField] private Image _hpGaugeImage;
         [SerializeField] private Image _hungerGaugeImage;
+        [SerializeField] private Image _timeDayGaugeImage;
+        [SerializeField] private Image _timeNightGaugeImage;
 
         [Header("Popup")]
         [SerializeField] private GameObject _pausePopup;
@@ -70,6 +85,9 @@ namespace IsolateIsland.Runtime.Hud
         [SerializeField] private Toggle _autoaimToggle;
         [SerializeField] private Toggle _googleToggle;
 
+        [Header("Text")]
+        [SerializeField] private Text _timeDateText;
+
         private void Start()
         {
             Init();
@@ -78,22 +96,43 @@ namespace IsolateIsland.Runtime.Hud
 
         private void Init()
         {
-            _playerStat = Managers.Managers.Instance.statManager.UserStat;
+            _playerStat = Manager.Instance.statManager.UserStat;
 
             _hpGauge = new Gauge(_hpGaugeImage, _playerStat.HP, 0, _playerStat.HP);
             _hungerGauge = new Gauge(_hungerGaugeImage, _playerStat.Hungry, 0, _playerStat.Hungry);
+
+            _timeDayGauge = new Gauge(_timeDayGaugeImage, 1);
+            _timeNightGauge = new Gauge(_timeNightGaugeImage, 1);
 
             _bgmSlider.value = PlayerPrefs.GetFloat("Bgm", 1);
             _sfxSlider.value = PlayerPrefs.GetFloat("Sfx", 1);
 
             _vibrationToggle.isOn = PlayerPrefs.GetBool("Vibration", true);
             _autoaimToggle.isOn = PlayerPrefs.GetBool("AutoAim", false);
+
+            Manager.Instance.Event.GetListener<OnGameoverEvent>().Subscribe(() => StartCoroutine(OnGameoverPopup()));
         }
 
         IEnumerator SetGaugeValue()
         {
             _hpGauge.SetCurrnetFillAmount(_playerStat.HP);
             _hungerGauge.SetCurrnetFillAmount(_playerStat.Hungry);
+
+            if (Manager.Instance.GameManager.isDay)
+            {
+                _timeDayGauge.SetCurrnetFillAmount(Manager.Instance.GameManager.flowDayTime);
+            }
+            else
+            {
+                _timeNightGauge.SetCurrnetFillAmount(Manager.Instance.GameManager.flowDayTime);
+
+                if (_timeNightGauge.GetCurrentFillAmountValue() <= 0)
+                {
+                    _timeNightGauge.SetCurrnetFillAmount(1);
+                    _timeDayGauge.SetCurrnetFillAmount(1);
+                    _timeDateText.text = "Day " + Manager.Instance.GameManager.survivalDate.ToString();
+                }
+            }
 
             // 테스트를 위한 코드
             //if (_hungerGauge.GetCurrentFillAmountRatio() <= 0.25f)
@@ -139,7 +178,7 @@ namespace IsolateIsland.Runtime.Hud
         public void ClickTitle()
         {
             Time.timeScale = 1;
-            //씬 전환 코드
+            SceneChange._Title();
         }
 
         public void SetBgm(float value)
@@ -175,13 +214,21 @@ namespace IsolateIsland.Runtime.Hud
 
         IEnumerator OnGameoverPopup()
         {
+            float fadeDurationDimming = 4;
+            float fadeDurationUi = 2.5f;
+
             _gameoverPopup.SetActive(true);
-            yield return 0;
+
+            _gameoverPopup.transform.Find("Dimming").gameObject.GetOrAddComponent<Image>()
+                .DOFade(180f/255f, fadeDurationDimming);
+            yield return new WaitForSeconds(fadeDurationDimming);
+            _gameoverPopup.transform.Find("UI").gameObject.GetOrAddComponent<CanvasGroup>()
+                .DOFade(1, fadeDurationUi);
         }
 
         public void ClickRetry()
         {
-
+            SceneChange._InGame();
         }
     }
 }

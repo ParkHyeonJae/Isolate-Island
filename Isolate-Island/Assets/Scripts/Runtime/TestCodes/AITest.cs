@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using AI.BT;
+using IsolateIsland.Runtime.Managers;
 
 public class AITest : MonoBehaviour
 {
@@ -47,6 +48,8 @@ public class AITest : MonoBehaviour
 
         [SerializeField] float _makePosCooltime = 5f;
         public float makePosCooltime { get => _makePosCooltime; set => _makePosCooltime = value; }
+
+        public bool isDayOrNight { get => Managers.Instance.GameManager.isDay; }
     }
 
     [SerializeField] EnemyBehaviour _enemyBehaviour;
@@ -56,7 +59,7 @@ public class AITest : MonoBehaviour
 
     [SerializeField] Transform _targetTrans;
 
-    public Vector3 _movePos;
+    Vector3 _movePos;
     bool _isAttackCooltime = false;
     bool _isHearNoise = false;
     float _makePosTime = 0;
@@ -81,6 +84,8 @@ public class AITest : MonoBehaviour
     BTCondition makePos = new BTCondition();
 
     void Start() => Init();
+
+    void OnEnable() => _movePos = transform.position;
 
     void Init()
     {
