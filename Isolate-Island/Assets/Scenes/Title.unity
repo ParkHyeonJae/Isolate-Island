@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -677,13 +677,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 372157407}
-  m_Father: {fileID: 681278795}
-  m_RootOrder: 0
+  m_Father: {fileID: 1465370280}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 250, y: -150}
+  m_SizeDelta: {x: -1790, y: -950}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &320333826
 MonoBehaviour:
@@ -1107,9 +1107,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: OnpressedPlayButton
-        m_Mode: 3
+      - m_Target: {fileID: 571661897}
+        m_MethodName: _InGame
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1218,10 +1218,9 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 320333825}
+  m_Children: []
   m_Father: {fileID: 1465370280}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2052,6 +2051,7 @@ RectTransform:
   - {fileID: 1514303118}
   - {fileID: 313095830}
   - {fileID: 1744571073}
+  - {fileID: 320333825}
   - {fileID: 681278795}
   - {fileID: 1928863005}
   m_Father: {fileID: 1124018407}
@@ -2144,7 +2144,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 571661895}
         m_MethodName: 
         m_Mode: 1
         m_Arguments:
@@ -3196,7 +3196,7 @@ RectTransform:
   m_Children:
   - {fileID: 1412518505}
   m_Father: {fileID: 1465370280}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3424,7 +3424,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 307508060ccbcee4eadc3662f97c74e9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9f86d2a7ae74a8d458d70812054aa229, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
