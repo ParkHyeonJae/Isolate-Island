@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eacc0f2f92685c9449731fbe00cd73ea, type: 3}
   m_Name: "\uB0A0\uC0DD\uC120"
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  description: 
+  sprite: {fileID: 21300194, guid: 1e627bcafe9e32d40ad554880f36b5eb, type: 3}
+  description: "\uD30C\uB2E5\uD30C\uB2E5 \uD798\uCC28\uAC8C \uBAB8\uC744 \uD754\uB4E0\uB2E4."
   combinationNodes: []
   Stat:
     MoveSpeed: 0
@@ -23,7 +23,7 @@ MonoBehaviour:
     EFFECT_DEF: 0
     EFFECT_MAX_HEALTH: 0
     EFFECT_HEALTH: 0
-    EFFECT_HUNGRY: 0
+    EFFECT_HUNGRY: 15
   DressableStat:
     MoveSpeed: 0
     AttackSpeed: 0
@@ -33,7 +33,7 @@ MonoBehaviour:
     EFFECT_MAX_HEALTH: 0
     EFFECT_HEALTH: 0
     EFFECT_HUNGRY: 0
-    DRESSABLE_Parts: 3
+    DRESSABLE_Parts: 0
     DRESSABLE_ATK: 0
     DRESSABLE_RANGE: 0
     DRESSABLE_DEF: 0

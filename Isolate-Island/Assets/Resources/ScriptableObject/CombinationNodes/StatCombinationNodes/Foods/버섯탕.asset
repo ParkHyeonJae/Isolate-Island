@@ -12,9 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eacc0f2f92685c9449731fbe00cd73ea, type: 3}
   m_Name: "\uBC84\uC12F\uD0D5"
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  description: 
-  combinationNodes: []
+  sprite: {fileID: 21300000, guid: 30c48b0cdac01df43944233541eba027, type: 3}
+  description: "\uC870\uBBF8\uB8CC\uAC00 \uADF8\uB9AC\uC6CC\uC9C0\uB294 \uB9DB"
+  combinationNodes:
+  - Name: "\uBC84\uC12F"
+    Count: 1
+    combinationNode: {fileID: 11400000, guid: 1cd74c447c7d9f145b68d96aae2bdd11, type: 2}
+  - Name: "\uC0DD\uC218"
+    Count: 1
+    combinationNode: {fileID: 11400000, guid: 6cab2d6b519549840a8778006af41dc1, type: 2}
   Stat:
     MoveSpeed: 0
     AttackSpeed: 0
@@ -22,8 +28,8 @@ MonoBehaviour:
     EFFECT_RANGE: 0
     EFFECT_DEF: 0
     EFFECT_MAX_HEALTH: 0
-    EFFECT_HEALTH: 0
-    EFFECT_HUNGRY: 0
+    EFFECT_HEALTH: 30
+    EFFECT_HUNGRY: 30
   DressableStat:
     MoveSpeed: 0
     AttackSpeed: 0
@@ -33,7 +39,7 @@ MonoBehaviour:
     EFFECT_MAX_HEALTH: 0
     EFFECT_HEALTH: 0
     EFFECT_HUNGRY: 0
-    DRESSABLE_Parts: 3
+    DRESSABLE_Parts: 0
     DRESSABLE_ATK: 0
     DRESSABLE_RANGE: 0
     DRESSABLE_DEF: 0

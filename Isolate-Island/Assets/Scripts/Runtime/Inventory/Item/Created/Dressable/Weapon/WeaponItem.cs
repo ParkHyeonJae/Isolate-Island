@@ -6,7 +6,7 @@ namespace IsolateIsland.Runtime.Inventory
 {
     public class WeaponItem : DressableItem
     {
-        public string GetAttackAnimKey { get; protected set; } = "Attack";
+        public string GetAttackAnimKey { get; protected set; } = Utils.Defines.AnimationKeys.DefaultAttackAnimationKey;
 
         protected override void Initalize()
         {

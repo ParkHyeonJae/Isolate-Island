@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using IsolateIsland.Runtime.Interact;
+using UnityEngine;
 
 namespace IsolateIsland.Runtime.Character
 {
-    public class CharacterController : Entity
+    public class CharacterController : HitInteractEntity
     {
         public float m_MoveSpeed => Managers.Managers.Instance.statManager.UserStat.MoveSpeed;
 

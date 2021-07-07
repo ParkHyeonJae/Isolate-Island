@@ -69,6 +69,12 @@ namespace IsolateIsland.Runtime.Inventory
             DeleteItem(@base);
         }
 
+        public void DeleteAllItemByKey(ItemBase @base)
+        {
+            while (IsContain(@base))
+                SubtractItem(@base);
+        }
+
         internal ItemBase FindItemByCombinationNode(Combination.CombinationNode combinationNode)
         {
             foreach (var item in Items)

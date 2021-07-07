@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Entity
   layers:
   - Default
   - TransparentFX
@@ -49,4 +50,7 @@ TagManager:
     locked: 0
   - name: Particle
     uniqueID: 4179657821
+    locked: 0
+  - name: Obstacle
+    uniqueID: 2807458055
     locked: 0

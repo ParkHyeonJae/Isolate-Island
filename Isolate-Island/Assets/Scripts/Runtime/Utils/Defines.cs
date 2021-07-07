@@ -18,7 +18,8 @@ namespace IsolateIsland.Runtime.Utils
         {
             Player,
             돌맹이,
-            Item_List
+            Item_List,
+            ItemParent
         }
         #endregion LOAD
 
@@ -28,5 +29,22 @@ namespace IsolateIsland.Runtime.Utils
             Use,
             Drop
         }
+
+        #region ANIMATION
+
+        public class AnimationKeys
+        {
+            public static readonly string DefaultAttackAnimationKey = "Attack";
+        }
+        #endregion
+
+
+        #region TAGS
+        public class Tags
+        {
+            public static readonly string TAG_ENTITY = "Entity";
+            public static readonly string TAG_PLAYER = "Player";
+        }
+        #endregion
     }
 }
