@@ -9,17 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07ba6e81c208e65418692a26902890c7, type: 3}
-  m_Name: Enemy Data
+  m_Script: {fileID: 11500000, guid: 5d4b580edbb993b479b7bdc54a174ca9, type: 3}
+  m_Name: Rooster Data
   m_EditorClassIdentifier: 
-  _hp: 10
+  _hp: 5
   _moveSpeed: 5
-  _attackDamage: 10
-  _moveRange: 30
-  _trackRange: 10
-  _attackRange: 5
+  _moveRange: 10
   _makePosCooltime: 5
-  _attackDelay: 1.5
-  _revengeDuration: 5
-  _sleepingTime: 60
-  _sleepingCooltime: 30
+  _runtime: 2.5
+  _sleepingTime: 30
+  _sleepingCooltime: 20

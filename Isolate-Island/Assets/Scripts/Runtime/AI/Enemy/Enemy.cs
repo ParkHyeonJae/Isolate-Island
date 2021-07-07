@@ -33,6 +33,13 @@ namespace IsolateIsland.Runtime.Ai
             isSleeping = false;
         }
 
+        public override void ReduceHp(int value)
+        {
+            base.ReduceHp(value);
+
+            sleepCount = 0;
+            deltaTime = 0;
+        }
 
         protected override bool Attack()
         {

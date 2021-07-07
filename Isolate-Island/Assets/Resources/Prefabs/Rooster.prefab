@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4042953268389104583}
   - component: {fileID: 4042953268389104580}
   - component: {fileID: 4042953268389104581}
+  - component: {fileID: 6216891528150052416}
   m_Layer: 0
   m_Name: Rooster
   m_TagString: Untagged
@@ -144,7 +145,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4042953268389104586}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -202,6 +203,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6216891528150052416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4042953268389104586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74a99972d6cc25446aa82d29b902d698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 4042953268389104581}
+  sprite: {fileID: 4042953268389104576}
+  entityData: {fileID: 11400000, guid: c3516630b14f1dc469d0974bc4ee2667, type: 2}
 --- !u!1 &4042953268895128335
 GameObject:
   m_ObjectHideFlags: 0

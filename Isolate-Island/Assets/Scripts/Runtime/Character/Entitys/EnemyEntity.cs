@@ -9,7 +9,7 @@ namespace IsolateIsland.Runtime.Interact
     public class EnemyEntity : HitInteractEntity
     {
         private EnemyAI _aI = null;
-        public EnemyAI AI => _aI = _aI ?? GetComponent<EnemyAI>();
+        public EnemyAI AI => _aI = _aI ?? GetComponent<Enemy>();
 
         private AITest _testAI = null;
         public AITest testAI => _testAI = _testAI ?? GetComponent<AITest>();
@@ -25,7 +25,7 @@ namespace IsolateIsland.Runtime.Interact
 
             if (AI != null)
             {
-                AI.hp -= Managers.Managers.Instance.statManager.UserStat.ATK;
+                AI.ReduceHp(Managers.Managers.Instance.statManager.UserStat.ATK);
                 Debug.Log("========= =========Enemy(Test) HP : " + AI.hp);
             }
         }
