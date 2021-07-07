@@ -5,9 +5,7 @@ namespace IsolateIsland.Runtime.Character
 {
     public class CharacterController : HitInteractEntity
     {
-        [Range(0, 50)]
-        [Tooltip("캐릭터 이동 속도")]
-        [SerializeField] float m_MoveSpeed = 20;
+        public float m_MoveSpeed => Managers.Managers.Instance.statManager.UserStat.MoveSpeed;
 
         [Range(0, 400)]
         [SerializeField] float m_RigidbodyMoveSpeed = 100;

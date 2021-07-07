@@ -18,11 +18,11 @@ public class SceneChange : MonoBehaviour
     {
         SceneManager.LoadScene(scene.ToString());
     }
-    public void _Title()
+    public static void _Title()
     {
         SceneManager.LoadScene((int)SceneNumber.Title);
     }
-    public void _InGame()
+    public static void _InGame()
     {
         SceneManager.LoadScene((int)SceneNumber.InGame);
     }

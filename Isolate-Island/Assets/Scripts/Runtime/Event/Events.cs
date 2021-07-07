@@ -44,9 +44,19 @@ namespace IsolateIsland.Runtime.Event
         }
     }
 
+    // 클래스 이름, 상속 부모 등의 상세정보는 알아서 수정하셈
+    public class HitInteractPlayerEvent : EventListener
+    {
+    
+    }
+
     public class OnCollectItemEvent : GenericEventListener<ItemBase>
     {
 
     }
 
+    public class OnGameoverEvent : EventListener
+    { 
+    
+    }
 }
