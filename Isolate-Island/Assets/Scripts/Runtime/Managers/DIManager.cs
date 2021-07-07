@@ -149,7 +149,10 @@ namespace IsolateIsland.Runtime.Managers
 
         public GameObject Get(Utils.Defines.Load_Object objects)
         {
-            return Objects[objects.ToString()];
+            string name;
+            if (!Objects.ContainsKey(name = objects.ToString()))
+                return default(GameObject);
+            return Objects[name];
         }
 
         public GameObject Get(in string findName)

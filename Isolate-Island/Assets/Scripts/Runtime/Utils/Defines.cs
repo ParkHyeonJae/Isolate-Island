@@ -17,6 +17,7 @@ namespace IsolateIsland.Runtime.Utils
         public enum Load_Object
         {
             Player,
+            User,
             돌맹이,
             Item_List,
             ItemParent
