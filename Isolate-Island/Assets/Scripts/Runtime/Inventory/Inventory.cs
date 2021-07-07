@@ -134,6 +134,9 @@ namespace IsolateIsland.Runtime.Inventory
             var craftingTable = Managers.Managers.Instance.Combination.CraftingTable;
             foreach (var _item in craftingTable)
             {
+                if (!(_item.Value is Combination.CombinationNode))
+                    continue;
+
                 var _combinationNode = _item.Value;
                 if (!IsProductiveItem(_combinationNode))        // 만들 수 있는 아이템인지
                     continue;

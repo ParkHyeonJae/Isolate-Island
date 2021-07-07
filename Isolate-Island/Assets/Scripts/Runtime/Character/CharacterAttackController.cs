@@ -55,7 +55,7 @@ namespace IsolateIsland.Runtime.Character
         private void Awake()
         {
             weaponCollider.enabled = false;
-            characterInteractSimulator = new CharacterInteractSimulator(characterAnimController.Animator);
+            characterInteractSimulator = new CharacterInteractSimulator(characterAnimController.animator);
         }
 
         // Invoke by Animation Event Trigger
