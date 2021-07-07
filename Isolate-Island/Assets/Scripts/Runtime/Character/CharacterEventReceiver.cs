@@ -20,5 +20,6 @@ namespace IsolateIsland.Runtime.Character
             Debug.Log("Exit Attack");
         }
 
+
     }
 }

@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 using IsolateIsland.Runtime.Stat;
+using IsolateIsland.Runtime.Event;
 using PlayerPrefs = IsolateIsland.Runtime.Managers.PlayerPrefs;
 using Manager = IsolateIsland.Runtime.Managers.Managers;
 
@@ -107,6 +109,8 @@ namespace IsolateIsland.Runtime.Hud
 
             _vibrationToggle.isOn = PlayerPrefs.GetBool("Vibration", true);
             _autoaimToggle.isOn = PlayerPrefs.GetBool("AutoAim", false);
+
+            Manager.Instance.Event.GetListener<OnGameoverEvent>().Subscribe(() => StartCoroutine(OnGameoverPopup()));
         }
 
         IEnumerator SetGaugeValue()
@@ -174,7 +178,7 @@ namespace IsolateIsland.Runtime.Hud
         public void ClickTitle()
         {
             Time.timeScale = 1;
-            //씬 전환 코드
+            SceneChange._Title();
         }
 
         public void SetBgm(float value)
@@ -210,13 +214,21 @@ namespace IsolateIsland.Runtime.Hud
 
         IEnumerator OnGameoverPopup()
         {
+            float fadeDurationDimming = 4;
+            float fadeDurationUi = 2.5f;
+
             _gameoverPopup.SetActive(true);
-            yield return 0;
+
+            _gameoverPopup.transform.Find("Dimming").gameObject.GetOrAddComponent<Image>()
+                .DOFade(180f/255f, fadeDurationDimming);
+            yield return new WaitForSeconds(fadeDurationDimming);
+            _gameoverPopup.transform.Find("UI").gameObject.GetOrAddComponent<CanvasGroup>()
+                .DOFade(1, fadeDurationUi);
         }
 
         public void ClickRetry()
         {
-
+            SceneChange._InGame();
         }
     }
 }
