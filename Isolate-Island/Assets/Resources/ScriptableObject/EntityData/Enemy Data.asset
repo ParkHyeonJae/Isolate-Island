@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Enemy Data
   m_EditorClassIdentifier: 
   _hp: 10
-  _moveSpeed: 5
-  _attackDamage: 0
+  _moveSpeed: 1.5
+  _attackDamage: 10
   _moveRange: 30
   _trackRange: 10
   _attackRange: 5

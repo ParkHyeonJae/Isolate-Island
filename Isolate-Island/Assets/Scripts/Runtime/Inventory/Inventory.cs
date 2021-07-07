@@ -94,9 +94,11 @@ namespace IsolateIsland.Runtime.Inventory
                 return;
 
             var itemBuilder = new ItemBuilder();
-            var item = itemBuilder
-                .SetCombinationNode(combinationNode)
-                .Build();
+            //var item = itemBuilder
+            //    .SetCombinationNode(combinationNode)
+            //    .Build();
+            var itemObject = Managers.Managers.Instance.Pool.Instantiate(combinationNode.name);
+            var item = itemObject.GetComponent<ItemBase>();
 
             AddItem(item);
 
