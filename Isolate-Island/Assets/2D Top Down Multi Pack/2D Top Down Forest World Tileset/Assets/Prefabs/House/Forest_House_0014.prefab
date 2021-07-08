@@ -172,6 +172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2789575399984183434}
   - component: {fileID: 2789575399984183435}
+  - component: {fileID: 9148971130837804048}
   m_Layer: 0
   m_Name: Forest_House_0014
   m_TagString: Untagged
@@ -245,3 +246,14 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!210 &9148971130837804048
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2789575399984183433}
+  m_Enabled: 1
+  m_SortingLayerID: 1897441671
+  m_SortingLayer: 1
+  m_SortingOrder: 0

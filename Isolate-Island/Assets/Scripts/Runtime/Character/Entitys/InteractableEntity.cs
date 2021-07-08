@@ -42,7 +42,7 @@ namespace IsolateIsland.Runtime.Character
             });
         }
 
-        protected virtual void OnInteractableEvent(Entity entity)
+        public virtual void OnInteractableEvent(Entity entity)
         {
             
         }

@@ -25,12 +25,12 @@ namespace IsolateIsland.Runtime.Inventory
                 return;
 
 
-            #region TEST
-            _lightObject = Managers.Managers.Instance.Pool.Instantiate("횟불_라이트");
+            //#region TEST
+            //_lightObject = Managers.Managers.Instance.Pool.Instantiate("횟불_라이트");
 
-            _lightObject.transform.SetParent(user.transform);
-            _lightObject.transform.localPosition = new Vector3(0, -3.3f, 0);
-            #endregion
+            //_lightObject.transform.SetParent(user.transform);
+            //_lightObject.transform.localPosition = new Vector3(0, -3.3f, 0);
+            //#endregion
         }
 
 

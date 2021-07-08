@@ -9,6 +9,10 @@ namespace IsolateIsland.Runtime.Character
     {
         private Animator _animator;
         private Entity _entity;
+        private BoxCollider2D _interactCasterCollider;
+        public BoxCollider2D interactCasterCollider
+            => _interactCasterCollider = _interactCasterCollider ?? Managers.Managers.Instance.DI.Get<CharacterInteractCaster>().GetComponent<BoxCollider2D>();
+
         public CharacterInteractSimulator(Animator animator)
         {
             _animator = animator;
@@ -19,23 +23,14 @@ namespace IsolateIsland.Runtime.Character
         public void Init()
         {
             Managers.Managers.Instance.Input.OnMouseAction += Input_OnAttackMouseAction;
+            Managers.Managers.Instance.Input.OnMouseAction += Input_OnInteractMouseAction;
+            interactCasterCollider.enabled = false;
             Managers.Managers.Instance.Event.GetListener<Event.OnDetectCasterEvent>().Subscribe((entity, isInteractable) =>
             {
                 _entity = entity;
-                switch (isInteractable)
-                {
-                    // Interact
-                    case true when entity is InteractableEntity:
-                        //Managers.Managers.Instance.Input.OnMouseAction += Input_OnAttackMouseAction;
-                        Managers.Managers.Instance.Input.OnMouseAction += Input_OnInteractMouseAction;
-                        break;
 
-                    // Attack
-                    case false:
-                        //Managers.Managers.Instance.Input.OnMouseAction += Input_OnAttackMouseAction;
-                        Managers.Managers.Instance.Input.OnMouseAction -= Input_OnInteractMouseAction;
-                        break;
-                }
+                if (entity is InteractableEntity)
+                    Managers.Managers.Instance.Event.GetListener<Event.OnInteractCasterEvent>()?.Invoke(_entity);
             });
         }
 
@@ -52,10 +47,10 @@ namespace IsolateIsland.Runtime.Character
 
         private void Input_OnInteractMouseAction(Utils.Defines.MouseEvent evt)
         {
-            //Debug.Log("Interact !");
             if (evt == Utils.Defines.MouseEvent.Click)
             {
-                Managers.Managers.Instance.Event.GetListener<Event.OnInteractCasterEvent>()?.Invoke(_entity);
+                interactCasterCollider.enabled = true;
+                Managers.Managers.Instance.Util.AddTimer(0.05f, () => interactCasterCollider.enabled = false);
             }
         }
 

@@ -15,12 +15,12 @@ namespace IsolateIsland.Runtime.Managers
 
         public void OnUpdate()
         {
-            spriteRenderers = GameObject.FindObjectsOfType<SpriteRenderer>();
+            //spriteRenderers = GameObject.FindObjectsOfType<SpriteRenderer>();
 
-            foreach (var item in spriteRenderers)
-            {
-                item.sortingOrder = (int)item.transform.position.y * -100;
-            }
+            //foreach (var item in spriteRenderers)
+            //{
+            //    item.sortingOrder = (int)item.transform.position.y * -100;
+            //}
         }
     }
 }

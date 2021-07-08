@@ -24,16 +24,11 @@ namespace IsolateIsland.Runtime.Character
             base.Reward();
 
             ItemBuilder itemBuilder = new ItemBuilder();
-            var stick = Managers.Managers.Instance.Combination.GetCombinationNode("나뭇가지");
-
-            var spawn = itemBuilder
-                .SetCombinationNode(stick)
-                .AddShadowCaster2D()
-                .Build();
-            spawn.gameObject.SetActive(true);
-            spawn.transform.position = transform.position;
+            var stick = Managers.Managers.Instance.Pool.Instantiate("나뭇가지");
+            stick.gameObject.SetActive(true);
+            stick.transform.position = transform.position;
         }
-        protected override void OnInteractableEvent(Entity entity)
+        public override void OnInteractableEvent(Entity entity)
         {
             base.OnInteractableEvent(entity);
 
