@@ -216,6 +216,20 @@ namespace IsolateIsland.Runtime.Managers
             }
         }
 
+        private RenderManager _renderManager;
+        public RenderManager Render
+        {
+            get
+            {
+                if (_renderManager == null)
+                {
+                    _renderManager = new RenderManager();
+                    InitManager(_renderManager);
+                }
+                return _renderManager;
+            }
+        }
+
         private void InitManager<I>(I manager) where I : IManagerInit => manager.OnInit();
         private void MonoInitManager<I>(out I manager) where I : MonoManagerInit
         {
@@ -232,6 +246,7 @@ namespace IsolateIsland.Runtime.Managers
         {
             UpdateManager(Input);
             UpdateManager(GameManager);
+            UpdateManager(Render);
         }
     }
 }
