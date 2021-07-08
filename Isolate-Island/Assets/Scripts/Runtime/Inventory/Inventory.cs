@@ -100,6 +100,7 @@ namespace IsolateIsland.Runtime.Inventory
             var itemObject = Managers.Managers.Instance.Pool.Instantiate(combinationNode.name);
             var item = itemObject.GetComponent<ItemBase>();
 
+
             AddItem(item);
 
 

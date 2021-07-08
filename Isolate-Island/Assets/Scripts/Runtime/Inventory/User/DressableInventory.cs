@@ -78,6 +78,8 @@ namespace IsolateIsland.Runtime.Inventory
 
             Managers.Managers.Instance.Event.GetListener<DressableEventListener>()
                 .Invoke(Utils.Defines.EDressableState.Use, dressableItem);
+
+            //InitItemToPlaceInHierarchy(@base);
         }
 
         protected override void OnCountingItem(ItemBase @base)
@@ -113,8 +115,18 @@ namespace IsolateIsland.Runtime.Inventory
         protected override void OnProductItem(ItemBase @base)
         {
 
+
         }
 
-        
+        public void InitItemToPlaceInHierarchy(in ItemBase @base)
+        {
+            var dressable = @base as DressableItem;
+
+            var partsSetter = GetParts<CharacterDressablePartsSetter>(
+                dressable.DressableCombinationNode.DressableStat.DRESSABLE_Parts);
+
+            dressable.transform.SetParent(partsSetter.transform);
+        }
+
     }
 }
