@@ -120,22 +120,22 @@ namespace IsolateIsland.Runtime.Inventory
 
         public void InitItemToPlaceInHierarchy(in ItemBase @base)
         {
-            var dressable = @base as DressableItem;
+            //var dressable = @base as DressableItem;
 
-            var partsSetter = GetParts<CharacterDressablePartsSetter>(
-                dressable.DressableCombinationNode.DressableStat.DRESSABLE_Parts);
+            //var partsSetter = GetParts<CharacterDressablePartsSetter>(
+            //    dressable.DressableCombinationNode.DressableStat.DRESSABLE_Parts);
 
-            dressable.gameObject.SetActive(true);
+            //dressable.gameObject.SetActive(true);
 
-            dressable.transform.SetParent(partsSetter.transform);
+            //dressable.transform.SetParent(partsSetter.transform);
 
             
-            dressable.transform.localPosition = Vector3.zero;
-            dressable.transform.localRotation = Quaternion.identity;
-            dressable.transform.localScale = Vector3.one;
+            //dressable.transform.localPosition = Vector3.zero;
+            //dressable.transform.localRotation = Quaternion.identity;
+            //dressable.transform.localScale = Vector3.one;
 
 
-            dressable.GetComponent<SpriteRenderer>().flipY = true;
+            //dressable.GetComponent<SpriteRenderer>().flipY = true;
 
 
         }
