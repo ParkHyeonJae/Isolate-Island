@@ -33,6 +33,8 @@ namespace IsolateIsland.Runtime.Managers
                 .SetAttackSpeed(10)
                 .SetAttack(5)
                 .Build();
+
+            Managers.Instance.Coroutine.StartRoutine(ReducePlayerHungry());
         }
 
         public void ReducePlayerHp(int value)
@@ -42,6 +44,51 @@ namespace IsolateIsland.Runtime.Managers
             UserStat.HP -= value;
             if (UserStat.HP <= 0)
                 Managers.Instance.Event.GetListener<OnGameoverEvent>().Invoke();
+            else
+                Managers.Instance.Event.GetListener<OnPlayerHitEvent>().Invoke();
+        }
+
+        public void ReducePlayerHp(int value, bool isTrueDamage)
+        {
+            if (isTrueDamage)
+            {
+                UserStat.HP -= value;
+            }
+            else
+            {
+                float defend = value * UserStat.DEF * 0.05f;
+                int damage = value - Mathf.RoundToInt(defend);
+                UserStat.HP -= value;
+            }
+
+            if (UserStat.HP <= 0)
+                Managers.Instance.Event.GetListener<OnGameoverEvent>().Invoke();
+            else
+                Managers.Instance.Event.GetListener<OnPlayerHitEvent>().Invoke();
+        }
+
+        public IEnumerator ReducePlayerHungry()
+        {
+
+            if (UserStat.Hungry > 0)
+            {
+                yield return Managers.Instance.Coroutine.GetWaitForSeconds(5);
+                UserStat.Hungry -= 100;
+                if (UserStat.Hungry < 0)
+                    UserStat.Hungry = 0;
+            }
+            else
+            {
+                yield return Managers.Instance.Coroutine.GetWaitForSeconds(2);
+                if (UserStat.HP > 5)
+                    ReducePlayerHp(5, true);
+                else
+                {
+                    ReducePlayerHp(UserStat.HP - 1, true);
+                }
+            }
+
+            Managers.Instance.Coroutine.StartRoutine(ReducePlayerHungry());
         }
 
 
