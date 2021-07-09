@@ -467,7 +467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.39215687, g: 0, b: 0, a: 0.64705884}
+  m_Color: {r: 0.39215687, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -12259,6 +12259,7 @@ MonoBehaviour:
   _vibrationToggle: {fileID: 6699634016308789369}
   _autoaimToggle: {fileID: 6699634017238696737}
   _googleToggle: {fileID: 6699634016814636162}
+  _bloodScreenImage: {fileID: 7096913297236046609}
   _timeDateText: {fileID: 6699634016379435631}
   _gameoverKillText: {fileID: 9132236641455509180}
   _gameoverDayText: {fileID: 8312570258382284342}

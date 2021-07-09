@@ -85,6 +85,9 @@ namespace IsolateIsland.Runtime.Hud
         [SerializeField] private Toggle _autoaimToggle;
         [SerializeField] private Toggle _googleToggle;
 
+        [Header("Image")]
+        [SerializeField] private Image _bloodScreenImage;
+
         [Header("Text")]
         [SerializeField] private Text _timeDateText;
         [SerializeField] private Text _gameoverKillText;
@@ -113,7 +116,8 @@ namespace IsolateIsland.Runtime.Hud
             _autoaimToggle.isOn = PlayerPrefs.GetBool("AutoAim", false);
 
             Manager.Instance.Event.GetListener<OnGameoverEvent>().Subscribe(() => StartCoroutine(OnGameoverPopup()));
-            Manager.Instance.Event.GetListener<OnChangeDayOrNight>().Subscribe(ChangeDay);
+            Manager.Instance.Event.GetListener<OnChangeDayOrNightEvent>().Subscribe(ChangeDay);
+            Manager.Instance.Event.GetListener<OnPlayerHitEvent>().Subscribe(OnHitScreen);
         }
 
         IEnumerator SetGaugeValue()
@@ -230,6 +234,14 @@ namespace IsolateIsland.Runtime.Hud
         public void ClickRetry()
         {
             SceneChange._InGame();
+        }
+
+        public void OnHitScreen()
+        {
+            float fadeDuration = 1;
+
+            _bloodScreenImage.DOFade(165f / 255f, 0.1f)
+                .OnComplete(() => _bloodScreenImage.DOFade(0, fadeDuration));
         }
     }
 }

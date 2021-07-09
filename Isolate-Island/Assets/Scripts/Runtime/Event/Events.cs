@@ -60,7 +60,7 @@ namespace IsolateIsland.Runtime.Event
 
     }
 
-    public class OnChangeDayOrNight : EventListener
+    public class OnChangeDayOrNightEvent : EventListener
     {
 
     }
@@ -68,5 +68,10 @@ namespace IsolateIsland.Runtime.Event
     public class OnGameoverEvent : EventListener
     { 
     
+    }
+
+    public class OnPlayerHitEvent : EventListener
+    {
+
     }
 }

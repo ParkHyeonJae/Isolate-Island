@@ -7,7 +7,7 @@ namespace IsolateIsland.Runtime.Managers
 {
     public class GameManager : IManagerInit, IManagerUpdate
     {
-        private const float _timeCycle = 5;
+        private const float _timeCycle = 60;
 
         public int survivalDate { get; private set; }
         public float flowDayTime { get; private set; }
@@ -21,7 +21,7 @@ namespace IsolateIsland.Runtime.Managers
             survivalDate = 1;
             killCount = 0;
 
-            Managers.Instance.Event.GetListener<OnChangeDayOrNight>().Subscribe(ChangeDay);
+            Managers.Instance.Event.GetListener<OnChangeDayOrNightEvent>().Subscribe(ChangeDay);
         }
 
         public void OnUpdate()
@@ -29,7 +29,7 @@ namespace IsolateIsland.Runtime.Managers
             flowDayTime -= Time.deltaTime / _timeCycle;
             if (flowDayTime <= 0)
             {
-                Managers.Instance.Event.GetListener<OnChangeDayOrNight>().Invoke();
+                Managers.Instance.Event.GetListener<OnChangeDayOrNightEvent>().Invoke();
             }
         }
 

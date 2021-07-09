@@ -44,6 +44,8 @@ namespace IsolateIsland.Runtime.Managers
             UserStat.HP -= value;
             if (UserStat.HP <= 0)
                 Managers.Instance.Event.GetListener<OnGameoverEvent>().Invoke();
+            else
+                Managers.Instance.Event.GetListener<OnPlayerHitEvent>().Invoke();
         }
 
         public void ReducePlayerHp(int value, bool isTrueDamage)
@@ -61,6 +63,8 @@ namespace IsolateIsland.Runtime.Managers
 
             if (UserStat.HP <= 0)
                 Managers.Instance.Event.GetListener<OnGameoverEvent>().Invoke();
+            else
+                Managers.Instance.Event.GetListener<OnPlayerHitEvent>().Invoke();
         }
 
         public IEnumerator ReducePlayerHungry()
@@ -69,7 +73,7 @@ namespace IsolateIsland.Runtime.Managers
             if (UserStat.Hungry > 0)
             {
                 yield return Managers.Instance.Coroutine.GetWaitForSeconds(5);
-                UserStat.Hungry -= 3;
+                UserStat.Hungry -= 100;
                 if (UserStat.Hungry < 0)
                     UserStat.Hungry = 0;
             }
