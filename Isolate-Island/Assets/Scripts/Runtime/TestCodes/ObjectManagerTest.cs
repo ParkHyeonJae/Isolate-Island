@@ -22,12 +22,15 @@ namespace IsolateIsland.Runtime.TestCodes
             //Managers.Managers.Instance.DI.Get<IsolateIsland.Runtime.Inventory.Inventory>().PrintItemList();
             //Managers.Managers.Instance.DI.Get<IsolateIsland.Runtime.Inventory.Inventory>().PrintItemList();
 
-            for (int i = 0; i < 30; i++)
-            {
-                SpawnEnemy();
-            }
+            //for (int i = 0; i < 30; i++)
+            //{
+            //    SpawnEnemy();
+            //}
 
             Managers.Managers.Instance.Sound.Play("동굴 소리");
+            Managers.Managers.Instance.Sound.SetVolume(Managers.SoundManager.SoundType.BGM, Managers.PlayerPrefs.GetFloat("Bgm"));
+            Managers.Managers.Instance.Sound.SetVolume(Managers.SoundManager.SoundType.SFX, Managers.PlayerPrefs.GetFloat("Sfx"));
+            //InvokeRepeating("SpawnEnemy", 2.0f, 2.0f);
         }
 
 
@@ -57,7 +60,7 @@ namespace IsolateIsland.Runtime.TestCodes
         [ContextMenu("SpawnEnemy")]
         void SpawnEnemy()
         {
-            var spawn = Managers.Managers.Instance.Pool.Instantiate("InteractableEnemy");
+            var spawn = Managers.Managers.Instance.Pool.Instantiate("Enemy_");
 
             _onMemeoryObjects.Push(spawn);
         }

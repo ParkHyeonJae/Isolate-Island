@@ -29,7 +29,7 @@ namespace IsolateIsland.Runtime.Managers
                 .SetMAXHP(100)
                 .SetHP(100)
                 .SetHungry(100)
-                .SetMoveSpeed(20)
+                .SetMoveSpeed(5)
                 .SetAttackSpeed(10)
                 .SetAttack(5)
                 .Build();

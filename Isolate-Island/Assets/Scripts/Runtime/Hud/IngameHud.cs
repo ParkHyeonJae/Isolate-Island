@@ -184,11 +184,13 @@ namespace IsolateIsland.Runtime.Hud
         public void SetBgm(float value)
         {
             PlayerPrefs.SetFloat("Bgm", value);
+            Manager.Instance.Sound.SetVolume(Managers.SoundManager.SoundType.BGM, value);
         }
 
         public void SetSfx(float value)
         {
             PlayerPrefs.SetFloat("Sfx", value);
+            Manager.Instance.Sound.SetVolume(Managers.SoundManager.SoundType.SFX, value);
         }
 
         public void ChangeVibration(bool isActive)

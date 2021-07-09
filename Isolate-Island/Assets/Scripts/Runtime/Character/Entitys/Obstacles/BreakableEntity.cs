@@ -31,7 +31,7 @@ namespace IsolateIsland.Runtime.Character
 
         }
 
-        protected override void OnInteractableEvent(Entity entity)
+        public override void OnInteractableEvent(Entity entity)
         {
             base.OnInteractableEvent(entity);
 

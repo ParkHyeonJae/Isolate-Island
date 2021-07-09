@@ -17,9 +17,20 @@ namespace IsolateIsland.Runtime.Managers
             parentTransform = new GameObject("@Pool").transform;
         }
 
+        void InitTransform(Transform transform)
+        {
+            foreach (Transform item in transform)
+            {
+                item.position = Vector3.zero;
+                item.rotation = Quaternion.identity;
+                item.localScale = Vector3.one;
+            }
+
+        }
         GameObject AddPoolable(GameObject pooledObject, GameObject prefab)
         {
             pooledObject.GetOrAddComponent<Poolable>().Prefab = prefab;
+            InitTransform(pooledObject.transform);
             return pooledObject;
         }
 

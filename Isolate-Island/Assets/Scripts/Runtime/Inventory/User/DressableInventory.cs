@@ -113,8 +113,8 @@ namespace IsolateIsland.Runtime.Inventory
         protected override void OnProductItem(ItemBase @base)
         {
 
+
         }
 
-        
     }
 }

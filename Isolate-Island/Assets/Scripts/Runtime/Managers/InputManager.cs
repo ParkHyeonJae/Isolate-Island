@@ -11,6 +11,8 @@ namespace IsolateIsland.Runtime.Managers
         public event System.Action OnInputKey;
         public event System.Action<Defines.MouseEvent> OnMouseAction;
         private bool _pressed = false;
+
+        public bool Pressed => _pressed;
         public void OnInit()
         {
             OnInputKey = delegate { };

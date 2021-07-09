@@ -97,8 +97,7 @@ namespace IsolateIsland.Runtime.Inventory
         {
             if (CombinationNode)
                 SpriteRenderer.sprite = CombinationNode.sprite;
-            SpriteRenderer.sortingLayerName = "Item";
-            SpriteRenderer.sortingOrder = 1;
+            //SpriteRenderer.sortingOrder = 1;
         }
         public override string ToString()
         {

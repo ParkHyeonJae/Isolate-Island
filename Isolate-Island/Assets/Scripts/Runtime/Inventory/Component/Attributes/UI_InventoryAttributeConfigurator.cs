@@ -20,11 +20,11 @@ namespace IsolateIsland.Runtime.Inventory
                 Equipment_Parent,
                 ProductiveTable,
                 Person_Image,
-                Head,
-                Body,
-                Leg,
-                Weapon,
-                Item
+                UI_Head,
+                UI_Body,
+                UI_Leg,
+                UI_Weapon,
+                UI_Item
             }
 
             internal GameObject obj_uiBag;
@@ -133,11 +133,11 @@ namespace IsolateIsland.Runtime.Inventory
             _dressableAttrForm.obj_ProductiveTable  .SetActive(false);
 
             _dressableAttrForm.obj_Person_Image     = Managers.Managers.Instance.DI.Get(DressableAttributeForm.Equipment.Person_Image);
-            _dressableAttrForm.obj_Head  = Managers.Managers.Instance.DI.Get(DressableAttributeForm.Equipment.Head);
-            _dressableAttrForm.obj_Body = Managers.Managers.Instance.DI.Get(DressableAttributeForm.Equipment.Body);
-            _dressableAttrForm.obj_Leg = Managers.Managers.Instance.DI.Get(DressableAttributeForm.Equipment.Leg);
-            _dressableAttrForm.obj_Weapon = Managers.Managers.Instance.DI.Get(DressableAttributeForm.Equipment.Weapon);
-            _dressableAttrForm.obj_Item = Managers.Managers.Instance.DI.Get(DressableAttributeForm.Equipment.Item);
+            _dressableAttrForm.obj_Head  = Managers.Managers.Instance.DI.Get(DressableAttributeForm.Equipment.UI_Head);
+            _dressableAttrForm.obj_Body = Managers.Managers.Instance.DI.Get(DressableAttributeForm.Equipment.UI_Body);
+            _dressableAttrForm.obj_Leg = Managers.Managers.Instance.DI.Get(DressableAttributeForm.Equipment.UI_Leg);
+            _dressableAttrForm.obj_Weapon = Managers.Managers.Instance.DI.Get(DressableAttributeForm.Equipment.UI_Weapon);
+            _dressableAttrForm.obj_Item = Managers.Managers.Instance.DI.Get(DressableAttributeForm.Equipment.UI_Item);
 
             // Caching Components
 

@@ -36,6 +36,7 @@ namespace IsolateIsland.Runtime.Utils
         public class AnimationKeys
         {
             public static readonly string DefaultAttackAnimationKey = "Attack";
+            public static readonly string RangedAttackAnimationKey = "BowAttack";
         }
         #endregion
 
