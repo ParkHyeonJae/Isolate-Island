@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using IsolateIsland.Runtime.Event;
 
 namespace IsolateIsland.Runtime.Managers
 {
@@ -11,12 +12,16 @@ namespace IsolateIsland.Runtime.Managers
         public int survivalDate { get; private set; }
         public float flowDayTime { get; private set; }
         public bool isDay { get; private set; }
+        public int killCount { get; private set; }
 
         public void OnInit()
         {
             isDay = true; 
             flowDayTime = 1;
             survivalDate = 1;
+            killCount = 0;
+
+            Managers.Instance.Event.GetListener<OnChangeDayOrNight>().Subscribe(ChangeDay);
         }
 
         public void OnUpdate()
@@ -24,7 +29,7 @@ namespace IsolateIsland.Runtime.Managers
             flowDayTime -= Time.deltaTime / _timeCycle;
             if (flowDayTime <= 0)
             {
-                ChangeDay();
+                Managers.Instance.Event.GetListener<OnChangeDayOrNight>().Invoke();
             }
         }
 
@@ -42,5 +47,7 @@ namespace IsolateIsland.Runtime.Managers
             }
             flowDayTime = 1;
         }
+
+        public void UpKillCount() => killCount++;
     }
 }

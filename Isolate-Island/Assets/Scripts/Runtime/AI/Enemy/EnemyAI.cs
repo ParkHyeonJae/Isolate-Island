@@ -127,6 +127,7 @@ namespace IsolateIsland.Runtime.Ai
         {
             if (hp <= 0)
             {
+                Managers.Managers.Instance.GameManager.UpKillCount();
                 animator.Play("Dead");
                 Invoke("Destroy", 3);
                 return true;
