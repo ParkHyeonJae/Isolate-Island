@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6798172426197650681}
   - component: {fileID: 3744480283630070842}
   - component: {fileID: 8584171695887887028}
-  - component: {fileID: 4298576468262416247}
   - component: {fileID: 1813250239141864807}
+  - component: {fileID: 8404728825396507054}
   m_Layer: 0
   m_Name: "\uBAA9\uAD81"
   m_TagString: Untagged
@@ -126,19 +126,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4298576468262416247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7297449404301330225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16f79ea0c357358469f30cbbcc9ac82b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _combinationNode: {fileID: 11400000, guid: 3ec1cae1c5a3eb645bc2b430f8eee718, type: 2}
 --- !u!114 &1813250239141864807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,4 +151,17 @@ MonoBehaviour:
   - {x: -0.76848686, y: -1.0296235, z: 0}
   m_ShapePathHash: -36224415
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1192660
+  m_InstanceId: 422604
+--- !u!114 &8404728825396507054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7297449404301330225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bbd9833942e02746af5d10b9867ef27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _combinationNode: {fileID: 11400000, guid: 3ec1cae1c5a3eb645bc2b430f8eee718, type: 2}
