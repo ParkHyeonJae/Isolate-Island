@@ -15,6 +15,9 @@ namespace IsolateIsland.Runtime.Character
         private SpriteRenderer _spriteRenderer;
         public SpriteRenderer SpriteRenderer
             => _spriteRenderer = _spriteRenderer ?? GetComponent<SpriteRenderer>();
+        private BoxCollider2D _boxCollider;
+        public BoxCollider2D BoxCollider
+            => _boxCollider = _boxCollider ?? GetComponent<BoxCollider2D>();
 
 
         private void Awake()
@@ -35,6 +38,20 @@ namespace IsolateIsland.Runtime.Character
             {
                 case EDressableState.Use:
                     SpriteRenderer.sprite = node.sprite;
+
+                    if (node.OnDressableSetting.Position != Vector3.zero)
+                        transform.localPosition = node.OnDressableSetting.Position;
+                    if (node.OnDressableSetting.Rotation != Vector3.zero)
+                        transform.localEulerAngles = node.OnDressableSetting.Rotation;
+
+                    if (node.OnDressableSetting.Scale != Vector3.one)
+                        transform.localScale = node.OnDressableSetting.Scale;
+
+                    if (BoxCollider)
+                    {
+                        BoxCollider.offset = node.OnDressableSetting.ColliderOffset;
+                        BoxCollider.size = node.OnDressableSetting.ColliderSize;
+                    }
                     break;
                 case EDressableState.Drop:
                     SpriteRenderer.sprite = null;

@@ -98,9 +98,9 @@ namespace IsolateIsland.Runtime.Inventory
             switch (item)
             {
                 case StatItem statItem:
-                    return statItem;
+                    return statItem.StatCombinationNode;
                 case DressableItem dressableItem:
-                    return dressableItem;
+                    return dressableItem.DressableCombinationNode;
                 default:
                     return default(IStatAble);
             }
@@ -217,7 +217,7 @@ namespace IsolateIsland.Runtime.Inventory
 
 
             var statAble = GetTypeToReturnStatAbleFactory(item);
-            attributeForm.item_statText.text = (!(statAble is null)) ? statAble.GetStatInfo : "";
+            attributeForm.item_statText.text = (!(statAble is null)) ? statAble.GetStatInfo() : "";
 
         }
 
@@ -225,16 +225,25 @@ namespace IsolateIsland.Runtime.Inventory
         {
             var selectItem = _selectItem;
 
+            Use(selectItem);
+        }
+
+        public void Use<T>(in T selectItem) where T : ItemBase
+        {
             var itemApplyer = GetTypeToReturnApplyerFactory(selectItem);
             itemApplyer.Use(selectItem);
+        }
+        public void Drop<T>(in T selectItem) where T : ItemBase
+        {
+            var itemApplyer = GetTypeToReturnApplyerFactory(selectItem);
+            itemApplyer.Drop(selectItem);
         }
 
         protected virtual void Button_OnDrop()
         {
             var selectItem = _selectItem;
 
-            var itemApplyer = GetTypeToReturnApplyerFactory(selectItem);
-            itemApplyer.Drop(selectItem);
+            Drop(selectItem);
         }
 
         protected virtual void CachingAttributeAssets()
