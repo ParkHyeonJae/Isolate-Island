@@ -7,7 +7,7 @@ namespace IsolateIsland.Runtime.Managers
 {
     public class GameManager : IManagerInit, IManagerUpdate
     {
-        private const float _timeCycle = 60;
+        private const float _timeCycle = 5;
 
         public int survivalDate { get; private set; }
         public float flowDayTime { get; private set; }
