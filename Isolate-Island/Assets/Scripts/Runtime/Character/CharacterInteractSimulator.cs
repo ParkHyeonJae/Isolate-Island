@@ -37,11 +37,14 @@ namespace IsolateIsland.Runtime.Character
 
         private void Input_OnAttackMouseAction(Utils.Defines.MouseEvent evt)
         {
+            if (evt == Utils.Defines.MouseEvent.Press)
+                return;
             var item            = Managers.Managers.Instance.Inventory.Dressable.GetParts(Stat.EParts.PARTS_LEFT_HAND);
             var weaponItem      = item as WeaponItem;
             string key = string.Empty;
 
-            if (weaponItem is null) key = Utils.Defines.AnimationKeys.DefaultAttackAnimationKey;
+            if (weaponItem is null)
+                key = Utils.Defines.AnimationKeys.DefaultAttackAnimationKey;
             else key = weaponItem.GetAttackAnimKey();
             _animator.Play(key);
         }
