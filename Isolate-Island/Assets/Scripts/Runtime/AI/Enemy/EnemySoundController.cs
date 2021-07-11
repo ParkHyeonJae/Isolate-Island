@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace IsolateIsland.Runtime.Ai
 {
-    public class EnemySoundController : Enemy
+    public class EnemySoundController : MonoBehaviour
     {
         private AudioSource _audioSource = null;
         public AudioSource audioSource =>
