@@ -34,6 +34,8 @@ namespace IsolateIsland.Runtime.Character
             for (int i = 0; i < 3; i++)
             {
                 var fruit = Managers.Managers.Instance.Pool.Instantiate("나무열매");
+                fruit.gameObject.SetActive(true);
+                fruit.transform.position = transform.position;
             }
             
         }
