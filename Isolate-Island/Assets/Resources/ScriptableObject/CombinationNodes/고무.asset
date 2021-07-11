@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: "\uACE0\uBB34"
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: d07512440218ecf4eb260f3cf70688dc, type: 3}
+  invetorySprite: {fileID: 21300000, guid: 230eacc63e39b15468a433ebbd6c355a, type: 3}
   description: "\uADFC\uB370 \uC774 \uC12C\uC5D0 \uACE0\uBB34\uAC00 \uC5B4\uB5BB\uAC8C
     \uC788\uB294 \uAC78\uAE4C?"
   combinationNodes: []
+  ProductCount: 1

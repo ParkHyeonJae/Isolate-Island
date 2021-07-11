@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: "\uBFD4"
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 52ce527787b0f6449ba58cd4091077e0, type: 3}
+  invetorySprite: {fileID: 21300000, guid: 47aa9317418c473429929ee9690b1413, type: 3}
   description: "\uBA39\uB294\uB2E4\uACE0 \uAC74\uAC15\uD574\uC9C0\uC9C0 \uC54A\uB294\uB2E4\u2026\u2026"
   combinationNodes: []
+  ProductCount: 1

@@ -174,12 +174,15 @@ namespace IsolateIsland.Runtime.Inventory
 
             return ItemPlace.GameSlot;
         }
-
+        bool InitOnce = true;
         internal virtual void SetGUIButton(ItemBase item)
         {
-            attributeForm.startPos_use = attributeForm.obj_use.transform.position;
-            attributeForm.startPos_drop = attributeForm.obj_drop.transform.position;
-
+            if (InitOnce)
+            {
+                attributeForm.startPos_use = attributeForm.obj_use.transform.position;
+                attributeForm.startPos_drop = attributeForm.obj_drop.transform.position;
+                InitOnce = false;
+            }
             switch (item)
             {
                 case StatItem _:
@@ -196,6 +199,7 @@ namespace IsolateIsland.Runtime.Inventory
 
                     attributeForm.obj_use.transform.position = attributeForm.startPos_use;
                     attributeForm.obj_drop.transform.position = attributeForm.startPos_drop;
+                    
                     break;
                 case DressableItem _:
                     attributeForm.obj_use.SetActive(true);

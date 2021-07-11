@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: "\uB9C9\uB300\uAE30"
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 66d14ed3eb9a9904cae8b80616ca366c, type: 3}
+  invetorySprite: {fileID: 21300000, guid: 76ca99359eb498d4ba2a9203d0d9dae4, type: 3}
   description: "\uD55C \uAC1C\uC758 \uB098\uBB47\uAC00\uC9C0\uB294 \uC27D\uAC8C \uBD80\uB7EC\uC9C0\uC9C0\uB9CC,
     \uC5F4 \uAC1C\uC758 \uB098\uBB47\uAC00\uC9C0\uB294 \uC27D\uAC8C \uBD80\uB7EC\uC9C0\uC9C0
     \uC54A\uB294\uB2E4."
@@ -20,6 +21,7 @@ MonoBehaviour:
   - Name: "\uB098\uBB47\uAC00\uC9C0"
     Count: 2
     combinationNode: {fileID: 11400000, guid: 887e9d205a3192f4b992e03c37950172, type: 2}
+  ProductCount: 1
   Stat:
     MoveSpeed: 0
     AttackSpeed: 0
