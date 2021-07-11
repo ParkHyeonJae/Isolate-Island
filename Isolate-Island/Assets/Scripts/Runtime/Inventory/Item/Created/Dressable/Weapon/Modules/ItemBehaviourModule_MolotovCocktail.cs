@@ -36,6 +36,7 @@ namespace IsolateIsland.Runtime.Inventory
         {
             var particle = Managers.Managers.Instance.Pool.ParticleInstantiate("FX_Hit_01", 0.5f);
             particle.transform.position = transform.position;
+            Managers.Managers.Instance.Sound.PlayOneShot("플레이어 화염병 공격");
             yield return null;
             Managers.Managers.Instance.Pool.Destroy(gameObject);
         }
