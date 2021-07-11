@@ -24,6 +24,7 @@ MonoBehaviour:
     Count: 1
     combinationNode: {fileID: 11400000, guid: ac4c171c6ec2da04384cec3eaa041a8d, type: 2}
   ProductCount: 1
+  DropCount: 1
   Stat:
     MoveSpeed: 0
     AttackSpeed: 0

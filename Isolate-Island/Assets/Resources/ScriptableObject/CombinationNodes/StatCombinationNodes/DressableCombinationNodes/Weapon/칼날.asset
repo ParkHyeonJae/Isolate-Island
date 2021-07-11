@@ -24,6 +24,7 @@ MonoBehaviour:
     Count: 1
     combinationNode: {fileID: 11400000, guid: 6fe3fa7f888748b46abec6bd0ec818bb, type: 2}
   ProductCount: 1
+  DropCount: 1
   Stat:
     MoveSpeed: 0
     AttackSpeed: 0
@@ -50,9 +51,9 @@ MonoBehaviour:
     DRESSABLE_HEALTH: 0
     DRESSABLE_HUNGRY: 0
   OnDressableSetting:
-    Position: {x: 0, y: 0, z: 0}
-    Rotation: {x: 0, y: 0, z: 0}
+    Position: {x: 1.42, y: -1.191, z: 0}
+    Rotation: {x: 0, y: 0, z: 339.31277}
     Scale: {x: 1, y: 1, z: 1}
-    ColliderOffset: {x: 0, y: 0}
-    ColliderSize: {x: 1, y: 1}
+    ColliderOffset: {x: -0.19887257, y: 0.20739368}
+    ColliderSize: {x: 1.5148864, y: 1.48804}
   IsComsumable: 0
