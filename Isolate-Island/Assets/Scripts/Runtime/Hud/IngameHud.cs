@@ -234,7 +234,7 @@ namespace IsolateIsland.Runtime.Hud
             yield return new WaitForSeconds(fadeDurationDimming);
             _gameoverPopup.transform.Find("UI").gameObject.GetOrAddComponent<CanvasGroup>()
                 .DOFade(1, fadeDurationUi);
-            Manager.Instance.Sound.PlayOneShot("게임오버");
+            Manager.Instance.Sound.Play("게임오버");
         }
 
         public void ClickRetry()

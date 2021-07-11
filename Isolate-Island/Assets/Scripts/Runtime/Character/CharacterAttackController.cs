@@ -68,11 +68,14 @@ namespace IsolateIsland.Runtime.Character
         public void OnEnterAttack()
         {
             Debug.Log("Enter Attack");
-
+            
             var renderer = weaponRenderer;
             var collider = weaponCollider;
             collider.size = dressableWeaponCollider.size;
             collider.enabled = true;
+
+            if (weaponParts is null)
+                Managers.Managers.Instance.Sound.PlayOneShot("플레이어 손 공격");
 
             if (renderer.sprite is null)
                 return;
@@ -80,6 +83,7 @@ namespace IsolateIsland.Runtime.Character
             var sprite = renderer.sprite;
 
             //rigidBody.AddForce(characterAnimController.MoveNormalDir * 20f, ForceMode2D.Impulse);
+            
 
             weaponParts?.AttackAnimationFactory(this, Utils.Defines.EAttackAnimationKeyState.OnEnter);
         }
