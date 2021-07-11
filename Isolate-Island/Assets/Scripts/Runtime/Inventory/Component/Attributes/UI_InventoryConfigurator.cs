@@ -177,6 +177,9 @@ namespace IsolateIsland.Runtime.Inventory
 
         internal virtual void SetGUIButton(ItemBase item)
         {
+            attributeForm.startPos_use = attributeForm.obj_use.transform.position;
+            attributeForm.startPos_drop = attributeForm.obj_drop.transform.position;
+
             switch (item)
             {
                 case StatItem _:
