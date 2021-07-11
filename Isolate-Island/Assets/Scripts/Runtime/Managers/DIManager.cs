@@ -70,17 +70,18 @@ namespace IsolateIsland.Runtime.Managers
         private void CachingObjectByEnumField<T>(Transform parentGo)
         {
             var elements = Enum.GetNames(typeof(T));
-            foreach (var element in elements)
+            var transforms = parentGo.GetComponentsInChildren<Transform>(true);
+
+            for (int i = 0; i < transforms.Length; i++)
             {
-                var findObject = parentGo.Find(element);
-                
-                if (findObject == null)
+                var check = elements.Any(e => e == transforms[i].name);
+                if (elements.Any(e => e == transforms[i].name) == false)
+                    continue;
+                if (Objects.ContainsKey(transforms[i].name))
                     continue;
 
-                if (Objects.ContainsKey(element))
-                    continue;
+                Objects.Add(transforms[i].name, transforms[i].gameObject);
 
-                Objects.Add(element, findObject.gameObject);
             }
         }
 
