@@ -34,6 +34,14 @@ namespace IsolateIsland.Runtime.TestCodes
         }
 
 
+        [ContextMenu("Get WeaponParts Info")]
+        public void GetWeaponPartsInfo()
+        {
+            var parts = Managers.Managers.Instance.Inventory.Dressable.GetParts(Stat.EParts.PARTS_LEFT_HAND);
+            Debug.Log($"이름 : {parts.name}," +
+                $"Count : {Managers.Managers.Instance.Inventory.Dressable.GetItemCount(parts)}");
+        }
+
         [ContextMenu("Build")]
         void Invoke()
         {

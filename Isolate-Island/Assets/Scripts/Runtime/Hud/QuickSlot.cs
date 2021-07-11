@@ -31,24 +31,33 @@ namespace IsolateIsland.Runtime.Hud
         public void RenewQuickSlotUI()
         {
             var itemParts = Managers.Managers.Instance.Inventory.Dressable.GetParts(EParts.PARTS_RIGHT_HAND);
-            if (itemParts is null)
+            var itemParts2 = Managers.Managers.Instance.Inventory.Dressable.GetParts(EParts.PARTS_LEFT_HAND) as ThrowWeaponItem;
+            if (itemParts is null && itemParts2 is null)
             {
                 _slotImage.sprite = null;
                 _slotText.text = "X 00";
                 return;
             }
 
-            _added_dressableItem = itemParts;
+            if (itemParts != null && itemParts2 == null)
+                _added_dressableItem = itemParts;
+            if(itemParts == null && itemParts2 != null)
+                _added_dressableItem = itemParts2;
+            if (itemParts != null && itemParts2 != null)
+                _added_dressableItem = itemParts2;
 
-            var itemCount = Managers.Managers.Instance.Inventory.Dressable.GetItemCount(itemParts);
-            _slotImage.sprite = itemParts.DressableCombinationNode.sprite;
+            var itemCount = Managers.Managers.Instance.Inventory.Dressable.GetItemCount(_added_dressableItem);
+            _slotImage.sprite = _added_dressableItem.DressableCombinationNode.sprite;
             _slotText.text = $"X {itemCount.ToString()}";
+
         }
         public void OnUse()
         {
             if (_added_dressableItem is null)
                 return;
             if (_added_dressableItem is SubArrowItem)
+                return;
+            if (_added_dressableItem is ThrowWeaponItem)
                 return;
 
             var ap = new DressableItemApplyer();

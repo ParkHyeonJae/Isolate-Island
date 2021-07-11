@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: "\uBA74\uD2F0"
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300076, guid: b08e570699f1c8a4f9cc388204aef3bc, type: 3}
+  invetorySprite: {fileID: 21300076, guid: b08e570699f1c8a4f9cc388204aef3bc, type: 3}
   description: "\uC190\uC73C\uB85C \uB2F9\uACA8\uB3C4 \uCC22\uC5B4\uC9C8 \uAC83 \uAC19\uC9C0\uB9CC\u2026"
   combinationNodes:
   - Name: "\uCC9C"

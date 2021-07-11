@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: "\uC0B4\uBAB8\uD1B5"
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300048, guid: b08e570699f1c8a4f9cc388204aef3bc, type: 3}
+  invetorySprite: {fileID: 0}
   description: "<color=red>\uB204\uAD70\uAC00</color>\uC758 \uAC00\uC8FD.."
   combinationNodes: []
+  ProductCount: 1
   Stat:
     MoveSpeed: 0
     AttackSpeed: 0

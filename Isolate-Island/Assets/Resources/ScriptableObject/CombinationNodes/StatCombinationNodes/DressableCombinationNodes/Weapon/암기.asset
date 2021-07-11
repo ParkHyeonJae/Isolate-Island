@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: "\uC554\uAE30"
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: b4cb07a517209804cb1728703a53c945, type: 3}
+  invetorySprite: {fileID: 0}
   description: "\uBFB0\uC871\uBFB0\uC871\uD55C \uAC8C \uB9DE\uC73C\uBA74 \uC544\uD504\uACA0\uB2E4"
   combinationNodes:
   - Name: "\uC870\uAC1C\uAECD\uC9C8"
     Count: 2
     combinationNode: {fileID: 11400000, guid: 299fb1d7ad116d949bfee3c03f4e9a68, type: 2}
+  ProductCount: 1
   Stat:
     MoveSpeed: 0
     AttackSpeed: 0

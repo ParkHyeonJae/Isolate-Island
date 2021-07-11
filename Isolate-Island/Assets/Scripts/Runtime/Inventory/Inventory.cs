@@ -46,6 +46,22 @@ namespace IsolateIsland.Runtime.Inventory
         public bool IsContain(ItemBase @base)
             => Items.ContainsKey(@base);
 
+        public void OnCountDownItem(ItemBase @base)
+        {
+            var value = 0;
+            if (!Items.TryGetValue(@base, out value))
+                return;
+
+            Items[@base] = value - 1;
+
+            if (Items[@base] > 0)
+                return;
+            OnSubtractItem(@base);
+            DeleteItem(@base);
+
+            Managers.Managers.Instance.Event.GetListener<Event.OnUIUpdateEvent>()?.Invoke();
+        }
+
         private void DeleteItem(ItemBase @base)
         {
             if (!IsContain(@base))
