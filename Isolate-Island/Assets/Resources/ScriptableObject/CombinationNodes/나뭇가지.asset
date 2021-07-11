@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7b957db3149f0847acb4ce129a1da12, type: 3}
   m_Name: "\uB098\uBB47\uAC00\uC9C0"
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 8e3532556b5a5d347aa3d2d68365db5f, type: 3}
+  sprite: {fileID: 21300000, guid: fab89df95b813da40a7da4a913ed1906, type: 3}
   description: "\uC0DD\uAC01\uBCF4\uB2E4 \uB2E8\uB2E8\uD558\uB2E4"
   combinationNodes: []

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7b957db3149f0847acb4ce129a1da12, type: 3}
   m_Name: "\uC54C\uCF54\uC62C"
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 2da59c2cf54589d49b335b7adb8c8346, type: 3}
+  sprite: {fileID: 21300000, guid: 3176b87c104677845802a2761207e00f, type: 3}
   description: "\uC124\uB9C8 \uAE30\uAD00\uC0AC\uAC00 \uC774\uAC78 \uB9C8\uC2E0\uAC74
     \uC544\uB2C8\uACA0\uC9C0?"
   combinationNodes: []
