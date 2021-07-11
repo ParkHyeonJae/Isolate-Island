@@ -20,6 +20,7 @@ namespace IsolateIsland.Runtime.Inventory
                 converted.Stat.ApplyEffect(ref effectStat);
                 Managers.Managers.Instance.statManager.UserStat = effectStat;
                 Debug.Log(Managers.Managers.Instance.statManager.UserStat.ToString());
+                Managers.Managers.Instance.Sound.PlayOneShot("음식 아이템 사용");
             }
         }
 

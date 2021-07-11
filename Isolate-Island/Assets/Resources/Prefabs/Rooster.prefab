@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4042953268389104580}
   - component: {fileID: 4042953268389104581}
   - component: {fileID: 6216891528150052416}
+  - component: {fileID: 4828306973480929556}
   m_Layer: 0
   m_Name: Rooster
   m_TagString: Untagged
@@ -218,6 +219,18 @@ MonoBehaviour:
   animator: {fileID: 4042953268389104581}
   sprite: {fileID: 4042953268389104576}
   entityData: {fileID: 11400000, guid: c3516630b14f1dc469d0974bc4ee2667, type: 2}
+--- !u!114 &4828306973480929556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4042953268389104586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c4b5c82328d8db4893faef12cea86aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4042953268895128335
 GameObject:
   m_ObjectHideFlags: 0

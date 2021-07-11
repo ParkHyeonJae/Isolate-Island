@@ -21,11 +21,15 @@ namespace IsolateIsland.Runtime.Hud
             {
                 _bag.DOAnchorPosY(1000, 0.5f).SetEase(openEase);
                 _isOpen = true;
+
+                Managers.Managers.Instance.Sound.PlayOneShot("인벤토리_On");
             }
             else
             {
                 _bag.DOAnchorPosY(0, 0.5f).SetEase(closeEase);
                 _isOpen = false;
+
+                Managers.Managers.Instance.Sound.PlayOneShot("인벤토리_Off");
             }
             _bagOutPanel.SetActive(_isOpen);
         }

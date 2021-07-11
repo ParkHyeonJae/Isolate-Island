@@ -252,6 +252,7 @@ namespace IsolateIsland.Runtime.Inventory
             var statAble = GetTypeToReturnStatAbleFactory(item);
             attributeForm.item_statText.text = (!(statAble is null)) ? statAble.GetStatInfo() : "";
 
+            Managers.Managers.Instance.Sound.PlayOneShot("아이템 마우스 클릭");
         }
 
         protected virtual void Button_OnUse()

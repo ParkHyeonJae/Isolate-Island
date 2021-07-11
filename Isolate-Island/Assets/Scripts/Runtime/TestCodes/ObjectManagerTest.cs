@@ -27,7 +27,7 @@ namespace IsolateIsland.Runtime.TestCodes
             //    SpawnEnemy();
             //}
 
-            Managers.Managers.Instance.Sound.Play("동굴 소리");
+            Managers.Managers.Instance.GameManager.PlayBgm();
             Managers.Managers.Instance.Sound.SetVolume(Managers.SoundManager.SoundType.BGM, Managers.PlayerPrefs.GetFloat("Bgm"));
             Managers.Managers.Instance.Sound.SetVolume(Managers.SoundManager.SoundType.SFX, Managers.PlayerPrefs.GetFloat("Sfx"));
             //InvokeRepeating("SpawnEnemy", 2.0f, 2.0f);
