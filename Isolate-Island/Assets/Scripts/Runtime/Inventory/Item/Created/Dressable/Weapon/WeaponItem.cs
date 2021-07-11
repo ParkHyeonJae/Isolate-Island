@@ -8,7 +8,11 @@ namespace IsolateIsland.Runtime.Inventory
 {
     public class WeaponItem : DressableItem
     {
-        public string GetAttackAnimKey { get; protected set; } = Utils.Defines.AnimationKeys.DefaultAttackAnimationKey;
+        public virtual string GetAttackAnimKey()
+        {
+            return Utils.Defines.AnimationKeys.DefaultAttackAnimationKey;
+        }
+        //private string _attackAnimKey { get; set; } = Utils.Defines.AnimationKeys.DefaultAttackAnimationKey;
 
         protected CharacterAttackController characterAttackController = null;
 

@@ -42,7 +42,7 @@ namespace IsolateIsland.Runtime.Character
             string key = string.Empty;
 
             if (weaponItem is null) key = Utils.Defines.AnimationKeys.DefaultAttackAnimationKey;
-            else key = weaponItem.GetAttackAnimKey;
+            else key = weaponItem.GetAttackAnimKey();
             _animator.Play(key);
         }
 

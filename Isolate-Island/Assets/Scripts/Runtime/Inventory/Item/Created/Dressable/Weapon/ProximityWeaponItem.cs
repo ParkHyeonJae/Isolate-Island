@@ -12,8 +12,11 @@ namespace IsolateIsland.Runtime.Inventory
         protected override void Initalize()
         {
             base.Initalize();
+        }
 
-            GetAttackAnimKey = Utils.Defines.AnimationKeys.DefaultAttackAnimationKey;
+        public override string GetAttackAnimKey()
+        {
+            return Utils.Defines.AnimationKeys.DefaultAttackAnimationKey;
         }
     }
 }

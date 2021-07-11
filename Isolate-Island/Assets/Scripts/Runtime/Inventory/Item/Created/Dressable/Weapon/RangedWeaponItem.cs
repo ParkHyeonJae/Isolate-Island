@@ -11,11 +11,19 @@ namespace IsolateIsland.Runtime.Inventory
     /// </summary>
     public class RangedWeaponItem : WeaponItem
     {
+
+        public override string GetAttackAnimKey()
+        {
+            var itemSlot = Managers.Managers.Instance.Inventory.Dressable.GetParts(Stat.EParts.PARTS_RIGHT_HAND);
+
+            if (itemSlot is null || !(itemSlot is SubArrowItem))
+                return Utils.Defines.AnimationKeys.DefaultAttackAnimationKey;
+            return Utils.Defines.AnimationKeys.RangedAttackAnimationKey;
+        }
+
         protected override void Initalize()
         {
             base.Initalize();
-
-            GetAttackAnimKey = Utils.Defines.AnimationKeys.RangedAttackAnimationKey;
         }
 
 
@@ -23,8 +31,7 @@ namespace IsolateIsland.Runtime.Inventory
         {
             var itemSlot = Managers.Managers.Instance.Inventory.Dressable.GetParts(Stat.EParts.PARTS_RIGHT_HAND);
 
-
-            if (!(itemSlot is SubArrowItem))
+            if (itemSlot is null || !(itemSlot is SubArrowItem))
                 return;
 
             Managers.Managers.Instance.Inventory.Dressable.SubtractItem(itemSlot);
