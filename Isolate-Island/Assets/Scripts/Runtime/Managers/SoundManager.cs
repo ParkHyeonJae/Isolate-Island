@@ -24,7 +24,12 @@ namespace IsolateIsland.Runtime.Managers
             _audioEffectSource = _audioEffectSource ?? gameObject.AddComponent<AudioSource>();
         public override void OnInit()
         {
-            
+            float bgm = PlayerPrefs.GetFloat("Bgm", 1);
+            float Sfx = PlayerPrefs.GetFloat("Sfx", 1);
+
+            SetVolume(SoundType.BGM, bgm);
+            SetVolume(SoundType.SFX, Sfx);
+
         }
 
         public void PlayOneShot(string name)

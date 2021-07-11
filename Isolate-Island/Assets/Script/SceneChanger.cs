@@ -14,11 +14,14 @@ namespace IsolateIsland.Runtime
         public void _Title()
         {
             SceneManager.LoadScene((int)SceneNumber.Title);
-            Managers.Managers.Instance.GameManager.PlayBgm();
+            Managers.Managers.Instance.Sound.Play("타이틀");
+            Managers.Managers.Instance.GameManager.onGame = false;
         }
         public void _InGame()
         {
             SceneManager.LoadScene((int)SceneNumber.InGame);
+            Managers.Managers.Instance.GameManager.PlayBgm();
+            Managers.Managers.Instance.GameManager.onGame = true;
         }
     }
 }
