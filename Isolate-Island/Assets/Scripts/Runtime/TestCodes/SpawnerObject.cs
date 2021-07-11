@@ -9,6 +9,7 @@ namespace IsolateIsland.Runtime.TestCodes
     public class SpawnerObject : MonoBehaviour
     {
         [SerializeField] private Transform spawnRangeObject;
+        [SerializeField] private bool isPlayStartSpawn = false;
         private float spawnRange
         {
             get
@@ -33,7 +34,8 @@ namespace IsolateIsland.Runtime.TestCodes
         {
             _reFillAmount = Mathf.RoundToInt(_startAmount * 0.5f);
 
-            //SpawnObjectAll();
+            if (isPlayStartSpawn)
+                SpawnObjectAll();
 
             Managers.Managers.Instance.Event.GetListener<OnChangeDayOrNightEvent>().Subscribe(RefillObjectAll);
         }
@@ -55,7 +57,7 @@ namespace IsolateIsland.Runtime.TestCodes
                 SpawnObjectOne(item);
             }
 
-            _reFillAmount = Mathf.RoundToInt(_reFillAmount * 1.2f);
+            _reFillAmount = Mathf.RoundToInt(_reFillAmount * 1.1f);
         }
 
         private void SpawnObjectOne(GameObject @object)
