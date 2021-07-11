@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using IsolateIsland.Runtime.Event;
+using IsolateIsland.Runtime.Inventory;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +13,10 @@ namespace IsolateIsland.Runtime.Character
             => _weaponPartsSetter = _weaponPartsSetter ?? Managers.Managers.Instance.Inventory.Dressable
                 .GetParts<CharacterDressablePartsSetter>
                 (Stat.EParts.PARTS_LEFT_HAND);
+        
+        public WeaponItem weaponParts
+            =>  Managers.Managers.Instance.Inventory.Dressable
+                .GetParts(Stat.EParts.PARTS_LEFT_HAND) as WeaponItem;
 
         private SpriteRenderer _weaponRenderer;
         public SpriteRenderer weaponRenderer
@@ -72,9 +78,10 @@ namespace IsolateIsland.Runtime.Character
                 return;
 
             var sprite = renderer.sprite;
-            
 
             //rigidBody.AddForce(characterAnimController.MoveNormalDir * 20f, ForceMode2D.Impulse);
+
+            weaponParts?.AttackAnimationFactory(this, Utils.Defines.EAttackAnimationKeyState.OnEnter);
         }
 
         // Invoke by Animation Event Trigger
@@ -85,7 +92,13 @@ namespace IsolateIsland.Runtime.Character
             var collider = weaponCollider;
 
             collider.enabled = false;
+
             //rigidBody.velocity = Vector2.zero;
+
+            Managers.Managers.Instance.Event.GetListener<OnAttackAnimationEvent>()
+                ?.Invoke(this, Utils.Defines.EAttackAnimationKeyState.OnExit);
+
+            weaponParts?.AttackAnimationFactory(this, Utils.Defines.EAttackAnimationKeyState.OnExit);
         }
     }
 }

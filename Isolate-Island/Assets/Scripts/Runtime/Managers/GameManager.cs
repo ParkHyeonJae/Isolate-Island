@@ -8,7 +8,7 @@ namespace IsolateIsland.Runtime.Managers
     public class GameManager : IManagerInit, IManagerUpdate
     {
         private const float _timeCycle = 60;
-
+        public bool enableMove = true;
         public int survivalDate { get; private set; }
         public float flowDayTime { get; private set; }
         public bool isDay { get; private set; }

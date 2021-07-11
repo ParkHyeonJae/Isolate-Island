@@ -85,10 +85,13 @@ namespace IsolateIsland.Runtime.Inventory
             // Setting
             for (int i = 0; i < itemList.Length; i++)
             {
-                var attrIdx = setter[i];
-                var table = itemList[i].Key;
+                if (i < setter.Length)
+                {
+                    var attrIdx = setter[i];
+                    var table = itemList[i].Key;
 
-                attrIdx.SetAttribute(table, OnSelectAttribute);
+                    attrIdx.SetAttribute(table, OnSelectAttribute);
+                }
             }
 
         }
@@ -149,14 +152,44 @@ namespace IsolateIsland.Runtime.Inventory
                     break;
             }
         }
+        internal enum ItemPlace
+        {
+            DressableSlot,
+            GameSlot
+        }
+
+        internal ItemPlace GetItemPlace(ItemBase item)
+        {
+            if (!(item is DressableItem))
+                return ItemPlace.GameSlot;
+
+            var dressableCheck = Managers.Managers.Instance.Inventory.Dressable.IsContain(item);
+            var gameCheck = Managers.Managers.Instance.Inventory.Game.IsContain(item);
+
+            if (dressableCheck && !gameCheck)
+                return ItemPlace.DressableSlot;
+
+            if (!dressableCheck && gameCheck)
+                return ItemPlace.GameSlot;
+
+            return ItemPlace.GameSlot;
+        }
 
         internal virtual void SetGUIButton(ItemBase item)
         {
             switch (item)
             {
                 case StatItem _:
-                    attributeForm.obj_use.SetActive(true);
-                    attributeForm.obj_drop.SetActive(true);
+                    if (GetItemPlace(item) == ItemPlace.DressableSlot)
+                    {
+                        attributeForm.obj_use.SetActive(false);
+                        attributeForm.obj_drop.SetActive(true);
+                    }
+                    else
+                    {
+                        attributeForm.obj_use.SetActive(true);
+                        attributeForm.obj_drop.SetActive(true);
+                    }
 
                     attributeForm.obj_use.transform.position = attributeForm.startPos_use;
                     attributeForm.obj_drop.transform.position = attributeForm.startPos_drop;

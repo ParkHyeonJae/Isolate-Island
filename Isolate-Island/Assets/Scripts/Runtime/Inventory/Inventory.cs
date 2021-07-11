@@ -69,6 +69,15 @@ namespace IsolateIsland.Runtime.Inventory
             DeleteItem(@base);
         }
 
+        private int VirtualSubtractItem(ItemBase @base, int Count)
+        {
+            var value = 0;
+            if (!Items.TryGetValue(@base, out value))
+                return 0;
+
+            return value - Count;
+        }
+
         public void DeleteAllItemByKey(ItemBase @base)
         {
             while (IsContain(@base))
@@ -100,8 +109,9 @@ namespace IsolateIsland.Runtime.Inventory
             var itemObject = Managers.Managers.Instance.Pool.Instantiate(combinationNode.name);
             var item = itemObject.GetComponent<ItemBase>();
 
+            for (int i = 0; i < item.CombinationNode.ProductCount; i++)
+                AddItem(item);
 
-            AddItem(item);
 
 
             foreach (var node in combinationNode.combinationNodes)
@@ -173,6 +183,30 @@ namespace IsolateIsland.Runtime.Inventory
                 ProductItem(_combinationNode);
 
             }
+        }
+
+        /// <summary>
+        /// 조합을 시도했을 시 했을 시 인벤토리가 꽉차있는가
+        /// </summary>
+        /// <returns></returns>
+        public bool TryFullProductItem(Combination.CombinationNode @node)
+        {
+            if (Items.Count < 10 || FindItemByCombinationNode(@node) != null)
+                return false;
+            int[] countData = new int[@node.combinationNodes.Length];
+            int i = 0;
+            foreach (var n in @node.combinationNodes)
+            {
+                var itemData = FindItemByCombinationNode(n.combinationNode);
+                var count = VirtualSubtractItem(itemData, n.Count);
+                countData[i++] = count;
+            }
+
+            var remainItemCount = countData.Count((e) => e > 0);
+
+            if (remainItemCount == countData.Length)
+                return true;
+            return false;
         }
 
         private bool IsProductiveItem(Combination.CombinationNode @node)

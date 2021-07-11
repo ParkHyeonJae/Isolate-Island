@@ -237,7 +237,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8060896847636470429}
   - component: {fileID: 4855264836652695010}
-  - component: {fileID: 8334577328590241747}
   m_Layer: 0
   m_Name: Tree-2
   m_TagString: Untagged
@@ -271,30 +270,3 @@ SortingGroup:
   m_SortingLayerID: 1897441671
   m_SortingLayer: 1
   m_SortingOrder: 0
---- !u!114 &8334577328590241747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8108930806554664326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShadowGroup: 0
-  m_HasRenderer: 0
-  m_UseRendererSilhouette: 1
-  m_CastsShadows: 1
-  m_SelfShadows: 0
-  m_ApplyToSortingLayers: 0000000087a918715d8420f9076956a7
-  m_ShapePath:
-  - {x: -0.5234097, y: 0.5144234, z: 0}
-  - {x: 0.022044916, y: 0.17610061, z: 0}
-  - {x: 0.46098366, y: 0.6080625, z: 0}
-  - {x: 0.53901637, y: 1.53003, z: 0}
-  - {x: -0.5702294, y: 1.5222267, z: 0}
-  m_ShapePathHash: -911650814
-  m_Mesh: {fileID: 0}
-  m_InstanceId: -59536

@@ -22,6 +22,7 @@ MonoBehaviour:
   - Name: "\uACE0\uCCA0"
     Count: 1
     combinationNode: {fileID: 11400000, guid: ca012cf9acd138d49aa38e86965d1b0a, type: 2}
+  ProductCount: 1
   Stat:
     MoveSpeed: 0
     AttackSpeed: 0
@@ -40,7 +41,7 @@ MonoBehaviour:
     EFFECT_MAX_HEALTH: 0
     EFFECT_HEALTH: 0
     EFFECT_HUNGRY: 0
-    DRESSABLE_Parts: 2
+    DRESSABLE_Parts: 3
     DRESSABLE_ATK: 3
     DRESSABLE_RANGE: 0
     DRESSABLE_DEF: 0
@@ -53,3 +54,4 @@ MonoBehaviour:
     Scale: {x: 1, y: 1, z: 1}
     ColliderOffset: {x: 0, y: 0}
     ColliderSize: {x: 1, y: 1}
+  IsComsumable: 1

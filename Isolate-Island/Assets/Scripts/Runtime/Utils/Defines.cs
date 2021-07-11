@@ -31,6 +31,12 @@ namespace IsolateIsland.Runtime.Utils
             Drop
         }
 
+        public enum EAttackAnimationKeyState : byte
+        {
+            OnEnter,
+            OnExit
+        }
+
         #region ANIMATION
 
         public class AnimationKeys

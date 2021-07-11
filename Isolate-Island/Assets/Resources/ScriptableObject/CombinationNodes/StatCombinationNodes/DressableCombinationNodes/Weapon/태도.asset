@@ -46,3 +46,4 @@ MonoBehaviour:
     Scale: {x: 2, y: 2, z: 1}
     ColliderOffset: {x: -0.14676905, y: -0.12567481}
     ColliderSize: {x: 2.2599478, y: 2.2102473}
+  IsComsumable: 0
