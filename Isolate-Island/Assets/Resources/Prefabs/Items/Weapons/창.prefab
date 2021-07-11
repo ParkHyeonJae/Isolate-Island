@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8984726678620007603}
   - component: {fileID: 5977355579113572781}
   - component: {fileID: 2937534549810946756}
-  - component: {fileID: 3494057080325311269}
   - component: {fileID: 8086055805577560361}
+  - component: {fileID: 5620130904667042131}
   m_Layer: 0
   m_Name: "\uCC3D"
   m_TagString: Untagged
@@ -128,19 +128,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3494057080325311269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3148071123819373377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d75aa04ad3a98ed4aac451656d671c50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _combinationNode: {fileID: 11400000, guid: 7e6456ab66314b042b4ed4e3c1b05133, type: 2}
 --- !u!114 &8086055805577560361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,4 +156,17 @@ MonoBehaviour:
   - {x: 0.9253126, y: 1.0831376, z: 0}
   m_ShapePathHash: 965737843
   m_Mesh: {fileID: 0}
-  m_InstanceId: 485206
+  m_InstanceId: 2018224
+--- !u!114 &5620130904667042131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3148071123819373377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10b405da216d4da4e8dc4ce90473b3d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _combinationNode: {fileID: 11400000, guid: 7e6456ab66314b042b4ed4e3c1b05133, type: 2}
