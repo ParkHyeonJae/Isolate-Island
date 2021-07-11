@@ -33,7 +33,7 @@ namespace IsolateIsland.Runtime.Inventory
                     .GetParts(dressable.DressableCombinationNode.DressableStat.DRESSABLE_Parts);
 
 
-            // 예외적인 케이스로 장비 템일 경우, 장착했을 시 하나의 아이템만 장비칸으로 이동하는 반면에, 소비템일 경우에는 해당 아이템의 모든 개수를 장비템에 옮겨야 한다.
+            /// 예외적인 케이스로 장비 템일 경우, 장착했을 시 하나의 아이템만 장비칸으로 이동하는 반면에, 소비템일 경우에는 해당 아이템의 모든 개수를 장비템에 옮겨야 한다.
             if (IsConsumable(item))
             {
                 var count = Managers.Managers.Instance.Inventory.Game.GetItemCount(item);
@@ -67,7 +67,7 @@ namespace IsolateIsland.Runtime.Inventory
                 Managers.Managers.Instance.Inventory.Dressable.AddItem(item);
             }
 
-            
+            Managers.Managers.Instance.Sound.PlayOneShot("아이템 장착");
 
             dressable.OnEnterDressable();
         }

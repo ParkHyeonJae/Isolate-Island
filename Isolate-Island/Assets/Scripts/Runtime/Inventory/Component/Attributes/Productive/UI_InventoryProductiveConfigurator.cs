@@ -98,6 +98,7 @@ namespace IsolateIsland.Runtime.Inventory
         protected override void Button_OnUse()
         {
             Managers.Managers.Instance.Inventory.Game.ProductItem(_selectNode);
+            Managers.Managers.Instance.Sound.PlayOneShot("아이템 완성");
 
 
             SetAttribute();

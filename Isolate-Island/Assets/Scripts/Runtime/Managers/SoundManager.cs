@@ -32,6 +32,19 @@ namespace IsolateIsland.Runtime.Managers
             var clip = Managers.Instance.Resource.Load<AudioClip>(name);
             audioEffectSource.PlayOneShot(clip);
         }
+
+        public void PlayOneShot(string name, Vector3 pos)
+        {
+            var clip = Managers.Instance.Resource.Load<AudioClip>(name);
+            AudioSource.PlayClipAtPoint(clip, pos, audioEffectSource.volume);
+        }
+
+        public void PlayOneShot(AudioSource source, string name)
+        {
+            var clip = Managers.Instance.Resource.Load<AudioClip>(name);
+            source.PlayOneShot(clip, audioEffectSource.volume);
+        }
+
         public void Play(string name)
         {
             var clip = Managers.Instance.Resource.Load<AudioClip>(name);

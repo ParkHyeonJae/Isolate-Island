@@ -27,6 +27,7 @@ namespace IsolateIsland.Runtime.Interact
             if (AI != null)
             {
                 AI.ReduceHp(Managers.Managers.Instance.statManager.UserStat.ATK);
+                AI.gameObject.GetOrAddComponent<EnemySoundController>().PlayHitSound();
                 Debug.Log("========= =========Enemy(Test) HP : " + AI.hp);
             }
         }
@@ -46,6 +47,7 @@ namespace IsolateIsland.Runtime.Interact
             {
                 Debug.Log($"현재 데미지 {userDmg }, 화살 데미지 : {arrowDmg}, 누적 : {userDmg + arrowDmg}");
                 AI.ReduceHp(userDmg + arrowDmg);
+                AI.gameObject.GetOrAddComponent<EnemySoundController>().PlayHitSound();
                 Debug.Log("========= =========Enemy(Test) HP : " + AI.hp);
             }
         }

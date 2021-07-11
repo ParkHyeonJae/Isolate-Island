@@ -23,10 +23,19 @@ namespace IsolateIsland.Runtime.Character
         {
             base.Reward();
 
-            ItemBuilder itemBuilder = new ItemBuilder();
-            var stick = Managers.Managers.Instance.Pool.Instantiate("나뭇가지");
-            stick.gameObject.SetActive(true);
-            stick.transform.position = transform.position;
+            var stickSpawnCount = Random.Range(0, 4);
+            for (int i = 0; i < stickSpawnCount; i++)
+            {
+                var stick = Managers.Managers.Instance.Pool.Instantiate("나뭇가지");
+                stick.gameObject.SetActive(true);
+                stick.transform.position = transform.position;
+            }
+
+            for (int i = 0; i < 3; i++)
+            {
+                var fruit = Managers.Managers.Instance.Pool.Instantiate("나무열매");
+            }
+            
         }
         public override void OnInteractableEvent(Entity entity)
         {
@@ -34,8 +43,7 @@ namespace IsolateIsland.Runtime.Character
 
             if (IsBreak == true)
                 return;
-            string key = Random.Range(0, 2) == 0 ? "stepwood_1" : "stepwood_2";
-            Managers.Managers.Instance.Sound.PlayOneShot(key);
+            Managers.Managers.Instance.Sound.PlayOneShot("나무 상호작용");
             AnimatePlayFactory(TreeInteractType.TreeInteract);
         }
 

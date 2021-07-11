@@ -14,6 +14,7 @@ namespace IsolateIsland.Runtime
         public void _Title()
         {
             SceneManager.LoadScene((int)SceneNumber.Title);
+            Managers.Managers.Instance.GameManager.PlayBgm();
         }
         public void _InGame()
         {

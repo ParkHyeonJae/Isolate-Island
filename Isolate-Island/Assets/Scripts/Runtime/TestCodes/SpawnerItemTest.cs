@@ -44,10 +44,11 @@ namespace IsolateIsland.Runtime.TestCodes
 
         private void SpawnItemOne(CombinationNode @base)
         {
-            ItemBuilder itemBuilder = new ItemBuilder();
-            ItemBase itemBase = itemBuilder.
-                SetCombinationNode(@base).
-                Build();
+            //ItemBuilder itemBuilder = new ItemBuilder();
+            //ItemBase itemBase = itemBuilder.
+            //    SetCombinationNode(@base).
+            //    Build();
+            var itemBase = Managers.Managers.Instance.Pool.Instantiate(@base.name);
 
             itemBase.transform.position = randomPos;
             itemBase.transform.SetParent(transform);
@@ -56,10 +57,11 @@ namespace IsolateIsland.Runtime.TestCodes
         
         private void SpawnItemOne(int index)
         {
-            ItemBuilder itemBuilder = new ItemBuilder();
-            ItemBase itemBase = itemBuilder.
-                SetCombinationNode(spawnObject[index]).
-                Build();
+            //ItemBuilder itemBuilder = new ItemBuilder();
+            //ItemBase itemBase = itemBuilder.
+            //    SetCombinationNode(spawnObject[index]).
+            //    Build();
+            var itemBase = Managers.Managers.Instance.Pool.Instantiate(spawnObject[index].name);
 
             itemBase.transform.position = randomPos;
             itemBase.transform.SetParent(transform);
