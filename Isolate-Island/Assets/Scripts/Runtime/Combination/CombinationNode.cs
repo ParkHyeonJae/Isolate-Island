@@ -24,6 +24,10 @@ namespace IsolateIsland.Runtime.Combination
         [Space(20)]
         [Tooltip("조합했을 시 생성될 수 있는 아이템 개수")]
         public int ProductCount = 1;
+
+        [Space(10)]
+        [Tooltip("드랍되는 개수")]
+        public int DropCount = 1;
     }
 
 }

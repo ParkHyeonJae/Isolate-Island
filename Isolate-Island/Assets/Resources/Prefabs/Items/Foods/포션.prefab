@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 175937904754078298}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -73,9 +73,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bdcf4a7884265c46b4552c4d53a6fee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DefaultAddedItemCount: 1
   _onItemCollctEvent:
     m_PersistentCalls:
       m_Calls: []
+  _isCollisionCheck: 1
 --- !u!212 &1322789189980644150
 SpriteRenderer:
   m_ObjectHideFlags: 0
