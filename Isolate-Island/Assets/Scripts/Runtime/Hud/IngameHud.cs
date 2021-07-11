@@ -85,8 +85,13 @@ namespace IsolateIsland.Runtime.Hud
         [SerializeField] private Toggle _autoaimToggle;
         [SerializeField] private Toggle _googleToggle;
 
+        [Header("Image")]
+        [SerializeField] private Image _bloodScreenImage;
+
         [Header("Text")]
         [SerializeField] private Text _timeDateText;
+        [SerializeField] private Text _gameoverKillText;
+        [SerializeField] private Text _gameoverDayText;
 
         private void Start()
         {
@@ -111,6 +116,8 @@ namespace IsolateIsland.Runtime.Hud
             _autoaimToggle.isOn = PlayerPrefs.GetBool("AutoAim", false);
 
             Manager.Instance.Event.GetListener<OnGameoverEvent>().Subscribe(() => StartCoroutine(OnGameoverPopup()));
+            Manager.Instance.Event.GetListener<OnChangeDayOrNightEvent>().Subscribe(ChangeDay);
+            Manager.Instance.Event.GetListener<OnPlayerHitEvent>().Subscribe(OnHitScreen);
         }
 
         IEnumerator SetGaugeValue()
@@ -125,30 +132,23 @@ namespace IsolateIsland.Runtime.Hud
             else
             {
                 _timeNightGauge.SetCurrnetFillAmount(Manager.Instance.GameManager.flowDayTime);
-
-                if (_timeNightGauge.GetCurrentFillAmountValue() <= 0)
-                {
-                    _timeNightGauge.SetCurrnetFillAmount(1);
-                    _timeDayGauge.SetCurrnetFillAmount(1);
-                    _timeDateText.text = "Day " + Manager.Instance.GameManager.survivalDate.ToString();
-                }
             }
-
-            // 테스트를 위한 코드
-            //if (_hungerGauge.GetCurrentFillAmountRatio() <= 0.25f)
-            //    Managers.Managers.Instance.statManager.UserStat.MoveSpeed = 10;
-            //else
-            //    Managers.Managers.Instance.statManager.UserStat.MoveSpeed = 20;
-
-            //Managers.Managers.Instance.statManager.UserStat.HP--;
-            //Managers.Managers.Instance.statManager.UserStat.Hungry--;
-
-            //Debug.Log(Managers.Managers.Instance.statManager.UserStat.MoveSpeed);
-            // 끝
 
             yield return new WaitForEndOfFrame();
 
             StartCoroutine(SetGaugeValue());
+        }
+
+        public void ChangeDay()
+        {
+            bool isDay = Manager.Instance.GameManager.isDay;
+
+            if (!isDay)
+            {
+                _timeNightGauge.SetCurrnetFillAmount(1);
+                _timeDayGauge.SetCurrnetFillAmount(1);
+                _timeDateText.text = "Day " + (Manager.Instance.GameManager.survivalDate + 1).ToString();
+            }
         }
 
         public void OnPause()
@@ -219,6 +219,9 @@ namespace IsolateIsland.Runtime.Hud
             float fadeDurationDimming = 4;
             float fadeDurationUi = 2.5f;
 
+            _gameoverDayText.text = "Day : " + Manager.Instance.GameManager.survivalDate.ToString();
+            _gameoverKillText.text = "Kill : " + Manager.Instance.GameManager.killCount.ToString();
+
             _gameoverPopup.SetActive(true);
 
             _gameoverPopup.transform.Find("Dimming").gameObject.GetOrAddComponent<Image>()
@@ -231,6 +234,14 @@ namespace IsolateIsland.Runtime.Hud
         public void ClickRetry()
         {
             SceneChange._InGame();
+        }
+
+        public void OnHitScreen()
+        {
+            float fadeDuration = 1;
+
+            _bloodScreenImage.DOFade(165f / 255f, 0.1f)
+                .OnComplete(() => _bloodScreenImage.DOFade(0, fadeDuration));
         }
     }
 }
