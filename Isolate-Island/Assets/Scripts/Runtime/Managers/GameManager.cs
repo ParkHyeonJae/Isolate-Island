@@ -7,7 +7,7 @@ namespace IsolateIsland.Runtime.Managers
 {
     public class GameManager : IManagerInit, IManagerUpdate
     {
-        private const float _timeCycle = 10;
+        private const float _timeCycle = 60;
         public const int hungryDamage = 5;
         public const int reduceHungryForMinute = 30;
         public const int hungryDamageDelay = 3;
@@ -19,7 +19,7 @@ namespace IsolateIsland.Runtime.Managers
         public bool isDay { get; private set; }
         public int killCount { get; private set; }
 
-        private bool _onGame = false;
+        private bool _onGame = true;
         public bool onGame { get { return _onGame; } set { _onGame = value; } }
 
         public void OnInit()

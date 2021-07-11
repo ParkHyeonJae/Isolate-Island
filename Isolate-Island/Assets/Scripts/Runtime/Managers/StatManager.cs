@@ -32,7 +32,7 @@ namespace IsolateIsland.Runtime.Managers
                 .SetMoveSpeed(5)
                 .SetAttackSpeed(10)
                 .SetAttackRange(1)
-                .SetAttack(5)
+                .SetAttack(1)
                 .Build();
 
             Managers.Instance.Coroutine.StartRoutine(ReducePlayerHungry());

@@ -7861,6 +7861,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slotImage: {fileID: 6699634015665195992}
   _slotText: {fileID: 6699634016728847468}
+  _emptyImage: {fileID: 21300000, guid: e683db1a9e651a34583cd613666ddd1c, type: 3}
 --- !u!1 &6699634015854840021
 GameObject:
   m_ObjectHideFlags: 0

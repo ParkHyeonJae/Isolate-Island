@@ -2487,6 +2487,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeObject: {fileID: 719468246}
   sceneChanger: {fileID: 571661898}
+  bgmSlider: {fileID: 1361925623}
+  sfxSlider: {fileID: 735295510}
 --- !u!4 &953937560
 Transform:
   m_ObjectHideFlags: 0
