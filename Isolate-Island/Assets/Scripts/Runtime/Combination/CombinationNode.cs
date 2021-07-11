@@ -8,6 +8,7 @@ namespace IsolateIsland.Runtime.Combination
     public class CombinationNode : ScriptableObject
     {
         public Sprite sprite;
+        public Sprite invetorySprite;
 
         [TextArea]
         public string description = "";

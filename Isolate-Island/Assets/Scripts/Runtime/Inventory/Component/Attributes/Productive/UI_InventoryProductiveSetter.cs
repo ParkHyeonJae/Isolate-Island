@@ -11,7 +11,7 @@ namespace IsolateIsland.Runtime.Inventory
     {
         public virtual void SetProductiveAttribute(Combination.CombinationNode node, Action<Combination.CombinationNode> onClickHandler)
         {
-            image.sprite = node.sprite;
+            image.sprite = node.invetorySprite;
             image.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(() => onClickHandler?.Invoke(node));
