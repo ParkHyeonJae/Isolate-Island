@@ -35,7 +35,17 @@ namespace IsolateIsland.Runtime.Inventory
             Debug.Log(Base);
             gameObject.SetActive(false);
         }
-
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (!_isCollisionCheck)
+                return;
+            if (!collision.collider.CompareTag("Player"))
+                return;
+            if (Managers.Managers.Instance.Inventory.Game.Items.Count == 10
+                && !Managers.Managers.Instance.Inventory.Game.IsContain(Base))
+                return;
+            _onItemCollctEvent?.Invoke();
+        }
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (!_isCollisionCheck)

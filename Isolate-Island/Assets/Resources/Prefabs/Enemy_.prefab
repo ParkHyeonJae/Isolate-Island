@@ -164,7 +164,7 @@ MonoBehaviour:
   - {x: -0.32659638, y: -0.9085185, z: -0.000000059604645}
   m_ShapePathHash: -2047885951
   m_Mesh: {fileID: 0}
-  m_InstanceId: 57944
+  m_InstanceId: 2434348
 --- !u!61 &181328375220112963
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -175,7 +175,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.70594215, y: -0.93855023}
@@ -528,7 +528,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 3.57, y: 0}

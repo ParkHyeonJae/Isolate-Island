@@ -8,7 +8,17 @@ namespace IsolateIsland.Runtime.Inventory
 {
     public class ItemBehaviourModule_MolotovCocktail : ItemBehaviourModule_MoveTo
     {
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (!collision.collider.CompareTag(Utils.Defines.Tags.TAG_ENTITY))
+                return;
 
+            HitInteractEntity entity;
+            if (!collision.collider.TryGetComponent<HitInteractEntity>(out entity))
+                return;
+
+            Managers.Managers.Instance.Event.GetListener<OnRangedHitInteractEvent>().Invoke(dir, this.GetComponent<DressableItem>(), entity);
+        }
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (!collision.CompareTag(Utils.Defines.Tags.TAG_ENTITY))
