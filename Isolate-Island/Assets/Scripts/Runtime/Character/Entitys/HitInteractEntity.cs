@@ -1,5 +1,6 @@
 ﻿using IsolateIsland.Runtime.Character;
 using IsolateIsland.Runtime.Event;
+using IsolateIsland.Runtime.Inventory;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,14 @@ namespace IsolateIsland.Runtime.Character
                     OnInteractHitEvent(entity);
                 }
             });
+            Managers.Managers.Instance.Event.GetListener<OnRangedHitInteractEvent>().Subscribe((dir, item, entity) =>
+            {
+                if (entity == this)
+                {
+                    Managers.Managers.Instance.Event.GetListener<OnRangedHitInteractEvent>().OnInteract(dir, entity);
+                    OnArrowInteractHitEvent(item, entity);
+                }
+            });
         }
 
         /// <summary>
@@ -29,5 +38,10 @@ namespace IsolateIsland.Runtime.Character
 
         }
 
+
+        protected virtual void OnArrowInteractHitEvent(DressableItem item, Entity entity)
+        {
+
+        }
     }
 }

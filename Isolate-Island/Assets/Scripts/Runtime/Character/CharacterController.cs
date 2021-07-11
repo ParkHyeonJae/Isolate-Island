@@ -35,7 +35,12 @@ namespace IsolateIsland.Runtime.Character
             xAxis = 0f;
             yAxis = 0f;
         }
-        protected virtual void OnUpdate() => Move();
+        protected virtual void OnUpdate()
+        {
+            if (Managers.Managers.Instance.GameManager.enableMove == false)
+                return;
+            Move();
+        }
         void Update() => OnUpdate();
 
         public virtual void Move()

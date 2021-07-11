@@ -21,6 +21,7 @@ MonoBehaviour:
   - Name: 
     Count: 1
     combinationNode: {fileID: 11400000, guid: 3440908bf247c874589795023f8a6ffc, type: 2}
+  ProductCount: 1
   Stat:
     MoveSpeed: 0
     AttackSpeed: 0
@@ -52,3 +53,4 @@ MonoBehaviour:
     Scale: {x: 1, y: 1, z: 1}
     ColliderOffset: {x: 0, y: 0}
     ColliderSize: {x: 1, y: 1}
+  IsComsumable: 0

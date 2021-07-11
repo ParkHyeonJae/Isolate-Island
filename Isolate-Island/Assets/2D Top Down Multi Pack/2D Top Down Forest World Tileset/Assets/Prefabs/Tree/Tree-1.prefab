@@ -92,7 +92,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5857537351757959598}
   - component: {fileID: 68697655456828143}
-  - component: {fileID: 8585536722514016036}
   m_Layer: 0
   m_Name: Tree-1
   m_TagString: Untagged
@@ -126,37 +125,6 @@ SortingGroup:
   m_SortingLayerID: 1897441671
   m_SortingLayer: 1
   m_SortingOrder: 0
---- !u!114 &8585536722514016036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1195939819764244486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShadowGroup: 0
-  m_HasRenderer: 0
-  m_UseRendererSilhouette: 1
-  m_CastsShadows: 1
-  m_SelfShadows: 0
-  m_ApplyToSortingLayers: 0000000087a918715d8420f9076956a7
-  m_ShapePath:
-  - {x: -0.37193587, y: 0.22405553, z: 0}
-  - {x: -0.09726298, y: 0.08128124, z: 0}
-  - {x: -0.100916564, y: -0.16998833, z: 0}
-  - {x: 0.08005649, y: -0.19947498, z: 0}
-  - {x: 0.0652799, y: 0.03695131, z: 0}
-  - {x: 0.3719356, y: 0.22416931, z: 0}
-  - {x: 0.16379023, y: 1.1156462, z: 0}
-  - {x: -0.0012708306, y: 1.5011115, z: 0}
-  - {x: -0.3090625, y: 0.7117513, z: 0}
-  m_ShapePathHash: -1510125969
-  m_Mesh: {fileID: 0}
-  m_InstanceId: -57502
 --- !u!1 &1377947550975182364
 GameObject:
   m_ObjectHideFlags: 0

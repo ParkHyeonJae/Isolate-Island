@@ -13,6 +13,8 @@ namespace IsolateIsland.Runtime.Managers
         public const int hungryDamageDelay = 3;
         public const int debuffHungry = 30;
 
+        public bool enableMove = true;
+        
         public int survivalDate { get; private set; }
         public float flowDayTime { get; private set; }
         public bool isDay { get; private set; }

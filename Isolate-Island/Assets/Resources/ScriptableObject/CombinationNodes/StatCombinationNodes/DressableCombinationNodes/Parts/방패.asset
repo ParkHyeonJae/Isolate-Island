@@ -52,3 +52,4 @@ MonoBehaviour:
     Scale: {x: 1, y: 1, z: 1}
     ColliderOffset: {x: 0, y: 0}
     ColliderSize: {x: 1, y: 1}
+  IsComsumable: 0

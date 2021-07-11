@@ -8,11 +8,15 @@ namespace IsolateIsland.Runtime.Inventory
     public class TorchItem : ProximityWeaponItem
     {
         GameObject _lightObject;
+
+        public override string GetAttackAnimKey()
+        {
+            return Utils.Defines.AnimationKeys.DefaultAttackAnimationKey;
+        }
+
         protected override void Initalize()
         {
             base.Initalize();
-
-            GetAttackAnimKey = Utils.Defines.AnimationKeys.DefaultAttackAnimationKey;
         }
 
 
