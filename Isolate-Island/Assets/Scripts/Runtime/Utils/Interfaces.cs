@@ -10,7 +10,7 @@ namespace IsolateIsland.Runtime.Utils
     }
     internal interface IStatAble
     {
-        string GetStatInfo { get; }
+        string GetStatInfo();
     }
 
     internal interface ISingleton<T>

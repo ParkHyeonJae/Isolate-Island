@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1802542545348039847}
   - component: {fileID: 4868982224811375398}
   - component: {fileID: 5890752240023362496}
-  - component: {fileID: 8494000921358438084}
   - component: {fileID: 7477761422911155334}
+  - component: {fileID: 2166883333617857179}
   m_Layer: 0
   m_Name: "\uCCA0\uD654\uC0B4"
   m_TagString: Untagged
@@ -76,6 +76,7 @@ MonoBehaviour:
   _onItemCollctEvent:
     m_PersistentCalls:
       m_Calls: []
+  _isCollisionCheck: 1
 --- !u!212 &5890752240023362496
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -126,19 +127,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8494000921358438084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7871067290982226929}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: daf285cfb1bea0b4b9cb33d549477236, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _combinationNode: {fileID: 11400000, guid: 4f33b12645397f94bb5c13855a0ca539, type: 2}
 --- !u!114 &7477761422911155334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,4 +152,17 @@ MonoBehaviour:
   - {x: -0.33775377, y: 0.33247635, z: 0}
   m_ShapePathHash: 1068181333
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1193406
+  m_InstanceId: 895410
+--- !u!114 &2166883333617857179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7871067290982226929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e980f2e66b665c429d45adf51ec59fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _combinationNode: {fileID: 11400000, guid: 4f33b12645397f94bb5c13855a0ca539, type: 2}

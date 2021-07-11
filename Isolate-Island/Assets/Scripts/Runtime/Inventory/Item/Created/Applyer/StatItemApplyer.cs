@@ -7,12 +7,13 @@ namespace IsolateIsland.Runtime.Inventory
 {
     internal class StatItemApplyer : ItemApplyer
     {
+        
         internal override void Use<T>(in T item)
         {
             base.Use<T>(item);
             Debug.Log("StatItemApplyer : Use");
             var converted = item.CombinationNode as StatCombinationNode;
-
+            
             if (converted)
             {
                 var effectStat = Managers.Managers.Instance.statManager.UserStat;

@@ -23,21 +23,64 @@ namespace IsolateIsland.Runtime.Inventory
             base.Use<T>(item);
             Debug.Log("DressableItemApplyer : Use");
 
+            // 사용한 아이템이 장비아이템이 아니라면 장착하지 말 것
             var dressable = item as DressableItem;
             if (dressable is null)
                 return;
 
+            // 소비했을 때 인벤토리에 있고, 장비아이템이 맞다면 기존에 장착되어 있는 장비 칸에 이미 장착된 장비가 있는 지 확인해볼 것
             var parts = Managers.Managers.Instance.Inventory.Dressable
                     .GetParts(dressable.DressableCombinationNode.DressableStat.DRESSABLE_Parts);
 
-            if (parts)
-                Drop(parts);
 
-            Managers.Managers.Instance.Inventory.Dressable.AddItem(item);
+            // 예외적인 케이스로 장비 템일 경우, 장착했을 시 하나의 아이템만 장비칸으로 이동하는 반면에, 소비템일 경우에는 해당 아이템의 모든 개수를 장비템에 옮겨야 한다.
+            if (IsConsumable(item))
+            {
+                var count = Managers.Managers.Instance.Inventory.Game.GetItemCount(item);
+
+                // 소비했을 때 아이템이 인벤토리에 없으면 장비칸에 넣지 말 것
+                var contain = Managers.Managers.Instance.Inventory.Game.IsContain(item);
+                var contain2 = Managers.Managers.Instance.Inventory.Dressable.IsContain(item);
+                if (contain == false)
+                    return;
+
+                //if (contain2)
+                //    base.Use(item);
+
+
+                // 이미 장착된 장비템이 있다면 Drop으로 다시 원래 자리로 돌려준다.
+                if (parts)
+                    DropAll(parts, count);
+
+                DropAll(item, count);
+
+                for (int i = 0; i < count; i++)
+                    Managers.Managers.Instance.Inventory.Dressable.AddItem(item);
+            }
+            else
+            {
+                // 이미 장착된 장비템이 있다면 Drop으로 다시 원래 자리로 돌려준다.
+                if (parts)
+                    Drop(parts);
+
+                // 일반 상황에서는 장비 칸에 아이템을 하나만 삽입하게 된다.
+                Managers.Managers.Instance.Inventory.Dressable.AddItem(item);
+            }
+
+            
 
             dressable.OnEnterDressable();
         }
-
+        internal void DropAll<T>(in T item, int count) where T : ItemBase
+        {
+            for (int i = 0; i < count; i++)
+                Drop(item);
+        }
+        internal void BaseDropAll<T>(in T item, int count) where T : ItemBase
+        {
+            for (int i = 0; i < count; i++)
+                base.Drop(item);
+        }
         internal override void Drop<T>(in T item)
         {
             
@@ -50,8 +93,20 @@ namespace IsolateIsland.Runtime.Inventory
                     Managers.Managers.Instance.Inventory.Game.AddItem(item);
                     break;
                 case true when HasUseInDressableInventroy(item):
-                    Managers.Managers.Instance.Inventory.Dressable.SubtractItem(item);
-                    Managers.Managers.Instance.Inventory.Game.AddItem(item);
+                    if (IsConsumable(item))
+                    {
+                        var count = Managers.Managers.Instance.Inventory.Dressable.GetItemCount(item);
+                        for (int i = 0; i < count; i++)
+                        {
+                            Managers.Managers.Instance.Inventory.Dressable.SubtractItem(item);
+                            Managers.Managers.Instance.Inventory.Game.AddItem(item);
+                        }
+                    }
+                    else
+                    {
+                        Managers.Managers.Instance.Inventory.Dressable.SubtractItem(item);
+                        Managers.Managers.Instance.Inventory.Game.AddItem(item);
+                    }
                     break;
                 case true when HasUseInGameInventroy(item):
                     Managers.Managers.Instance.Inventory.Game.SubtractItem(item);

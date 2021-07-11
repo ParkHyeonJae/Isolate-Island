@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eacc0f2f92685c9449731fbe00cd73ea, type: 3}
   m_Name: "\uBB34\uB98E\uBCF4\uD638\uB300"
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 4f889e8a7b6564d46afa6c4f4083d5ef, type: 3}
+  sprite: {fileID: 21300148, guid: b08e570699f1c8a4f9cc388204aef3bc, type: 3}
+  invetorySprite: {fileID: 21300148, guid: b08e570699f1c8a4f9cc388204aef3bc, type: 3}
   description: "\uB0B4 \uBB34\uB98E\uC740 \uC18C\uC911\uD558\uB2C8\uAE4C"
   combinationNodes:
   - Name: "\uC2E4"
@@ -21,6 +22,7 @@ MonoBehaviour:
   - Name: "\uC870\uAC1C\uAECD\uC9C8"
     Count: 1
     combinationNode: {fileID: 11400000, guid: 299fb1d7ad116d949bfee3c03f4e9a68, type: 2}
+  ProductCount: 1
   Stat:
     MoveSpeed: 0
     AttackSpeed: 0
@@ -46,3 +48,10 @@ MonoBehaviour:
     DRESSABLE_MAX_HEALTH: 0
     DRESSABLE_HEALTH: 0
     DRESSABLE_HUNGRY: 0
+  OnDressableSetting:
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 1, y: 1, z: 1}
+    ColliderOffset: {x: 0, y: 0}
+    ColliderSize: {x: 1, y: 1}
+  IsComsumable: 0

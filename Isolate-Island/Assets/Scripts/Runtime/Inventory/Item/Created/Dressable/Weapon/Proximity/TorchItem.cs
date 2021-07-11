@@ -8,11 +8,15 @@ namespace IsolateIsland.Runtime.Inventory
     public class TorchItem : ProximityWeaponItem
     {
         GameObject _lightObject;
+
+        public override string GetAttackAnimKey()
+        {
+            return Utils.Defines.AnimationKeys.DefaultAttackAnimationKey;
+        }
+
         protected override void Initalize()
         {
             base.Initalize();
-
-            GetAttackAnimKey = Utils.Defines.AnimationKeys.DefaultAttackAnimationKey;
         }
 
 
@@ -26,10 +30,10 @@ namespace IsolateIsland.Runtime.Inventory
 
 
             //#region TEST
-            //_lightObject = Managers.Managers.Instance.Pool.Instantiate("횟불_라이트");
+            _lightObject = Managers.Managers.Instance.Pool.Instantiate("횟불_라이트");
 
-            //_lightObject.transform.SetParent(user.transform);
-            //_lightObject.transform.localPosition = new Vector3(0, -3.3f, 0);
+            _lightObject.transform.SetParent(user.transform);
+            _lightObject.transform.localPosition = new Vector3(0, -3.3f, 0);
             //#endregion
         }
 

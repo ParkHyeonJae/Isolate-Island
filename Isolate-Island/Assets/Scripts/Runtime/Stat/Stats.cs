@@ -38,7 +38,7 @@ namespace IsolateIsland.Runtime.Stat
     {
         public int MAX_HP { get; set; }
         public int HP { get; set; }
-        public int Hungry { get; set; }
+        public float Hungry { get; set; }
 
         public int ATK { get; set; }
         public int DEF { get; set; }
@@ -177,6 +177,12 @@ namespace IsolateIsland.Runtime.Stat
         public StatBuilder SetAttack(int _attack)
         {
             Stat.ATK = _attack;
+            return this;
+        }
+
+        public StatBuilder SetAttackRange(int _range)
+        {
+            Stat.RANGE = _range;
             return this;
         }
 

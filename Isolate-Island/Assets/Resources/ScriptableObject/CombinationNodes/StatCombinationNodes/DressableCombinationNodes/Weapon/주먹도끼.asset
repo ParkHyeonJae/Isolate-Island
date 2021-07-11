@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eacc0f2f92685c9449731fbe00cd73ea, type: 3}
   m_Name: "\uC8FC\uBA39\uB3C4\uB07C"
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 31d82aeab18b40a418e414484782ab7d, type: 3}
+  sprite: {fileID: 21300118, guid: 1e627bcafe9e32d40ad554880f36b5eb, type: 3}
+  invetorySprite: {fileID: 21300118, guid: 1e627bcafe9e32d40ad554880f36b5eb, type: 3}
   description: "\uC5ED\uC0AC\uC2DC\uAC04\uC5D0 \uC878\uC9C0 \uC54A\uC558\uB2E4\uBA74
     \uB5C0\uC11D\uAE30\uAC00 \uBB54\uC9C0 \uC54C\uACE0 \uC788\uACA0\uC9C0"
   combinationNodes:
   - Name: "\uB3CC\uBA69\uC774"
     Count: 2
     combinationNode: {fileID: 11400000, guid: 6fe3fa7f888748b46abec6bd0ec818bb, type: 2}
+  ProductCount: 1
   Stat:
     MoveSpeed: 0
     AttackSpeed: 0
@@ -44,3 +46,10 @@ MonoBehaviour:
     DRESSABLE_MAX_HEALTH: 0
     DRESSABLE_HEALTH: 0
     DRESSABLE_HUNGRY: 0
+  OnDressableSetting:
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 1, y: 1, z: 1}
+    ColliderOffset: {x: 0, y: 0}
+    ColliderSize: {x: 1, y: 1}
+  IsComsumable: 0

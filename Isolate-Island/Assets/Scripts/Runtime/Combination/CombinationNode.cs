@@ -8,6 +8,7 @@ namespace IsolateIsland.Runtime.Combination
     public class CombinationNode : ScriptableObject
     {
         public Sprite sprite;
+        public Sprite invetorySprite;
 
         [TextArea]
         public string description = "";
@@ -20,6 +21,9 @@ namespace IsolateIsland.Runtime.Combination
         }
         public Node[] combinationNodes;
 
+        [Space(20)]
+        [Tooltip("조합했을 시 생성될 수 있는 아이템 개수")]
+        public int ProductCount = 1;
     }
 
 }

@@ -28,6 +28,7 @@ namespace IsolateIsland.Editor.Combination
                 return;
             
             _combinationNode.sprite = EditorGUILayout.ObjectField("Sprite Info", _combinationNode.sprite, typeof(Sprite), true) as Sprite;
+            _combinationNode.invetorySprite = EditorGUILayout.ObjectField("Invetory Sprite Info", _combinationNode.invetorySprite, typeof(Sprite), true) as Sprite;
             EditorUtility.SetDirty(_combinationNode);
         }
 

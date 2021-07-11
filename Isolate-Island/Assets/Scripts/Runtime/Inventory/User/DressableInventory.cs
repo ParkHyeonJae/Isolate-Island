@@ -79,12 +79,13 @@ namespace IsolateIsland.Runtime.Inventory
             Managers.Managers.Instance.Event.GetListener<DressableEventListener>()
                 .Invoke(Utils.Defines.EDressableState.Use, dressableItem);
 
-            InitItemToPlaceInHierarchy(@base);
+            Managers.Managers.Instance.Event.GetListener<Event.OnUIUpdateEvent>()?.Invoke();
         }
 
         protected override void OnCountingItem(ItemBase @base)
         {
 
+            Managers.Managers.Instance.Event.GetListener<Event.OnUIUpdateEvent>()?.Invoke();
         }
 
         protected override void OnSubtractItem(ItemBase @base)
@@ -110,34 +111,14 @@ namespace IsolateIsland.Runtime.Inventory
 
             Managers.Managers.Instance.Event.GetListener<DressableEventListener>()
                 .Invoke(Utils.Defines.EDressableState.Drop, dressableItem);
+
+            Managers.Managers.Instance.Event.GetListener<Event.OnUIUpdateEvent>()?.Invoke();
         }
 
         protected override void OnProductItem(ItemBase @base)
         {
 
-
-        }
-
-        public void InitItemToPlaceInHierarchy(in ItemBase @base)
-        {
-            var dressable = @base as DressableItem;
-
-            var partsSetter = GetParts<CharacterDressablePartsSetter>(
-                dressable.DressableCombinationNode.DressableStat.DRESSABLE_Parts);
-
-            dressable.gameObject.SetActive(true);
-
-            dressable.transform.SetParent(partsSetter.transform);
-
-            
-            dressable.transform.localPosition = Vector3.zero;
-            dressable.transform.localRotation = Quaternion.identity;
-            dressable.transform.localScale = Vector3.one;
-
-
-            dressable.GetComponent<SpriteRenderer>().flipY = true;
-
-
+            Managers.Managers.Instance.Event.GetListener<Event.OnUIUpdateEvent>()?.Invoke();
         }
 
     }

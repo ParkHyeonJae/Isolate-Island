@@ -85,10 +85,13 @@ namespace IsolateIsland.Runtime.Inventory
             // Setting
             for (int i = 0; i < itemList.Length; i++)
             {
-                var attrIdx = setter[i];
-                var table = itemList[i].Key;
+                if (i < setter.Length)
+                {
+                    var attrIdx = setter[i];
+                    var table = itemList[i].Key;
 
-                attrIdx.SetAttribute(table, OnSelectAttribute);
+                    attrIdx.SetAttribute(table, OnSelectAttribute);
+                }
             }
 
         }
@@ -98,9 +101,9 @@ namespace IsolateIsland.Runtime.Inventory
             switch (item)
             {
                 case StatItem statItem:
-                    return statItem;
+                    return statItem.StatCombinationNode;
                 case DressableItem dressableItem:
-                    return dressableItem;
+                    return dressableItem.DressableCombinationNode;
                 default:
                     return default(IStatAble);
             }
@@ -149,14 +152,47 @@ namespace IsolateIsland.Runtime.Inventory
                     break;
             }
         }
+        internal enum ItemPlace
+        {
+            DressableSlot,
+            GameSlot
+        }
+
+        internal ItemPlace GetItemPlace(ItemBase item)
+        {
+            if (!(item is DressableItem))
+                return ItemPlace.GameSlot;
+
+            var dressableCheck = Managers.Managers.Instance.Inventory.Dressable.IsContain(item);
+            var gameCheck = Managers.Managers.Instance.Inventory.Game.IsContain(item);
+
+            if (dressableCheck && !gameCheck)
+                return ItemPlace.DressableSlot;
+
+            if (!dressableCheck && gameCheck)
+                return ItemPlace.GameSlot;
+
+            return ItemPlace.GameSlot;
+        }
 
         internal virtual void SetGUIButton(ItemBase item)
         {
+            attributeForm.startPos_use = attributeForm.obj_use.transform.position;
+            attributeForm.startPos_drop = attributeForm.obj_drop.transform.position;
+
             switch (item)
             {
                 case StatItem _:
-                    attributeForm.obj_use.SetActive(true);
-                    attributeForm.obj_drop.SetActive(true);
+                    if (GetItemPlace(item) == ItemPlace.DressableSlot)
+                    {
+                        attributeForm.obj_use.SetActive(false);
+                        attributeForm.obj_drop.SetActive(true);
+                    }
+                    else
+                    {
+                        attributeForm.obj_use.SetActive(true);
+                        attributeForm.obj_drop.SetActive(true);
+                    }
 
                     attributeForm.obj_use.transform.position = attributeForm.startPos_use;
                     attributeForm.obj_drop.transform.position = attributeForm.startPos_drop;
@@ -217,7 +253,7 @@ namespace IsolateIsland.Runtime.Inventory
 
 
             var statAble = GetTypeToReturnStatAbleFactory(item);
-            attributeForm.item_statText.text = (!(statAble is null)) ? statAble.GetStatInfo : "";
+            attributeForm.item_statText.text = (!(statAble is null)) ? statAble.GetStatInfo() : "";
 
         }
 
@@ -225,16 +261,25 @@ namespace IsolateIsland.Runtime.Inventory
         {
             var selectItem = _selectItem;
 
+            Use(selectItem);
+        }
+
+        public void Use<T>(in T selectItem) where T : ItemBase
+        {
             var itemApplyer = GetTypeToReturnApplyerFactory(selectItem);
             itemApplyer.Use(selectItem);
+        }
+        public void Drop<T>(in T selectItem) where T : ItemBase
+        {
+            var itemApplyer = GetTypeToReturnApplyerFactory(selectItem);
+            itemApplyer.Drop(selectItem);
         }
 
         protected virtual void Button_OnDrop()
         {
             var selectItem = _selectItem;
 
-            var itemApplyer = GetTypeToReturnApplyerFactory(selectItem);
-            itemApplyer.Drop(selectItem);
+            Drop(selectItem);
         }
 
         protected virtual void CachingAttributeAssets()

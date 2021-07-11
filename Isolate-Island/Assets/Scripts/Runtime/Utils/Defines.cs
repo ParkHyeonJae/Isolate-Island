@@ -31,11 +31,18 @@ namespace IsolateIsland.Runtime.Utils
             Drop
         }
 
+        public enum EAttackAnimationKeyState : byte
+        {
+            OnEnter,
+            OnExit
+        }
+
         #region ANIMATION
 
         public class AnimationKeys
         {
             public static readonly string DefaultAttackAnimationKey = "Attack";
+            public static readonly string RangedAttackAnimationKey = "BowAttack";
         }
         #endregion
 

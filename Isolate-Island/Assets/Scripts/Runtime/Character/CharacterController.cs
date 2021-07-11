@@ -5,7 +5,15 @@ namespace IsolateIsland.Runtime.Character
 {
     public class CharacterController : HitInteractEntity
     {
-        public float m_MoveSpeed => Managers.Managers.Instance.statManager.UserStat.MoveSpeed;
+        public float m_MoveSpeed
+        {
+            get
+            {
+                return Managers.Managers.Instance.statManager.UserStat.Hungry > 30 ?
+                Managers.Managers.Instance.statManager.UserStat.MoveSpeed :
+                Managers.Managers.Instance.statManager.UserStat.MoveSpeed * 0.5f;
+            }
+        }
 
         [Range(0, 400)]
         [SerializeField] float m_RigidbodyMoveSpeed = 100;
@@ -27,7 +35,12 @@ namespace IsolateIsland.Runtime.Character
             xAxis = 0f;
             yAxis = 0f;
         }
-        protected virtual void OnUpdate() => Move();
+        protected virtual void OnUpdate()
+        {
+            if (Managers.Managers.Instance.GameManager.enableMove == false)
+                return;
+            Move();
+        }
         void Update() => OnUpdate();
 
         public virtual void Move()

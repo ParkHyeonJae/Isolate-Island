@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Isolate-Island/Assets/Resources/Sprites/Item/Armor.meta
 guid: ec195674d6144844ba633390fe2efc33
+=======
+guid: 5ec5fd7063db0f14f853796de2e673a3
+>>>>>>> e0e7e7bb1c40b1afd451d6787fa3ff0cacc3f9ec:Isolate-Island/Assets/Scripts/Runtime/Inventory/Item/Created/Dressable/SubRequireItem.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
