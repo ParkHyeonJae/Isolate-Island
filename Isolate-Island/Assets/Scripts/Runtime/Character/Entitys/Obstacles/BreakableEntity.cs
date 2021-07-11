@@ -14,8 +14,8 @@ namespace IsolateIsland.Runtime.Character
 
     public class BreakableEntity : InteractableEntity
     {
-        [SerializeField] int HP = 10;
-        [SerializeField] int DMG = 2;
+        [SerializeField] protected int HP = 10;
+        [SerializeField] protected int DMG = 2;
 
         public bool IsBreak { get; set; } = false;
 
@@ -41,7 +41,7 @@ namespace IsolateIsland.Runtime.Character
             OnDamaged(DMG);
         }
 
-        protected void OnDamaged(int damage)
+        protected virtual void OnDamaged(int damage)
         {
             HP -= damage;
 

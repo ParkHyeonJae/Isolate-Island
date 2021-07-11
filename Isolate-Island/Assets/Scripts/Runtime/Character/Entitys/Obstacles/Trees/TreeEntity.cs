@@ -23,10 +23,19 @@ namespace IsolateIsland.Runtime.Character
         {
             base.Reward();
 
-            ItemBuilder itemBuilder = new ItemBuilder();
-            var stick = Managers.Managers.Instance.Pool.Instantiate("나뭇가지");
-            stick.gameObject.SetActive(true);
-            stick.transform.position = transform.position;
+            var stickSpawnCount = Random.Range(0, 4);
+            for (int i = 0; i < stickSpawnCount; i++)
+            {
+                var stick = Managers.Managers.Instance.Pool.Instantiate("나뭇가지");
+                stick.gameObject.SetActive(true);
+                stick.transform.position = transform.position;
+            }
+
+            for (int i = 0; i < 3; i++)
+            {
+                var fruit = Managers.Managers.Instance.Pool.Instantiate("나무열매");
+            }
+            
         }
         public override void OnInteractableEvent(Entity entity)
         {
