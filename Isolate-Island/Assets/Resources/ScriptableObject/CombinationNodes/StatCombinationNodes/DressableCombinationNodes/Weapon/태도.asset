@@ -17,6 +17,7 @@ MonoBehaviour:
   description: "\uB0A0\uCE74\uB86D\uAC8C \uC5F0\uB9C8\uB41C \uAC70\uB300\uD55C \uB3C4"
   combinationNodes: []
   ProductCount: 1
+  DropCount: 1
   Stat:
     MoveSpeed: 0
     AttackSpeed: 0

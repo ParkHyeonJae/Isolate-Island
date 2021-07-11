@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 4887711477035214341}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -48,18 +48,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0040600896, y: -0.27879083}
+  m_Offset: {x: -0.011641979, y: 0.023474574}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 1}
-    oldSize: {x: 0.66, y: 0.57}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.56, y: 2.56}
     newSize: {x: 0.66, y: 0.57}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6670749, y: 0.5885806}
+  m_Size: {x: 2.5042162, y: 2.6062965}
   m_EdgeRadius: 0
 --- !u!114 &3776398397478091040
 MonoBehaviour:
@@ -117,7 +117,7 @@ SpriteRenderer:
   m_SortingLayerID: 1897441671
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300152, guid: b08e570699f1c8a4f9cc388204aef3bc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 94c97ed28efeba848bc7566a274f47ab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -160,10 +160,14 @@ MonoBehaviour:
   m_SelfShadows: 0
   m_ApplyToSortingLayers: 0000000087a91871d7be094f5d8420f9076956a7
   m_ShapePath:
-  - {x: 0.26563403, y: -0.37997973, z: 0}
-  - {x: -0.27091154, y: -0.38173896, z: 0}
-  - {x: -0.25984395, y: -0.5629952, z: 0}
-  - {x: 0.290973, y: -0.5640748, z: 0}
-  m_ShapePathHash: -267677559
+  - {x: 0.30481642, y: 1.1611967, z: 0}
+  - {x: -0.48641503, y: 1.179029, z: 0}
+  - {x: -1.1103333, y: 0.69846284, z: 0}
+  - {x: -0.672796, y: -0.960261, z: 0}
+  - {x: -0.1553573, y: -1.2225665, z: 0}
+  - {x: 0.6594075, y: -0.78393996, z: 0}
+  - {x: 0.8917704, y: 0.14773977, z: 0}
+  - {x: 1.1100054, y: 0.80947995, z: 0}
+  m_ShapePathHash: 1864834623
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1190420
+  m_InstanceId: 1665650
