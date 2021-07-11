@@ -45,6 +45,21 @@ namespace IsolateIsland.Runtime.Managers
             source.PlayOneShot(clip, audioEffectSource.volume);
         }
 
+        public void StopSound(SoundType type)
+        {
+            switch (type)
+            {
+                case SoundType.BGM:
+                    audioBGMSource.Stop();
+                    break;
+                case SoundType.SFX:
+                    audioEffectSource.Stop();
+                    break;
+                default:
+                    break;
+            }
+        }
+
         public void Play(string name)
         {
             var clip = Managers.Instance.Resource.Load<AudioClip>(name);

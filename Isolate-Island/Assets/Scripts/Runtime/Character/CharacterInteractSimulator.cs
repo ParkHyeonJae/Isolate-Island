@@ -47,6 +47,7 @@ namespace IsolateIsland.Runtime.Character
                 key = Utils.Defines.AnimationKeys.DefaultAttackAnimationKey;
             else key = weaponItem.GetAttackAnimKey();
             _animator.Play(key);
+
         }
 
         private void Input_OnInteractMouseAction(Utils.Defines.MouseEvent evt)

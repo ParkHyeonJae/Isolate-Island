@@ -43,6 +43,7 @@ namespace IsolateIsland.Runtime.Character
 
             if (IsBreak == true)
                 return;
+            Managers.Managers.Instance.Sound.StopSound(Managers.SoundManager.SoundType.SFX);
             Managers.Managers.Instance.Sound.PlayOneShot("나무 상호작용");
             AnimatePlayFactory(TreeInteractType.TreeInteract);
         }

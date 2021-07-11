@@ -32,9 +32,12 @@ namespace IsolateIsland.Runtime.Inventory
             var itemSlot = Managers.Managers.Instance.Inventory.Dressable.GetParts(Stat.EParts.PARTS_RIGHT_HAND);
 
             if (itemSlot is null || !(itemSlot is SubArrowItem))
+            {
+                Managers.Managers.Instance.Sound.PlayOneShot("플레이어 활 공격");
                 return;
+            }
 
-            Managers.Managers.Instance.Inventory.Dressable.SubtractItem(itemSlot);
+            Managers.Managers.Instance.Inventory.Dressable.OnCountDownItem(itemSlot);
             Managers.Managers.Instance.Event.GetListener<Event.OnUIUpdateEvent>()?.Invoke();
 
             var arrowItem = itemSlot as SubArrowItem;
@@ -49,6 +52,8 @@ namespace IsolateIsland.Runtime.Inventory
             moveTo.SetDestinationPosition(mousePos);
             moveTo.SetRange(Managers.Managers.Instance.statManager.UserStat.RANGE);
             moveTo.Do();
+
+            Managers.Managers.Instance.Sound.PlayOneShot("플레이어 화살 공격");
         }
 
         protected override void OnExitAttack()

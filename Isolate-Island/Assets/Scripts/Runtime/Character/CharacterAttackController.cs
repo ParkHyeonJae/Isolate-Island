@@ -83,7 +83,7 @@ namespace IsolateIsland.Runtime.Character
             var sprite = renderer.sprite;
 
             //rigidBody.AddForce(characterAnimController.MoveNormalDir * 20f, ForceMode2D.Impulse);
-            
+
 
             weaponParts?.AttackAnimationFactory(this, Utils.Defines.EAttackAnimationKeyState.OnEnter);
         }
