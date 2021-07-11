@@ -37,14 +37,20 @@ namespace IsolateIsland.Runtime.Managers
 
             Managers.Instance.Coroutine.StartRoutine(ReducePlayerHungry());
         }
-
+        bool InitOnce = true;
         public void ReducePlayerHp(int value)
         {
             float defend = value * UserStat.DEF * 0.05f;
             int damage = value - Mathf.RoundToInt(defend);
             UserStat.HP -= damage;
             if (UserStat.HP <= 0)
-                Managers.Instance.Event.GetListener<OnGameoverEvent>().Invoke();
+            {
+                if (InitOnce)
+                {
+                    Managers.Instance.Event.GetListener<OnGameoverEvent>().Invoke();
+                    InitOnce = false;
+                }
+            }
             else
                 Managers.Instance.Event.GetListener<OnPlayerHitEvent>().Invoke();
         }
