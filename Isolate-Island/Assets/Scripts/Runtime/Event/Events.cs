@@ -80,6 +80,10 @@ namespace IsolateIsland.Runtime.Event
     }
 
     public class OnUIUpdateEvent : EventListener { }
+    public class OnChangeDayOrNightEvent : EventListener
+    {
+
+    }
 
     public class OnGameoverEvent : EventListener
     { 
@@ -88,4 +92,8 @@ namespace IsolateIsland.Runtime.Event
 
 
     public class OnAttackAnimationEvent : GenericEventListener<CharacterAttackController, EAttackAnimationKeyState> { }
+    public class OnPlayerHitEvent : EventListener
+    {
+
+    }
 }

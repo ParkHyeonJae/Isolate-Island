@@ -35,6 +35,7 @@ namespace IsolateIsland.Runtime.Ai
         private bool _isAttackCooltime = false;
         private bool _isHearNoise = false;
         private float _makePosTime = 0;
+        private bool _isDead = false;
 
         public EnemyData enemyData;
 
@@ -125,8 +126,12 @@ namespace IsolateIsland.Runtime.Ai
 
         bool Dead()
         {
+            if (_isDead)
+                return true;
+
             if (hp <= 0)
             {
+                _isDead = true;
                 animator.Play("Dead");
                 Invoke("Destroy", 3);
                 return true;
@@ -138,6 +143,8 @@ namespace IsolateIsland.Runtime.Ai
         void Destroy()
         {
             SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+
+            Managers.Managers.Instance.GameManager.UpKillCount();
 
             sprite.DOFade(0, 1)
                 .OnComplete(() =>
