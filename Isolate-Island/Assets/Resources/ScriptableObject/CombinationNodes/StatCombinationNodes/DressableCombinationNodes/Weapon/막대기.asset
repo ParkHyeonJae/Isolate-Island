@@ -49,9 +49,9 @@ MonoBehaviour:
     DRESSABLE_HEALTH: 0
     DRESSABLE_HUNGRY: 0
   OnDressableSetting:
-    Position: {x: 0, y: 0, z: 0}
-    Rotation: {x: 0, y: 0, z: 0}
-    Scale: {x: 1, y: 1, z: 1}
+    Position: {x: 0.8, y: -2.05, z: 0}
+    Rotation: {x: -0, y: 0, z: 34.94}
+    Scale: {x: 2, y: 2, z: 1}
     ColliderOffset: {x: 0, y: 0}
-    ColliderSize: {x: 1, y: 1}
+    ColliderSize: {x: 1.8350308, y: 2.3834043}
   IsComsumable: 0

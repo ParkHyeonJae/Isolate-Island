@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 4997989192942139038}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -45,10 +45,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.01940167, y: 0.015521646}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -59,7 +59,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.621997, y: 2.7073653}
+  m_Size: {x: 2.56, y: 2.56}
   m_EdgeRadius: 0
 --- !u!114 &7504856207724576480
 MonoBehaviour:
@@ -117,7 +117,7 @@ SpriteRenderer:
   m_SortingLayerID: 1897441671
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b4cb07a517209804cb1728703a53c945, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5dcf690cafbdb3447b5d6216c9cda0e7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -147,13 +147,17 @@ MonoBehaviour:
   m_SelfShadows: 0
   m_ApplyToSortingLayers: 0000000087a91871d7be094f5d8420f9076956a7
   m_ShapePath:
-  - {x: 0.24727105, y: 0.3355821, z: 0}
-  - {x: -0.38268152, y: 0.22372144, z: 0}
-  - {x: -0.30614507, y: -0.2884829, z: 0}
-  - {x: 0.35324433, y: -0.3002577, z: 0}
-  m_ShapePathHash: -1690653256
+  - {x: 0.34416544, y: 0.3355821, z: 0}
+  - {x: -0.26131856, y: 1.2503588, z: 0}
+  - {x: -0.32454506, y: 0.117137775, z: 0}
+  - {x: -0.88751024, y: -0.46289247, z: 0}
+  - {x: 0.02936399, y: -0.59063095, z: 0}
+  - {x: 0.63010824, y: -1.2495115, z: 0}
+  - {x: 0.62454796, y: -0.22274238, z: 0}
+  - {x: 1.007995, y: 0.29110616, z: 0}
+  m_ShapePathHash: -534798764
   m_Mesh: {fileID: 0}
-  m_InstanceId: 1503234
+  m_InstanceId: 486078
 --- !u!114 &2276848872464988311
 MonoBehaviour:
   m_ObjectHideFlags: 0

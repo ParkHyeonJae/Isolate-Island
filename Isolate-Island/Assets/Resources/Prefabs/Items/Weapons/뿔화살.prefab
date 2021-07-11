@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1351415187924404128}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -45,21 +45,21 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.00000020861626, y: -0.043308616}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.53, y: 0.53}
+    oldSize: {x: 2.56, y: 2.56}
     newSize: {x: 0.53, y: 0.53}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.7708209, y: 2.4733827}
   m_EdgeRadius: 0
 --- !u!114 &4268498144718981769
 MonoBehaviour:
@@ -117,7 +117,7 @@ SpriteRenderer:
   m_SortingLayerID: 1897441671
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300036, guid: 1e627bcafe9e32d40ad554880f36b5eb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 093025c2e8b0334439708cdfbcf4ac7f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -147,13 +147,18 @@ MonoBehaviour:
   m_SelfShadows: 0
   m_ApplyToSortingLayers: 0000000087a91871d7be094f5d8420f9076956a7
   m_ShapePath:
-  - {x: 0.15791282, y: -0.17765184, z: 0}
-  - {x: 0.19739103, y: -0.13817368, z: 0}
-  - {x: -0.21431014, y: 0.2622479, z: 0}
-  - {x: -0.25942814, y: 0.21994987, z: 0}
-  m_ShapePathHash: -1485638795
+  - {x: -0.4086391, y: -0.9358317, z: 0}
+  - {x: -0.53963447, y: -0.8510285, z: 0}
+  - {x: 0.5101527, y: 0.6486683, z: 0}
+  - {x: 0.8684133, y: 1.0069289, z: 0}
+  - {x: 0.6351273, y: 1.1402353, z: 0}
+  - {x: 0.49348855, y: 0.7653115, z: 0}
+  - {x: -0.627442, y: -0.76304734, z: 0}
+  - {x: -0.77253044, y: -0.76254475, z: 0}
+  - {x: -0.82597965, y: -1.1964302, z: 0}
+  m_ShapePathHash: -492882283
   m_Mesh: {fileID: 0}
-  m_InstanceId: 895474
+  m_InstanceId: 486608
 --- !u!114 &4873015894012206318
 MonoBehaviour:
   m_ObjectHideFlags: 0
