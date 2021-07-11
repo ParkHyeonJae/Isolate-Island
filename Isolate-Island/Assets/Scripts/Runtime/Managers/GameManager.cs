@@ -19,7 +19,7 @@ namespace IsolateIsland.Runtime.Managers
         public bool isDay { get; private set; }
         public int killCount { get; private set; }
 
-        private bool _onGame = false;
+        private bool _onGame = true;
         public bool onGame { get { return _onGame; } set { _onGame = value; } }
 
         public void OnInit()
