@@ -1,4 +1,5 @@
 ﻿using IsolateIsland.Runtime.Utils;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -20,14 +21,14 @@ namespace IsolateIsland.Runtime.Managers
 
         public void OnUpdate()
         {
-            if (EventSystem.current.IsPointerOverGameObject())
-                return;
-
             if (Input.anyKey && OnInputKey != null)
                 OnInputKey?.Invoke();
 
             if (Input.GetMouseButton(0) && OnMouseAction != null)
             {
+                if (EventSystem.current.IsPointerOverGameObject())
+                    return;
+
                 OnMouseAction?.Invoke(Defines.MouseEvent.Press);
                 _pressed = true;
             }

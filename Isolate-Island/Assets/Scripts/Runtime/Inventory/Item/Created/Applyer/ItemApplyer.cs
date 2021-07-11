@@ -15,7 +15,7 @@ namespace IsolateIsland.Runtime.Inventory
 
         internal virtual void Use<T>(in T item) where T : ItemBase
         {
-            if (!(item is SubArrowItem))
+            if (!((item is SubArrowItem) || (item is ThrowWeaponItem)))
                 Managers.Managers.Instance.Inventory.Game.SubtractItem(item);
             var config = Managers.Managers.Instance.DI.Get<UI_InventoryAttributeConfigurator>();
             config.SetAttribute();

@@ -25,6 +25,11 @@ namespace IsolateIsland.Runtime.Inventory
             GetRigidBody.isKinematic = true;
             StartCoroutine(MoveTo(_startPos, _destPos));
             //Managers.Managers.Instance.Coroutine.StartRoutine(MoveTo(_startPos, _destPos));
+            DestroyTiming();
+        }
+
+        protected virtual void DestroyTiming()
+        {
             Managers.Managers.Instance.Util.AddTimer(_range * 0.1f, () => Managers.Managers.Instance.Pool.Destroy(gameObject));
         }
 
@@ -32,8 +37,6 @@ namespace IsolateIsland.Runtime.Inventory
         {
             transform.position = _startPos;
             
-            Debug.Log(transform.position);
-            Debug.Log(destPos);
             while (gameObject.activeInHierarchy)
             {
                 dir = (destPos - startPos).normalized;

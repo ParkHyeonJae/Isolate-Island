@@ -38,7 +38,7 @@ namespace IsolateIsland.Runtime.Inventory
             Managers.Managers.Instance.Event.GetListener<Event.OnUIUpdateEvent>()?.Invoke();
 
             var arrowItem = itemSlot as SubArrowItem;
-            var arrow = Managers.Managers.Instance.Pool.Instantiate(arrowItem.name);
+            var arrow = Managers.Managers.Instance.Pool.Instantiate(arrowItem.CombinationNode.name);
 
             var moveTo = arrow.GetOrAddComponent<ItemBehaviourModule_Arrow>();
             var characterPos = characterAttackController.transform.position;
