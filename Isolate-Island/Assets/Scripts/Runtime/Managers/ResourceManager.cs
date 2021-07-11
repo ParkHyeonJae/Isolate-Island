@@ -33,10 +33,8 @@ namespace IsolateIsland.Runtime.Managers
                 Debug.LogWarning($"Cannot Found Path : {path}");
                 return;
             }
-
             foreach (var item in result)
                 dict.Add(item.name, item);
-
             Debug.Log($"LoadCompleted : {path}");
         }
 
