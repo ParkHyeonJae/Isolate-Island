@@ -7,6 +7,9 @@ namespace IsolateIsland.Runtime.Hud
 
     public class TitleHud : MonoBehaviour
     {
+        [SerializeField] private FadeInOut fadeObject;
+        [SerializeField] private SceneChanger sceneChanger;
+
         public void SetBgm(float value)
         {
             PlayerPrefs.SetFloat("Bgm", value);
@@ -18,6 +21,14 @@ namespace IsolateIsland.Runtime.Hud
             PlayerPrefs.SetFloat("Sfx", value);
             Managers.Managers.Instance.Sound.SetVolume(Managers.SoundManager.SoundType.SFX, value);
         }
+
+        public void ChangeScene()
+        {
+            fadeObject.gameObject.SetActive(true);
+            Invoke("ChangeSceneIngame", fadeObject._StartFadeTime);
+        }
+
+        public void ChangeSceneIngame() => sceneChanger._InGame();
 
     }
 }
