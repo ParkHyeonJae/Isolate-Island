@@ -12,6 +12,7 @@ namespace IsolateIsland.Runtime.Hud
         [Header("Quick Slot")]
         [SerializeField] private Image _slotImage;
         [SerializeField] private Text _slotText;
+        [SerializeField] private Sprite _emptyImage;
 
         private DressableItem _added_dressableItem = null;
 
@@ -34,8 +35,8 @@ namespace IsolateIsland.Runtime.Hud
             var itemParts2 = Managers.Managers.Instance.Inventory.Dressable.GetParts(EParts.PARTS_LEFT_HAND) as ThrowWeaponItem;
             if (itemParts is null && itemParts2 is null)
             {
-                _slotImage.sprite = null;
-                _slotText.text = "X 00";
+                _slotImage.sprite = _emptyImage;
+                _slotText.text = "";
                 return;
             }
 
