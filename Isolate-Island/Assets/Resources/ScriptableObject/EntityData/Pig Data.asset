@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pig Data
   m_EditorClassIdentifier: 
   _hp: 7
-  _moveSpeed: 5
+  _moveSpeed: 1
   _moveRange: 15
   _makePosCooltime: 5
   _runtime: 3.5

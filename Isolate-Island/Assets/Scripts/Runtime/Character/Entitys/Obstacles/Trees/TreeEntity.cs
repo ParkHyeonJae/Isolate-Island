@@ -43,8 +43,7 @@ namespace IsolateIsland.Runtime.Character
 
             if (IsBreak == true)
                 return;
-            string key = Random.Range(0, 2) == 0 ? "stepwood_1" : "stepwood_2";
-            Managers.Managers.Instance.Sound.PlayOneShot(key);
+            Managers.Managers.Instance.Sound.PlayOneShot("나무 상호작용");
             AnimatePlayFactory(TreeInteractType.TreeInteract);
         }
 

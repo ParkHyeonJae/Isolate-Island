@@ -51,7 +51,16 @@ namespace IsolateIsland.Runtime.Managers
                 isDay = true;
                 survivalDate++;
             }
+            PlayBgm();
             flowDayTime = 1;
+        }
+
+        public void PlayBgm()
+        {
+            if (isDay)
+                Managers.Instance.Sound.Play("낮");
+            else
+                Managers.Instance.Sound.Play("밤");             
         }
 
         public void UpKillCount() => killCount++;

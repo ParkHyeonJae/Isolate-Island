@@ -6,6 +6,10 @@ namespace IsolateIsland.Runtime.Ai
 {
     public class Pig : AnimalAI
     {
+        private AudioSource _audioSource = null;
+        public AudioSource audioSource =>
+            _audioSource = _audioSource ?? gameObject.GetOrAddComponent<AudioSource>();
+
         public override void ReduceHp(int value)
         {
             base.ReduceHp(value);
@@ -36,6 +40,24 @@ namespace IsolateIsland.Runtime.Ai
             }
 
             return base.RunMove();
+        }
+
+        public void PlayWalkSound()
+        {
+            int temp = Random.Range(1, 5);
+            string key = "돼지 걷는 소리 " + temp;
+
+            Managers.Managers.Instance.Sound.PlayOneShot(audioSource, key);
+        }
+
+        public void PlayHitSound()
+        {
+            Managers.Managers.Instance.Sound.PlayOneShot(audioSource, "돼지 피해 소리");
+        }
+
+        public void PlayDeadSound()
+        {
+            Managers.Managers.Instance.Sound.PlayOneShot(audioSource, "돼지 죽는 소리");
         }
     }
 }

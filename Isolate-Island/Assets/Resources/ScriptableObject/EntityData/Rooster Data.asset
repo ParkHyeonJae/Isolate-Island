@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Rooster Data
   m_EditorClassIdentifier: 
   _hp: 5
-  _moveSpeed: 5
+  _moveSpeed: 0.7
   _moveRange: 10
   _makePosCooltime: 5
   _runtime: 2.5
