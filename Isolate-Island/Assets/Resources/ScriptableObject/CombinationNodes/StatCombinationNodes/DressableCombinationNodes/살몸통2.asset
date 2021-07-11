@@ -17,6 +17,7 @@ MonoBehaviour:
   description: "<color=red>\uB204\uAD70\uAC002</color>\uC758 \uAC00\uC8FD.."
   combinationNodes: []
   ProductCount: 1
+  DropCount: 1
   Stat:
     MoveSpeed: 0
     AttackSpeed: 0

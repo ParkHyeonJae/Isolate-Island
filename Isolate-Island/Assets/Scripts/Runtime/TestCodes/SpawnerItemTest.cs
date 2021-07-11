@@ -35,13 +35,13 @@ namespace IsolateIsland.Runtime.TestCodes
         {
             foreach (var item in spawnObject)
             {
-                for (int i = 0; i < 2/*ComvinationNode에 아이템의 최대 드랍 개수가 지정되면, 그 값을 넣음*/; i++)
+                for (int i = 0; i < Random.Range(1, item.DropCount); i++)
                 {
                     SpawnItemOne(item);
                 }
             }
         }
-
+        
         private void SpawnItemOne(CombinationNode @base)
         {
             //ItemBuilder itemBuilder = new ItemBuilder();
