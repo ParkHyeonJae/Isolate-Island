@@ -8,6 +8,10 @@ namespace IsolateIsland.Runtime.Managers
     public class GameManager : IManagerInit, IManagerUpdate
     {
         private const float _timeCycle = 60;
+        public const int hungryDamage = 5;
+        public const int reduceHungryForMinute = 30;
+        public const int hungryDamageDelay = 3;
+        public const int debuffHungry = 30;
 
         public int survivalDate { get; private set; }
         public float flowDayTime { get; private set; }

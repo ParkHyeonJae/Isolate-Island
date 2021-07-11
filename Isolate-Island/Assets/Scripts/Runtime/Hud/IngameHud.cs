@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using IsolateIsland.Runtime.Stat;
 using IsolateIsland.Runtime.Event;
+using IsolateIsland.Runtime.Managers;
 using PlayerPrefs = IsolateIsland.Runtime.Managers.PlayerPrefs;
 using Manager = IsolateIsland.Runtime.Managers.Managers;
 
@@ -87,6 +88,7 @@ namespace IsolateIsland.Runtime.Hud
 
         [Header("Image")]
         [SerializeField] private Image _bloodScreenImage;
+        [SerializeField] private Image _hungerWarningPoint;
 
         [Header("Text")]
         [SerializeField] private Text _timeDateText;
@@ -108,6 +110,9 @@ namespace IsolateIsland.Runtime.Hud
 
             _timeDayGauge = new Gauge(_timeDayGaugeImage, 1);
             _timeNightGauge = new Gauge(_timeNightGaugeImage, 1);
+
+            _hungerWarningPoint.rectTransform.anchoredPosition = new Vector3(Mathf.Lerp(0, 350, GameManager.debuffHungry * 0.01f), 0);
+            //_hungerWarningPoint.rectTransform.
 
             _bgmSlider.value = PlayerPrefs.GetFloat("Bgm", 1);
             _sfxSlider.value = PlayerPrefs.GetFloat("Sfx", 1);
