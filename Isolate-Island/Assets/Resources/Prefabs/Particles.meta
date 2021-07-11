@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Isolate-Island/Assets/Resources/Sprites/Item.meta
+guid: a6593be8c08f9f94bb810307ebc82802
+=======
 guid: 5437f3fc58030734e86b0229655e94bc
+>>>>>>> e0e7e7bb1c40b1afd451d6787fa3ff0cacc3f9ec:Isolate-Island/Assets/Resources/Prefabs/Particles.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

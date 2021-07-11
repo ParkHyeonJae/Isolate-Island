@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7b957db3149f0847acb4ce129a1da12, type: 3}
   m_Name: "\uC870\uAC1C\uAECD\uC9C8"
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 2da59c2cf54589d49b335b7adb8c8346, type: 3}
+  sprite: {fileID: 21300000, guid: f0cb95dffed8d4343a5fd0d6384e78d5, type: 3}
+  invetorySprite: {fileID: 21300000, guid: f09fa3dc78377674b93eed2227c71e4d, type: 3}
   description: "\uC608\uC058\uC9C4 \uC54A\uACE0... \uB0A0\uCE74\uB86D\uB2E4\uB294
     \uC810\uC5D0 \uC8FC\uBAA9\uD558\uC790"
   combinationNodes: []
+  ProductCount: 1

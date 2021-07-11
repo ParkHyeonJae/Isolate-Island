@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eacc0f2f92685c9449731fbe00cd73ea, type: 3}
   m_Name: "\uBFD4\uD654\uC0B4"
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300036, guid: 1e627bcafe9e32d40ad554880f36b5eb, type: 3}
+  sprite: {fileID: 21300000, guid: 093025c2e8b0334439708cdfbcf4ac7f, type: 3}
+  invetorySprite: {fileID: 21300000, guid: 3e36b003042c7cc4ca09185a35917b92, type: 3}
   description: "\uC5B4\uB290\uC815\uB3C4\uC758 \uC704\uB825\uC740 \uB098\uC624\uACA0\uC9C0"
   combinationNodes:
   - Name: "\uB9C9\uB300\uAE30"

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eacc0f2f92685c9449731fbe00cd73ea, type: 3}
   m_Name: "\uAC80"
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300062, guid: 1e627bcafe9e32d40ad554880f36b5eb, type: 3}
+  sprite: {fileID: 21300000, guid: 8717553a45273fc4892567d3980cdbe5, type: 3}
+  invetorySprite: {fileID: 21300000, guid: b4928907c10cf4c4cad2e793b4b61d8c, type: 3}
   description: "\uC774\uC81C \uC880 \uD718\uB450\uB97C \uB9DB\uC774 \uB098\uACA0\uB124"
   combinationNodes:
   - Name: "\uCE7C\uB0A0"
@@ -21,6 +22,7 @@ MonoBehaviour:
   - Name: "\uB3CC\uBA69\uC774"
     Count: 1
     combinationNode: {fileID: 11400000, guid: 6fe3fa7f888748b46abec6bd0ec818bb, type: 2}
+  ProductCount: 1
   Stat:
     MoveSpeed: 0
     AttackSpeed: 0
@@ -52,3 +54,4 @@ MonoBehaviour:
     Scale: {x: 1, y: 1, z: 1}
     ColliderOffset: {x: 0, y: 0}
     ColliderSize: {x: 1, y: 1}
+  IsComsumable: 0

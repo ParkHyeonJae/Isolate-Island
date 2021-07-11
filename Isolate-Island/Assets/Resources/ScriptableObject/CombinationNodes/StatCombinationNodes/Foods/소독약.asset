@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eacc0f2f92685c9449731fbe00cd73ea, type: 3}
   m_Name: "\uC18C\uB3C5\uC57D"
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 1ca9d8eff23d31e498b7d6cc774178f3, type: 3}
+  sprite: {fileID: 21300000, guid: 21cff5655ca7e684f98bee7d6c636820, type: 3}
+  invetorySprite: {fileID: 21300000, guid: ad51671a5dedaeb4d8057fa755f28605, type: 3}
   description: "\uCE58\uB8CC\uD558\uAE30 \uC804\uC5D0 \uC18C\uB3C5\uC740 \uD544\uC218!"
   combinationNodes:
   - Name: "\uC54C\uCF54\uC62C"
@@ -21,6 +22,7 @@ MonoBehaviour:
   - Name: "\uCC9C"
     Count: 1
     combinationNode: {fileID: 11400000, guid: ac4c171c6ec2da04384cec3eaa041a8d, type: 2}
+  ProductCount: 1
   Stat:
     MoveSpeed: 0
     AttackSpeed: 0
