@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6145829584573626553}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -48,18 +48,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.36960435}
+  m_Offset: {x: -0.1299156, y: -0.0076966286}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 1}
-    oldSize: {x: 0.87, y: 0.74}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.56, y: 2.56}
     newSize: {x: 0.87, y: 0.74}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.7907901}
+  m_Size: {x: 1.7794936, y: 2.498252}
   m_EdgeRadius: 0
 --- !u!114 &6145829584573626533
 MonoBehaviour:
@@ -117,7 +117,7 @@ SpriteRenderer:
   m_SortingLayerID: 1897441671
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300144, guid: b08e570699f1c8a4f9cc388204aef3bc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c604b3be587ffd64c8ca5bfd55b83551, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -160,13 +160,20 @@ MonoBehaviour:
   m_SelfShadows: 0
   m_ApplyToSortingLayers: 0000000087a91871d7be094f5d8420f9076956a7
   m_ShapePath:
-  - {x: 0.35431868, y: -0.5441285, z: 0}
-  - {x: -0.35144496, y: -0.5531076, z: 0}
-  - {x: -0.34686607, y: -0.7281731, z: 0}
-  - {x: -0.06807798, y: -0.7278619, z: 0}
-  - {x: -0.008305103, y: -0.64816475, z: 0}
-  - {x: 0.051467694, y: -0.7245412, z: 0}
+  - {x: 0.38247722, y: -0.56524765, z: 0}
+  - {x: 0.7714971, y: 0.92629427, z: 0}
+  - {x: 0.32799643, y: 1.1938025, z: 0}
+  - {x: -0.08734521, y: 0.9826116, z: 0}
+  - {x: -0.5907943, y: -0.42639303, z: 0}
+  - {x: -0.7209174, y: -0.67875534, z: 0}
+  - {x: -1.0156366, y: -0.81968915, z: 0}
+  - {x: -0.46230078, y: -0.82641745, z: 0}
+  - {x: -0.38140848, y: -1.1479828, z: 0}
+  - {x: -0.15070236, y: -1.2208117, z: 0}
+  - {x: -0.09438479, y: -1.0729781, z: 0}
+  - {x: 0.11482481, y: -0.9075731, z: 0}
+  - {x: 0.5251077, y: -1.2419308, z: 0}
   - {x: 0.365711, y: -0.72999185, z: 0}
-  m_ShapePathHash: 77694804
+  m_ShapePathHash: 756970256
   m_Mesh: {fileID: 0}
-  m_InstanceId: 828334
+  m_InstanceId: 1665338
