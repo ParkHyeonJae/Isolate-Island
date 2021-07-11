@@ -42,7 +42,7 @@ namespace IsolateIsland.Runtime.Managers
         {
             float defend = value * UserStat.DEF * 0.05f;
             int damage = value - Mathf.RoundToInt(defend);
-            UserStat.HP -= value;
+            UserStat.HP -= damage;
             if (UserStat.HP <= 0)
                 Managers.Instance.Event.GetListener<OnGameoverEvent>().Invoke();
             else
@@ -59,7 +59,7 @@ namespace IsolateIsland.Runtime.Managers
             {
                 float defend = value * UserStat.DEF * 0.05f;
                 int damage = value - Mathf.RoundToInt(defend);
-                UserStat.HP -= value;
+                UserStat.HP -= damage;
             }
 
             if (UserStat.HP <= 0)

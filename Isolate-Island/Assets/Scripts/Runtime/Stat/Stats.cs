@@ -70,6 +70,7 @@ namespace IsolateIsland.Runtime.Stat
         {
             stat.MAX_HP += EFFECT_MAX_HEALTH;
             stat.HP += EFFECT_HEALTH;
+            if (stat.HP > stat.MAX_HP) stat.HP = stat.MAX_HP;
             stat.Hungry += EFFECT_HUNGRY;
             stat.ATK += EFFECT_ATK;
             stat.DEF += EFFECT_DEF;
