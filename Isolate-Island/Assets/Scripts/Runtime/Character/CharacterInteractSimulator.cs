@@ -11,7 +11,7 @@ namespace IsolateIsland.Runtime.Character
         private Entity _entity;
         private BoxCollider2D _interactCasterCollider;
         public BoxCollider2D interactCasterCollider
-            => _interactCasterCollider = _interactCasterCollider ?? Managers.Managers.Instance.DI.Get<CharacterInteractCaster>().GetComponent<BoxCollider2D>();
+            => _interactCasterCollider = _interactCasterCollider ?? Managers.Managers.Instance.DI.Get<CharacterInteractCaster>()?.GetComponent<BoxCollider2D>();
 
         public CharacterInteractSimulator(Animator animator)
         {
@@ -24,7 +24,8 @@ namespace IsolateIsland.Runtime.Character
         {
             Managers.Managers.Instance.Input.OnMouseAction += Input_OnAttackMouseAction;
             Managers.Managers.Instance.Input.OnMouseAction += Input_OnInteractMouseAction;
-            interactCasterCollider.enabled = false;
+            if (interactCasterCollider)
+                interactCasterCollider.enabled = false;
             Managers.Managers.Instance.Event.GetListener<Event.OnDetectCasterEvent>().Subscribe((entity, isInteractable) =>
             {
                 _entity = entity;

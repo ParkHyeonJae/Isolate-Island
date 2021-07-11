@@ -7,11 +7,7 @@ namespace IsolateIsland.Runtime.Inventory
 {
     internal class StatItemApplyer : ItemApplyer
     {
-        protected bool IsConsumable<T>(in T item) where T : ItemBase
-        {
-            var converted = item.CombinationNode as StatCombinationNode;
-            return converted.Stat.IsConsumable;
-        }
+        
         internal override void Use<T>(in T item)
         {
             base.Use<T>(item);

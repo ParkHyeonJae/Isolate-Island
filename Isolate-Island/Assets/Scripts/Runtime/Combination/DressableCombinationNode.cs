@@ -29,6 +29,8 @@ namespace IsolateIsland.Runtime.Combination
 
         public DressableFormattingForm OnDressableSetting;
 
+        [Space(20)]
+        public bool IsComsumable = false;
         
         public override string GetStatInfo()
         {

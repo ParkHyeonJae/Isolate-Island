@@ -180,6 +180,12 @@ namespace IsolateIsland.Runtime.Stat
             return this;
         }
 
+        public StatBuilder SetAttackRange(int _range)
+        {
+            Stat.RANGE = _range;
+            return this;
+        }
+
 
         public Stat Build()
         {

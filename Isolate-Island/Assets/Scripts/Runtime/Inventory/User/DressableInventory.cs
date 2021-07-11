@@ -78,11 +78,14 @@ namespace IsolateIsland.Runtime.Inventory
 
             Managers.Managers.Instance.Event.GetListener<DressableEventListener>()
                 .Invoke(Utils.Defines.EDressableState.Use, dressableItem);
+
+            Managers.Managers.Instance.Event.GetListener<Event.OnUIUpdateEvent>()?.Invoke();
         }
 
         protected override void OnCountingItem(ItemBase @base)
         {
 
+            Managers.Managers.Instance.Event.GetListener<Event.OnUIUpdateEvent>()?.Invoke();
         }
 
         protected override void OnSubtractItem(ItemBase @base)
@@ -108,12 +111,14 @@ namespace IsolateIsland.Runtime.Inventory
 
             Managers.Managers.Instance.Event.GetListener<DressableEventListener>()
                 .Invoke(Utils.Defines.EDressableState.Drop, dressableItem);
+
+            Managers.Managers.Instance.Event.GetListener<Event.OnUIUpdateEvent>()?.Invoke();
         }
 
         protected override void OnProductItem(ItemBase @base)
         {
 
-
+            Managers.Managers.Instance.Event.GetListener<Event.OnUIUpdateEvent>()?.Invoke();
         }
 
     }

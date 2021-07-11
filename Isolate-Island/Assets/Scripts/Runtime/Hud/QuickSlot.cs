@@ -18,6 +18,7 @@ namespace IsolateIsland.Runtime.Hud
         private void Awake()
         {
             Managers.Managers.Instance.Event.GetListener<Event.OnClickConfigButtonEventListener>().Subscribe(OnInitQuickSlot);
+            Managers.Managers.Instance.Event.GetListener<Event.OnUIUpdateEvent>().Subscribe(RenewQuickSlotUI);
             Managers.Managers.Instance.Event.GetListener<Event.OnCollectItemEvent>().Subscribe(() 
                 => Managers.Managers.Instance.Util.AddTimer(0.5f, () => RenewQuickSlotUI()));
         }
@@ -47,6 +48,9 @@ namespace IsolateIsland.Runtime.Hud
         {
             if (_added_dressableItem is null)
                 return;
+            if (_added_dressableItem is SubArrowItem)
+                return;
+
             var ap = new DressableItemApplyer();
             ap.Use(_added_dressableItem);
             Managers.Managers.Instance.Inventory.Dressable.SubtractItem(_added_dressableItem);

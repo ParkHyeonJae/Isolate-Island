@@ -21,6 +21,7 @@ MonoBehaviour:
   - Name: "\uBFD4"
     Count: 1
     combinationNode: {fileID: 11400000, guid: 1fa5de7afc0de454899456092eb1c70f, type: 2}
+  ProductCount: 100
   Stat:
     MoveSpeed: 0
     AttackSpeed: 0
@@ -39,10 +40,17 @@ MonoBehaviour:
     EFFECT_MAX_HEALTH: 0
     EFFECT_HEALTH: 0
     EFFECT_HUNGRY: 0
-    DRESSABLE_Parts: 2
+    DRESSABLE_Parts: 3
     DRESSABLE_ATK: 2
     DRESSABLE_RANGE: 0
     DRESSABLE_DEF: 0
     DRESSABLE_MAX_HEALTH: 0
     DRESSABLE_HEALTH: 0
     DRESSABLE_HUNGRY: 0
+  OnDressableSetting:
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 1, y: 1, z: 1}
+    ColliderOffset: {x: 0, y: 0}
+    ColliderSize: {x: 1, y: 1}
+  IsComsumable: 1

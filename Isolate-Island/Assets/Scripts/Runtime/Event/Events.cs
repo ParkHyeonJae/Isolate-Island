@@ -48,6 +48,25 @@ namespace IsolateIsland.Runtime.Event
             Managers.Managers.Instance.Util.AddTimer(0.09f, () => Time.timeScale = 1.0f, true);
         }
     }
+    public class OnRangedHitInteractEvent : GenericEventListener<Vector2, DressableItem, Entity>
+    {
+
+        public void OnInteract(Vector2 arrowDir, Entity entity)
+        {
+            Managers.Managers.Instance.Sound.PlayOneShot("타격_근접");
+            var obj = Managers.Managers.Instance.Pool.ParticleInstantiate("FX_Hit_01", 1.5f);
+            obj.transform.position = entity.transform.position;
+
+            Managers.Managers.Instance.Util.AddTimer(0.1f, () => entity.GetRigidBody2D.velocity = Vector2.zero);
+            entity.GetRigidBody2D.velocity = arrowDir * 20;
+
+            Managers.Managers.Instance.Camera.CameraShake(0.6f, 0.5f);
+            Time.timeScale = 0.5f;
+            Managers.Managers.Instance.Util.AddTimer(0.09f, () => Time.timeScale = 1.0f, true);
+
+            Managers.Managers.Instance.Pool.Destroy(entity.gameObject);
+        }
+    }
 
     // 클래스 이름, 상속 부모 등의 상세정보는 알아서 수정하셈
     public class HitInteractPlayerEvent : EventListener
@@ -60,8 +79,13 @@ namespace IsolateIsland.Runtime.Event
 
     }
 
+    public class OnUIUpdateEvent : EventListener { }
+
     public class OnGameoverEvent : EventListener
     { 
     
     }
+
+
+    public class OnAttackAnimationEvent : GenericEventListener<CharacterAttackController, EAttackAnimationKeyState> { }
 }

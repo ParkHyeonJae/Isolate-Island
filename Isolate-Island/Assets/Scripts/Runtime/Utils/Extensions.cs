@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class Extensions
 {
-    public static T GetOrAddComponent<T>(this GameObject @object) where T : Behaviour
+    public static T GetOrAddComponent<T>(this GameObject @object) where T : Component
     {
         if (@object.TryGetComponent<T>(out T component))
             return component;

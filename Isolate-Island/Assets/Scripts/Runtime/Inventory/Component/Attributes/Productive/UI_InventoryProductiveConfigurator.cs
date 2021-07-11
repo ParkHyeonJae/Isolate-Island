@@ -68,6 +68,14 @@ namespace IsolateIsland.Runtime.Inventory
         {
             OnInitalizeButtonEvent();
 
+            if (Managers.Managers.Instance.Inventory.Game.Items.Count < 10)
+                attributeForm.obj_use.SetActive(true);
+            else
+            {
+                if (Managers.Managers.Instance.Inventory.Game.TryFullProductItem(node))
+                    attributeForm.obj_use.SetActive(false);
+                else attributeForm.obj_use.SetActive(true);
+            }
             attributeForm.item_useText.text = "조합";
 
             _selectNode = node;
@@ -82,7 +90,7 @@ namespace IsolateIsland.Runtime.Inventory
             var statNode = node as Combination.StatCombinationNode;
             attributeForm.item_statText.text = (!(statNode is null)) ? statNode.GetStatInfo() : "";
 
-            attributeForm.obj_use.SetActive(true);
+            //attributeForm.obj_use.SetActive(true);
             attributeForm.obj_drop.SetActive(false);
         }
 
