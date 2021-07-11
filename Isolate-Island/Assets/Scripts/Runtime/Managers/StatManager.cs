@@ -73,16 +73,17 @@ namespace IsolateIsland.Runtime.Managers
 
             if (UserStat.Hungry > 0)
             {
-                yield return Managers.Instance.Coroutine.GetWaitForSeconds(5);
-                UserStat.Hungry -= 100;
+                //yield return Managers.Instance.Coroutine.GetWaitForSeconds(5);
+                yield return new WaitForEndOfFrame();
+                UserStat.Hungry -= ((float)GameManager.reduceHungryForMinute / 60f) * Time.deltaTime;
                 if (UserStat.Hungry < 0)
                     UserStat.Hungry = 0;
             }
             else
             {
-                yield return Managers.Instance.Coroutine.GetWaitForSeconds(2);
-                if (UserStat.HP > 5)
-                    ReducePlayerHp(5, true);
+                yield return Managers.Instance.Coroutine.GetWaitForSeconds(GameManager.hungryDamageDelay);
+                if (UserStat.HP > GameManager.hungryDamage)
+                    ReducePlayerHp(GameManager.hungryDamage, true);
                 else
                 {
                     ReducePlayerHp(UserStat.HP - 1, true);
