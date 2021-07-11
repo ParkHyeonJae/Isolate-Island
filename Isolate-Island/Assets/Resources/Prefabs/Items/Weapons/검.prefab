@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 5765728899189598107}
   - component: {fileID: 8183345375584226500}
   - component: {fileID: 5015807723909502747}
-  - component: {fileID: 3750224142640327701}
   - component: {fileID: 7132617720910730445}
+  - component: {fileID: -7668316279939305157}
   m_Layer: 0
   m_Name: "\uAC80"
   m_TagString: Untagged
@@ -45,7 +45,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -73,9 +73,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bdcf4a7884265c46b4552c4d53a6fee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DefaultAddedItemCount: 1
   _onItemCollctEvent:
     m_PersistentCalls:
       m_Calls: []
+  _isCollisionCheck: 1
 --- !u!212 &5015807723909502747
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -126,19 +128,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3750224142640327701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6176584159814553697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d75aa04ad3a98ed4aac451656d671c50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _combinationNode: {fileID: 11400000, guid: 6e168665d98ad53478081a0a73faa349, type: 2}
 --- !u!114 &7132617720910730445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,3 +154,16 @@ MonoBehaviour:
   m_ShapePathHash: 1461956642
   m_Mesh: {fileID: 0}
   m_InstanceId: -1192372
+--- !u!114 &-7668316279939305157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6176584159814553697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3454c3efd5bcd9c4a804900737138382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _combinationNode: {fileID: 11400000, guid: 6e168665d98ad53478081a0a73faa349, type: 2}
