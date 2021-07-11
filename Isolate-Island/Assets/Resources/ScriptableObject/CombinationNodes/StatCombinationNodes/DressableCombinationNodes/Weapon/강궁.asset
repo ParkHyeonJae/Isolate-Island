@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eacc0f2f92685c9449731fbe00cd73ea, type: 3}
+  m_Name: "\uAC15\uAD81"
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: faa29565cb49015418b5c7d4ccab5e48, type: 3}
+  invetorySprite: {fileID: 21300000, guid: 60f114f510659314ca3f35b92c273583, type: 3}
+  description: "\uD654\uC0B4\uC774 \uC815\uB9D0 \uC138\uAC8C \uB0A0\uC544\uAC04\uB2E4."
+  combinationNodes:
+  - Name: "\uBAA9\uACF5"
+    Count: 1
+    combinationNode: {fileID: 11400000, guid: 3ec1cae1c5a3eb645bc2b430f8eee718, type: 2}
+  - Name: "\uACE0\uBB34"
+    Count: 1
+    combinationNode: {fileID: 11400000, guid: c14ac3a6f1f057c4ca0577505f9b3e0d, type: 2}
+  ProductCount: 1
+  DropCount: 1
+  Stat:
+    MoveSpeed: 0
+    AttackSpeed: 0
+    EFFECT_ATK: 0
+    EFFECT_RANGE: 0
+    EFFECT_DEF: 0
+    EFFECT_MAX_HEALTH: 0
+    EFFECT_HEALTH: 0
+    EFFECT_HUNGRY: 0
+  DressableStat:
+    MoveSpeed: 0
+    AttackSpeed: 0
+    EFFECT_ATK: 0
+    EFFECT_RANGE: 0
+    EFFECT_DEF: 0
+    EFFECT_MAX_HEALTH: 0
+    EFFECT_HEALTH: 0
+    EFFECT_HUNGRY: 0
+    DRESSABLE_Parts: 2
+    DRESSABLE_ATK: 2
+    DRESSABLE_RANGE: 5
+    DRESSABLE_DEF: 0
+    DRESSABLE_MAX_HEALTH: 0
+    DRESSABLE_HEALTH: 0
+    DRESSABLE_HUNGRY: 0
+  OnDressableSetting:
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 1, y: 1, z: 1}
+    ColliderOffset: {x: 0, y: 0}
+    ColliderSize: {x: 1, y: 1}
+  IsComsumable: 0

@@ -1,0 +1,64 @@
+※ : 제외
+Ⅹ : 못 찾음
+○ : 이미 있음
+
+사운드
+-BGM
+-동굴 ※
+-바다 ※ 
+-초원 ※
+-숲 ※
+
+-낮 Base at day _03
+-밤 Base at night 1
+-타이틀 Ambience_Horror_Bloody
+-게임종료 You Lose (4)
+
+Effect
+-걸음 Grass footsteps
+
+-플레이어 손 공격 Punch Impact (Flesh) 9
+-플레이어  검 공격 Sword Woosh 3
+-플레이어  일본도 검 공격 Dagger woosh 5
+-플레이어  창 공격 Sword Woosh 5
+-플레이어 둔기 공격 Club 7
+-플레이어 표창 공격 Dagger woosh 4
+-플레이어 화염병 공격 Glass 1
+-플레이어 화살 공격 Arrow Flying Past 14
+-플레이어 활 공격 Arrow Impact dirt 4
+
+-플레이어 피해 HAMMER_Hit_Body_stereo
+-플레이어 피격 소리 Body Head (Headshot) 3
+
+-적 공격 Sword Woosh 12
+-적 피격 HAMMER_Hit_Body_Gore_stereo
+-적 죽는 소리 Alien Death_06
+
+-돼지 걷는 소리 Pig Footsteps _1 ~4
+-돼지 죽는 소리 Pig Squeals 2_9
+-돼지 피해 소리 Pig Squeals 2_6
+
+-닭 걷는 소리 Chicken call 5
+-닭 날개 소리 Chicken flapping wings 5
+-닭 죽는 소리 Chicken call 2
+-닭 피해 소리 Chicken call 4
+
+-나무 상호작용 Arrow Impact Brick 3
+-아이템 채집 Ⅹ
+-음식 아이템 사용 Crunch Bite Item (1)
+-치료 아이템 사용 Bandage Sounds 3
+
+-인벤토리 열기 ○
+-아이템 마우스 클릭 Sci fi click sound 7
+-아이템 완성 LOCK_Metal_Sliding_03_Mid_mono
+-아이템 해제 Ⅹ
+-아이템 버리기 Ⅹ
+
+-아이템 장착 HAMMER_Hit_Metal_Armor_stereo
+-아이템  머리 장착 Ⅹ
+-아이템 몸 장착 Ⅹ
+-아이템 다리 장착 Ⅹ
+-아이템 무기 장착 Ⅹ
+
+-타이틀 마우스 버튼 클릭 / Fantasy Click (1)
+-지도 / Book page flip 3

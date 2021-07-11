@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eacc0f2f92685c9449731fbe00cd73ea, type: 3}
+  m_Name: "\uBFD4\uD654\uC0B4"
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 093025c2e8b0334439708cdfbcf4ac7f, type: 3}
+  invetorySprite: {fileID: 21300000, guid: 3e36b003042c7cc4ca09185a35917b92, type: 3}
+  description: "\uC5B4\uB290\uC815\uB3C4\uC758 \uC704\uB825\uC740 \uB098\uC624\uACA0\uC9C0"
+  combinationNodes:
+  - Name: "\uB9C9\uB300\uAE30"
+    Count: 1
+    combinationNode: {fileID: 11400000, guid: a2b02429e767f59479aa182827812221, type: 2}
+  - Name: "\uBFD4"
+    Count: 1
+    combinationNode: {fileID: 11400000, guid: 1fa5de7afc0de454899456092eb1c70f, type: 2}
+  ProductCount: 100
+  DropCount: 1
+  Stat:
+    MoveSpeed: 0
+    AttackSpeed: 0
+    EFFECT_ATK: 0
+    EFFECT_RANGE: 0
+    EFFECT_DEF: 0
+    EFFECT_MAX_HEALTH: 0
+    EFFECT_HEALTH: 0
+    EFFECT_HUNGRY: 0
+  DressableStat:
+    MoveSpeed: 0
+    AttackSpeed: 0
+    EFFECT_ATK: 0
+    EFFECT_RANGE: 0
+    EFFECT_DEF: 0
+    EFFECT_MAX_HEALTH: 0
+    EFFECT_HEALTH: 0
+    EFFECT_HUNGRY: 0
+    DRESSABLE_Parts: 3
+    DRESSABLE_ATK: 2
+    DRESSABLE_RANGE: 0
+    DRESSABLE_DEF: 0
+    DRESSABLE_MAX_HEALTH: 0
+    DRESSABLE_HEALTH: 0
+    DRESSABLE_HUNGRY: 0
+  OnDressableSetting:
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0}
+    Scale: {x: 1, y: 1, z: 1}
+    ColliderOffset: {x: 0, y: 0}
+    ColliderSize: {x: 1, y: 1}
+  IsComsumable: 1

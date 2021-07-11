@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d4b580edbb993b479b7bdc54a174ca9, type: 3}
+  m_Name: Rooster Data
+  m_EditorClassIdentifier: 
+  _hp: 5
+  _moveSpeed: 0.7
+  _moveRange: 10
+  _makePosCooltime: 5
+  _runtime: 2.5
+  _sleepingTime: 30
+  _sleepingCooltime: 20

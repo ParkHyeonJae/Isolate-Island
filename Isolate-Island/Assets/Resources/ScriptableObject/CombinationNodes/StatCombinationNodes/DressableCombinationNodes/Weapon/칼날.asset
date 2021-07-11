@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eacc0f2f92685c9449731fbe00cd73ea, type: 3}
+  m_Name: "\uCE7C\uB0A0"
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 0cff89b3bb653364a8e4e554aea633b5, type: 3}
+  invetorySprite: {fileID: 21300000, guid: 3846edb4ece930845ae256b8ef38706a, type: 3}
+  description: "\uB0A0\uCE74\uB85C\uC6B4 \uCE7C\uB0A0\uC774\uC9C0\uB9CC, \uC798\uBABB\uC7A1\uC73C\uBA74
+    \uB0B4 \uC190\uB9CC \uB2E4\uCE60 \uAC83 \uAC19\uB2E4."
+  combinationNodes:
+  - Name: "\uACE0\uCCA0"
+    Count: 1
+    combinationNode: {fileID: 11400000, guid: ca012cf9acd138d49aa38e86965d1b0a, type: 2}
+  - Name: "\uB3CC\uBA69\uC774"
+    Count: 1
+    combinationNode: {fileID: 11400000, guid: 6fe3fa7f888748b46abec6bd0ec818bb, type: 2}
+  ProductCount: 1
+  DropCount: 1
+  Stat:
+    MoveSpeed: 0
+    AttackSpeed: 0
+    EFFECT_ATK: 0
+    EFFECT_RANGE: 0
+    EFFECT_DEF: 0
+    EFFECT_MAX_HEALTH: 0
+    EFFECT_HEALTH: 0
+    EFFECT_HUNGRY: 0
+  DressableStat:
+    MoveSpeed: 0
+    AttackSpeed: 0
+    EFFECT_ATK: 0
+    EFFECT_RANGE: 0
+    EFFECT_DEF: 0
+    EFFECT_MAX_HEALTH: 0
+    EFFECT_HEALTH: 0
+    EFFECT_HUNGRY: 0
+    DRESSABLE_Parts: 2
+    DRESSABLE_ATK: 1
+    DRESSABLE_RANGE: 1
+    DRESSABLE_DEF: 0
+    DRESSABLE_MAX_HEALTH: 0
+    DRESSABLE_HEALTH: 0
+    DRESSABLE_HUNGRY: 0
+  OnDressableSetting:
+    Position: {x: 1.42, y: -1.191, z: 0}
+    Rotation: {x: 0, y: 0, z: 339.31277}
+    Scale: {x: 1, y: 1, z: 1}
+    ColliderOffset: {x: -0.19887257, y: 0.20739368}
+    ColliderSize: {x: 1.5148864, y: 1.48804}
+  IsComsumable: 0
