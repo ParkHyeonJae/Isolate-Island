@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3148071123819373377}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -48,18 +48,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.004192114, y: -0.012576461}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
+    oldSize: {x: 2.56, y: 2.56}
     newSize: {x: 0.64, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.0480242, y: 2.19894}
   m_EdgeRadius: 0
 --- !u!114 &5977355579113572781
 MonoBehaviour:
@@ -117,7 +117,7 @@ SpriteRenderer:
   m_SortingLayerID: 1897441671
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300154, guid: 1e627bcafe9e32d40ad554880f36b5eb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f28ab5a2a9978664eaf3ead7f749f972, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -160,13 +160,13 @@ MonoBehaviour:
   m_SelfShadows: 0
   m_ApplyToSortingLayers: 0000000087a91871d7be094f5d8420f9076956a7
   m_ShapePath:
-  - {x: -0.06132315, y: 0.09037096, z: 0}
-  - {x: -0.06509954, y: 0.21560979, z: 0}
-  - {x: -0.31667888, y: 0.31460884, z: 0}
-  - {x: -0.21642819, y: 0.07336085, z: 0}
-  - {x: -0.08325894, y: 0.06226343, z: 0}
-  - {x: 0.29252383, y: -0.314787, z: 0}
-  - {x: 0.32015377, y: -0.28960365, z: 0}
-  m_ShapePathHash: -1324872676
+  - {x: -0.5607728, y: -0.5200674, z: 0}
+  - {x: -0.75877976, y: -0.6390041, z: 0}
+  - {x: -1.037701, y: -1.159841, z: 0}
+  - {x: -0.53829575, y: -0.7646046, z: 0}
+  - {x: -0.49946702, y: -0.6147684, z: 0}
+  - {x: 1.0132275, y: 0.9961442, z: 0}
+  - {x: 0.9253126, y: 1.0831376, z: 0}
+  m_ShapePathHash: 965737843
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1193378
+  m_InstanceId: 485206
