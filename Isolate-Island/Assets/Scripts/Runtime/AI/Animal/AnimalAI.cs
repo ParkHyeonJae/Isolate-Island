@@ -58,11 +58,11 @@ namespace IsolateIsland.Runtime.Ai
         protected float deltaTime;
         protected bool isSleeping;
         protected bool isRun;
-
+        
         private Vector3 _standardPos;
         private Vector3 _movePos;
         private float _makePosTime = 0;
-
+        private bool _isDead = false;
 
 
         void Start() => Init();
@@ -72,6 +72,7 @@ namespace IsolateIsland.Runtime.Ai
             _movePos = transform.position;
             _standardPos = transform.position;
             hp = entityData.hp;
+            _isDead = false;
         }
 
         protected virtual void Init()
@@ -86,6 +87,7 @@ namespace IsolateIsland.Runtime.Ai
             deltaTime = 0;
             isSleeping = false;
             isRun = false;
+            _isDead = false;
         }
 
         void InitBT()
@@ -117,6 +119,7 @@ namespace IsolateIsland.Runtime.Ai
 
         protected virtual void Update()
         {
+            if (!_isDead)
             root.OnUpdate();
         }
 
@@ -135,6 +138,8 @@ namespace IsolateIsland.Runtime.Ai
 
         bool Dead()
         {
+            if (_isDead)
+                return true;
             if (hp <= 0)
             {
                 animator.Play("Dead");
@@ -147,7 +152,16 @@ namespace IsolateIsland.Runtime.Ai
 
         void Destroy()
         {
+            if (_isDead)
+                return;
+
+            _isDead = true;
+
             SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+
+            var meat = Managers.Managers.Instance.Pool.Instantiate("날고기");
+            meat.SetActive(true);
+            meat.transform.position = transform.position;
 
             sprite.DOFade(0, 1)
                 .OnComplete(() =>
